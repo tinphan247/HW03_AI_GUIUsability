@@ -200,6 +200,7 @@ Success criteria: **Success** (không trợ giúp, thấy đơn) · **Success wi
 - **Số lượng:** 7 người chính + 1 pilot + 2 dự phòng.
 - **Liên hệ:** lưu trong `usability/participants.csv`; khi báo cáo che 4 số giữa (`0901***678`). Bản đầy đủ chỉ gửi TA khi được yêu cầu xác minh.
 - **Pilot:** chạy trước với 1 người ngoài 7, mục đích kiểm tra scenario/instruments/thời lượng; dữ liệu pilot **không** tính vào phân tích. Thay đổi sau pilot ghi ở `usability/pilot/pilot_notes.md`.
+- **Hình thức:** phiên trực tiếp trên máy người điều phối **hoặc** từ xa qua **bản host công khai** (`https://eshop-sut-snowy.vercel.app/`, API Render — đã kiểm chứng đăng nhập + danh sách sản phẩm hoạt động) — người tham gia dùng thiết bị của chính họ, moderator không điều khiển trực tiếp (ghi rõ hình thức từng phiên ở `participants.csv`/notes). Lưu ý Render free tier: request đầu tiên sau khi idle có thể chậm 30–60 giây — báo trước cho người tham gia để không tính vào trải nghiệm.
 
 ### 3.5 Bảy phiên
 

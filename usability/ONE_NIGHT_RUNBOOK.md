@@ -7,7 +7,7 @@
 
 | Việc | Cách làm |
 | :--- | :--- |
-| SUT chạy | API 3001 + web 5173 + admin 5174 (xem README §4) |
+| SUT chạy | **Cách 1 (khuyên dùng cho người ở xa):** bản host công khai `https://eshop-sut-snowy.vercel.app/` — API Render, lần đầu chậm ~30–60s. **Cách 2 (trực tiếp):** API 3001 + web 5173 + admin 5174 (xem README §4) |
 | Reset dữ liệu | `cd HW2/eshop-sut/backend && node database.js` → seed lại tài khoản |
 | In phiếu | `usability/instruments/sus_vi.md` (7 bản) + `usability/consent.md` (7 bản) |
 | Ghi âm | Điện thoại đặt cạnh laptop, ghi âm giọng + quay màn hình nếu được |
