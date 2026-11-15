@@ -148,4 +148,39 @@ Kết luận: AI là **leverage**, không phải **authority**. Quy tắc tôi g
 
 ---
 
-<!-- Các artifact tiếp theo được thêm theo từng bước thực hiện (Task 2, Task 3). -->
+## Artifact 3 — Dựng harness cross-platform và sửa lỗi evidence (G9.4)
+
+### (1) Prompt + Tool
+
+- **Tool:** DeepSeek V4.1 Flash Free (OpenCode agent), Playwright 1.64.1 (Chromium/Firefox/WebKit), axe-core 4.10.2.
+- **Timestamp:** 15/11/2026, ~13:00–13:30 (UTC+7)
+- **Prompt (user, nguyên văn):** `Chạy lại toàn bộ checklist trên ≥3 platform, mỗi screenshot phải có email sinh viên + browser/OS/device + URL localhost. Xuất ma trận so sánh với baseline.`
+
+### (2) AI Output
+
+- `scripts/run_cross_platform.js` (vòng lặp platform, spawn runner + capture), `scripts/lib/overlay.js` (watermark), `scripts/build_xplat_matrix.js` (matrix.md/csv + diff), `cross-platform/platforms.json` (5 platform).
+- Chạy 4 platform: 53 item × 4 = 212 lần check, 4×42 ảnh.
+
+### (3) Verdict
+
+**PARTIALLY VALID** — chạy được nhưng phát hiện 4 lỗi, 3 trong đó do AI viết:
+
+1. `capture_platform_shots.js` dùng `page.goto('/checkout')` sau khi thêm giỏ → React state reset, ảnh chụp "Checkout + coupon" hiển thị **0 ₫**, tức là evidence vô giá trị dù ảnh có overlay đúng.
+2. Overlay đặt `padding-top: 30px` cố định; trên mobile overlay cao 4 dòng → **che mất header** trong ảnh.
+3. `build_xplat_matrix.js` dùng `const lines` rồi `lines += [...]` (biến array thành string) → crash `lines.push is not a function`.
+4. Chromium lần đầu timeout khi chụp (transient), script không có retry → 1 platform mất ảnh.
+
+### (4) Reasoning
+
+Một harness "chạy xong" không có nghĩa là evidence đúng: ảnh có đủ watermark mà nội dung sai còn nguy hiểm hơn không có ảnh, vì người chấm sẽ tin đó là bằng chứng. Vì vậy tôi kiểm tra **nội dung** ảnh (giá trị coupon, số dòng giỏ) chứ không chỉ kiểm tra file tồn tại.
+
+### (5) Student Fix
+
+- Đổi sang điều hướng SPA bằng click (`Tiến hành thanh toán`), chuẩn hoá giỏ còn đúng 1 dòng, thêm log `coupon feedback` để so sánh giữa platform.
+- Overlay dùng `bar.offsetHeight` để đẩy nội dung, không hardcode 30 px.
+- Sửa `lines` thành `push(...)`, thêm xử lý khi không có diff.
+- Chạy lại ảnh cho cả 4 platform, xác nhận coupon hiển thị giống nhau (`-270.000.000 ₫` / `300.000.000 ₫`) và header không bị che.
+
+---
+
+<!-- Các artifact tiếp theo được thêm theo từng bước thực hiện (Task 2, BrowserStack). -->

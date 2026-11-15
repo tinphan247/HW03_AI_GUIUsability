@@ -1,0 +1,6 @@
+﻿343a6e4 | 2026-11-15 13:32 | docs(report): add Task 3 results, self-assessment, and BrowserStack runner
+f39981f | 2026-11-15 13:27 | test(xplat): run GUI checklist on 4 platforms with watermarked evidence
+b787cb0 | 2026-11-15 13:08 | feat(usability): add 7-session test kit, SUS scoring, and cross-platform harness
+e9eb25b | 2026-11-15 12:52 | test(checklist): design and execute 65 GUI checklist items, report 34 bugs
+80d1624 | 2026-11-15 12:32 | chore(env): run SUT on API port 3001 for local environment
+575fd0d | 2026-11-15 12:29 | chore(hw03): initialize report structure and reusable GUI/usability skills

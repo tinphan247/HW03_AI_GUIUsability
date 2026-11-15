@@ -344,6 +344,7 @@ Log đầy đủ theo từng artifact (prompt → output → verdict → reasoni
 | 0 | Đọc đề, inventory SUT, lập kế hoạch 9 giai đoạn | Partially valid — phải tách automated/manual, không tin giả thuyết lỗi từ code |
 | 1 | Sinh 46 item, phát hiện gap, viết runner Playwright | Partially valid — 5 item không đo được, runner có 2 false positive phải sửa |
 | 2 | Gom 44 item Failed thành 34 bug, viết bug report | Valid with correction — nâng coupon lên Blocker, giữ mapping item → bug |
+| 3 | Dựng harness cross-platform, watermark, ma trận so sánh | Partially valid — evidence sai nội dung (checkout 0 ₫), overlay che header, matrix crash; đã sửa và chạy lại |
 
 ### 6.2 AI Critique (200–300 từ)
 
@@ -357,7 +358,18 @@ Kết luận: AI là **leverage**, không phải **authority**. Quy tắc tôi g
 
 ## 7. Git commit log
 
-TODO
+Repo cục bộ `hw3/23120372_HW03_AI_GUIUsability`, commit theo từng bước (không gộp). Log đầy đủ: `git_commit_log.txt`.
+
+| # | Commit | Thời điểm | Nội dung | Phạm vi thay đổi |
+| :-: | :--- | :--- | :--- | :--- |
+| 1 | `575fd0d` | 15/11/2026 12:29 | `chore(hw03): initialize report structure and reusable GUI/usability skills` | README, Main_Report, AI_Audit skeleton, 2 skill (`SKILL.md` + references + templates) |
+| 2 | `80d1624` | 15/11/2026 12:32 | `chore(env): run SUT on API port 3001 for local environment` | `evidence/SUT_LOCAL_PATCH.md`, cấu hình URL frontend |
+| 3 | `e9eb25b` | 15/11/2026 12:52 | `test(checklist): design and execute 65 GUI checklist items, report 34 bugs` | 65 item + design log, runner 53 check + 12 manual, `GUI_Checklist.xlsx`, 46 screenshot, `Bug_Reports.md`, `bug_map.json`, Main_Report §2, AI Audit Artifact 1–2 |
+| 4 | `b787cb0` | 15/11/2026 13:08 | `feat(usability): add 7-session test kit, SUS scoring, and cross-platform harness` | `usability/` (plan, scenario, consent, script, instruments, P1–P7, pilot), `sus_score.py`, harness cross-platform, `publish_github.js`, `export_pdf.js`, `package_submission.ps1` |
+| 5 | `f39981f` | 15/11/2026 13:27 | `test(xplat): run GUI checklist on 4 platforms with watermarked evidence` | `evidence/xplat/*` (4 platform), 4×42 screenshot có overlay, `cross-platform/matrix.md|csv`, Main_Report §4 |
+| 6 | `343a6e4` | 15/11/2026 13:32 | `docs(report): add Task 3 results, self-assessment, and BrowserStack runner` | README self-assessment, §8, `run_browserstack.js`, Bug_Reports nhúng ảnh, PDF bản đầu |
+
+Nguyên tắc commit: mỗi commit là một bước hoàn chỉnh (design → execute → report), message theo Conventional Commits (`chore`, `test`, `feat`, `docs`), không có commit "wip".
 
 ---
 
