@@ -5,24 +5,38 @@
 
 ## 1. Tin nhắn đầu tiên
 
+> Toàn bộ hướng dẫn (link trang, nhiệm vụ, cách làm) đã nằm **trong form**, nên tin nhắn
+> chỉ cần 1 link + mã phiên. Không phải giải thích thêm gì.
+
 ```text
 Chào [tên], mình đang làm bài tập môn Kiểm thử phần mềm ở HCMUS.
-Mình cần 7 bạn dùng thử một trang mua hàng online trong ~20 phút,
-nói to suy nghĩ khi thao tác, rồi trả lời 10 câu hỏi ngắn.
+Mình cần bạn dùng thử một trang mua hàng online trong ~20 phút rồi trả lời
+10 câu hỏi ngắn (~1 phút). Không cần biết kỹ thuật, không có đáp án đúng/sai.
 
-Không cần biết kỹ thuật, không phải làm bài kiểm tra — không có đáp án đúng/sai.
-Mình chỉ ghi lại những chỗ khó hiểu để cải thiện giao diện.
+Mã phiên của bạn: P_   (điền vào form ở bước cuối)
 
-Bạn rảnh [thứ/giờ] không? Mình mời cà phê/trà sữa. Cảm ơn bạn nhiều!
+Link form (hướng dẫn + link trang web đều ở trong đây): [LINK FORM]
+
+Bạn làm lúc nào cũng được, miễn trước [hạn]. Cảm ơn bạn nhiều!
 ```
 
-## 2. Khi họ đồng ý — chốt 3 việc
+## 2. Khi họ đồng ý — chốt việc
+
+**Nếu người ở xa, tự làm trên máy họ (cách D — khuyên dùng):** chỉ cần gửi mã phiên + link form, không cần hẹn giờ.
+
+```text
+Cảm ơn bạn! Bạn mở link này làm lúc nào cũng được: [LINK FORM]
+Mã phiên của bạn là P_ — nhớ điền vào câu "Mã phiên P?" nhé.
+Trong form có link trang web + nhiệm vụ cụ thể, đọc 30 giây là hiểu.
+```
+
+**Nếu làm trực tiếp hoặc qua Zoom (cách A/B):**
 
 ```text
 Tuyệt vời, cảm ơn bạn! 3 việc nhanh:
 1. Mình sẽ quay màn hình + ghi âm buổi dùng thử (chỉ để mình xem lại, không đăng ở đâu).
 2. Bạn ký giấy đồng ý 1 trang (mình chuẩn bị sẵn).
-3. Gặp ở [địa điểm] lúc [giờ], bạn mang theo [laptop/điện thoại] nếu có.
+3. Gặp ở [địa điểm/Zoom] lúc [giờ], bạn mang theo [laptop/điện thoại] nếu có.
 ```
 
 ## 3. Nhắc trước phiên (1 tiếng)

@@ -1,9 +1,13 @@
-# Hướng dẫn cho người tham gia (gửi kèm link form)
+# Hướng dẫn cho người tham gia
 
-> File này là **tin nhắn bạn gửi cho từng người** trước phiên. Copy phần trong khung,
-> điền tên bạn + link form + mã phiên vào chỗ `...`.
+> ⚠️ **Mọi hướng dẫn đã nằm trong Google Form** (`usability/GOOGLE_FORM_GUIDE.md`):
+> link trang web, nhiệm vụ, cách làm, đồng ý, SUS. Người tham gia chỉ cần mở 1 link.
+>
+> File này chỉ dùng cho **người chạy test** (bạn): tổ chức phiên trực tiếp / Zoom,
+> những câu không được nói, việc phải ghi lại trong lúc quan sát.
+> Tin nhắn mời tối giản ở `usability/RECRUIT_MESSAGE.md` §1.
 
-## Bản gửi qua Messenger/Zalo (trước phiên 1 ngày)
+## Bản gửi qua Messenger/Zalo (chỉ khi bạn muốn nhắc thêm ngoài form)
 
 ```text
 Chào [tên], cảm ơn bạn đã nhận giúp mình 🙏
