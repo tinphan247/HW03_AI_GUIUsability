@@ -103,7 +103,9 @@
 | `scripts/run_cross_platform.js` | Chạy checklist + chụp ảnh trên 4 platform |
 | `scripts/build_xplat_matrix.js` | Sinh `cross-platform/matrix.md` + `matrix.csv` |
 | `scripts/run_browserstack.js` | Chụp 4 màn hình trên BrowserStack (tunnel local) |
+| `scripts/sus_from_lines.py` | Nhập `usability/raw_sessions.txt` (1 dòng/người) → `participants.csv` + `sus_scores.csv` |
 | `scripts/sus_score.py` | Tính SUS → `usability/sus_results.md` |
+| `scripts/bs_sessions.js` | Lấy session id + link dashboard BrowserStack → `evidence/xplat/browserstack-sessions.json` |
 | `scripts/publish_github.js` | Tạo repo + 34 GitHub Issue kèm screenshot |
 | `scripts/export_pdf.js` | MD → PDF (Edge headless) |
 | `scripts/package_submission.ps1` | Sinh `git_commit_log.txt` + zip bài nộp |

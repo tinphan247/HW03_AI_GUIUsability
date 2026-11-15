@@ -1,0 +1,14 @@
+# usability/raw_sessions.txt — mỗi dòng = 1 phiên, 12 trường ngăn bằng "|"
+# Định dạng đầy đủ: usability/FILL_7_SESSIONS.md
+# Trường không đo được: ghi khong-do
+#
+# P1 | 22 | Sinh viên CNTT | 0912345678 | 15/11 19:00 | Chrome / Windows 11 | Success | 4:30 | 0 | thấy -270.000.000 và thành tiền 300.000.000 | 4,2,5,1,4,2,5,1,4,2 | "Tưởng nút thêm giỏ bị lỗi nên bấm 2 lần"
+#
+# Mẫu trống — bỏ dấu "#" ở đầu dòng rồi điền:
+# P1 |  |  |  |  |  |  |  |  |  |  | 
+# P2 |  |  |  |  |  |  |  |  |  |  | 
+# P3 |  |  |  |  |  |  |  |  |  |  | 
+# P4 |  |  |  |  |  |  |  |  |  |  | 
+# P5 |  |  |  |  |  |  |  |  |  |  | 
+# P6 |  |  |  |  |  |  |  |  |  |  | 
+# P7 |  |  |  |  |  |  |  |  |  |  | 

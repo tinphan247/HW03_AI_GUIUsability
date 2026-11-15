@@ -41,12 +41,13 @@ Mỗi phiên: 3 phút chào + consent → 12 phút làm task → 5 phút SUS + p
 
 ## 3. Sau mỗi phiên (3 phút)
 
-Điền ngay vào `usability/DATA_REQUEST.md`:
+Điền ngay **1 dòng** vào `usability/raw_sessions.txt` (định dạng ở `usability/FILL_7_SESSIONS.md`), ví dụ:
 
-- Bảng 1: tuổi, nghề, liên hệ (đầy đủ — sẽ tự che 4 số giữa), ngày/giờ, thiết bị.
-- Bảng 2: success, thời gian, số lần trợ giúp, coupon, tổng tiền, tìm thấy đơn.
-- Bảng 3: 10 câu SUS.
-- Bảng 4: 4 ô probe (có thể viết tắt).
+```text
+P1 | 22 | Sinh viên | 0912345678 | 15/11 19:00 | Chrome / Win 11 | Success | 4:30 | 0 | thấy -270.000.000 | 4,2,5,1,4,2,5,1,4,2 | "Tưởng nút lỗi nên bấm 2 lần"
+```
+
+Sau khi xong cả 7: `python scripts/sus_from_lines.py` → tự sinh `participants.csv` + `sus_scores.csv` (không phải gõ CSV tay).
 
 ## 4. Sau khi xong 7 phiên
 
