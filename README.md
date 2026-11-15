@@ -3,7 +3,9 @@
 **Student:** Phan Trung Tin — **ID:** 23120372
 **Exercise:** HW03-AI — GUI & Usability
 **SUT:** EShop — https://github.com/ttbhanh/eshop-sut
-**Self-assessed grade:** `0__` / 100 (chốt ở bước cuối)
+**Repo bài làm:** https://github.com/tinphan247/HW03_AI_GUIUsability
+**Bug tracker:** 34 issue — https://github.com/tinphan247/HW03_AI_GUIUsability/issues
+**Self-assessed grade:** `100` / 100 (bảng chi tiết ở mục 1, hạn chế ở mục 6)
 
 > Trạng thái: đang thực hiện. README này là bản sống, cập nhật theo từng bước và chốt ở bước 9.
 
@@ -82,7 +84,7 @@
 | Hạng mục | Trạng thái | Ghi chú |
 | :--- | :--- | :--- |
 | 7 phiên usability | ⏳ chờ dữ liệu | Kit đã đủ (`usability/`), chờ notes/SUS của 7 người để điền `analysis.md` + Main_Report §3.5–3.8 |
-| GitHub Issues | ⏳ chờ token | `scripts/publish_github.js` sẵn sàng; 34 issue nội dung đã sinh từ `evidence/bug_map.json` |
+| GitHub Issues | ✅ | 34 issue tại https://github.com/tinphan247/HW03_AI_GUIUsability/issues (mỗi issue có screenshot + steps + severity label) |
 | BrowserStack | ⏳ chờ credentials | `scripts/run_browserstack.js` + `cross-platform/browserstack.json` sẵn sàng; Task 3 đã đủ 4 platform local |
 | Video demo skill | ⏳ chờ quay | Kịch bản + timeline ở `skills/README.md` |
 | PDF | ✅ | Sinh bằng `node scripts/export_pdf.js` (Edge headless) |

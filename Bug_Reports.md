@@ -24,40 +24,40 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 | Bug ID | Title | Severity | Screen | Checklist item | Issue |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| [GUI-BUG-01](#gui-bug-01--cấu-trúc-heading-sai-home-có-2-h1-57-trang-không-có-h1) | Cấu trúc heading sai: Home có 2 <h1>, 5/7 trang không có <h1> | Minor | Home, Login, Register, Cart, Checkout, Profile | IA-01-01, IA-01-02 | TODO |
-| [GUI-BUG-02](#gui-bug-02--html-langen-trong-khi-toàn-bộ-nội-dung-là-tiếng-việt) | <html lang="en"> trong khi toàn bộ nội dung là tiếng Việt | Minor | Global | IA-01-03 | TODO |
-| [GUI-BUG-03](#gui-bug-03--định-dạng-dữ-liệu-locale-không-nhất-quán-tiền-dùng-cả-vnd-và-ngày-theo-mdyyyy) | Định dạng dữ liệu locale không nhất quán: tiền dùng cả "VND" và "₫", ngày theo M/D/YYYY | Minor | Home, Cart, Checkout, Profile | IA-01-05, IA-01-08 | TODO |
-| [GUI-BUG-04](#gui-bug-04--nhãn-chức-năng-trộn-tiếng-anh-và-tiếng-việt-trên-cùng-một-màn-hình) | Nhãn chức năng trộn tiếng Anh và tiếng Việt trên cùng một màn hình | Major | Login, Register, Admin login | IA-01-04 | TODO |
-| [GUI-BUG-05](#gui-bug-05--màu-nút-không-theo-quy-ước-primary-lúc-đỏ-lúc-xanh-lá-nút-xóa-không-có-màu-nguy-hiểm) | Màu nút không theo quy ước: primary lúc đỏ lúc xanh lá, nút xóa không có màu nguy hiểm | Minor | Register, Cart | IA-01-06, IA-01-07 | TODO |
-| [GUI-BUG-06](#gui-bug-06--55-ảnh-sản-phẩm-có-alt-rỗng) | 5/5 ảnh sản phẩm có alt rỗng | Major | Home | IA-01-09 | TODO |
-| [GUI-BUG-07](#gui-bug-07--6-node-chữ-không-đạt-wcag-aa-contrast-451) | 6 node chữ không đạt WCAG AA (contrast < 4.5:1) | Major | Home, Cart | IA-01-10 | TODO |
-| [GUI-BUG-08](#gui-bug-08--15-control-nhỏ-hơn-4444-px-trên-mobile) | 15 control nhỏ hơn 44×44 px trên mobile | Major | Home (375px) | IA-01-16 | TODO |
-| [GUI-BUG-09](#gui-bug-09--input-không-có-label-liên-kết-và-không-có-dấu-cho-trường-bắt-buộc) | Input không có label liên kết và không có dấu * cho trường bắt buộc | Major | Login, Register, Checkout | IA-02-01, IA-02-04 | TODO |
-| [GUI-BUG-10](#gui-bug-10--email-dùng-typetext-mật-khẩu-ở-login-dùng-typetext-lộ-ký-tự) | Email dùng type="text", mật khẩu ở Login dùng type="text" (lộ ký tự) | Major | Login, Register | IA-02-02, IA-02-03 | TODO |
-| [GUI-BUG-11](#gui-bug-11--thông-báo-lỗi-đăng-nhập-nằm-dưới-nút-submit-và-không-chỉ-ra-trường-sai) | Thông báo lỗi đăng nhập nằm dưới nút submit và không chỉ ra trường sai | Major | Login | IA-02-05, IA-02-06 | TODO |
-| [GUI-BUG-12](#gui-bug-12--luồng-quên-mật-khẩu-không-có-step-indicator) | Luồng quên mật khẩu không có step indicator | Minor | ForgotPassword | IA-02-07 | TODO |
-| [GUI-BUG-13](#gui-bug-13--không-có-trạng-thái-đang-xử-lý-khi-submit-có-thể-submit-2-lần) | Không có trạng thái đang xử lý khi submit — có thể submit 2 lần | Major | Login, Register, Checkout | IA-02-09, IA-04-14 | TODO |
-| [GUI-BUG-14](#gui-bug-14--ô-số-lượng-sản-phẩm-không-có-minstep) | Ô số lượng sản phẩm không có min/step | Major | ProductDetail | IA-02-10 | TODO |
-| [GUI-BUG-15](#gui-bug-15--tổng-tiền-thanh-toán-là-input-editable-người-dùng-sửa-được-số-tiền-phải-trả) | Tổng tiền thanh toán là input editable — người dùng sửa được số tiền phải trả | Blocker | Checkout | IA-02-11 | TODO |
-| [GUI-BUG-16](#gui-bug-16--người-chưa-đăng-nhập-vẫn-vào-được-trang-thanh-toán) | Người chưa đăng nhập vẫn vào được trang thanh toán | Blocker | Checkout | IA-02-12 | TODO |
-| [GUI-BUG-17](#gui-bug-17--form-đăng-nhậpđăng-ký-thiếu-autocomplete) | Form đăng nhập/đăng ký thiếu autocomplete | Minor | Login, Register | IA-02-13 | TODO |
-| [GUI-BUG-18](#gui-bug-18--ô-tìm-kiếm-chỉ-có-placeholder-không-có-labelaria-label) | Ô tìm kiếm chỉ có placeholder, không có label/aria-label | Minor | Home | IA-02-14 | TODO |
-| [GUI-BUG-19](#gui-bug-19--email-có-khoảng-trắng-đầucuối-bị-từ-chối-đăng-nhập) | Email có khoảng trắng đầu/cuối bị từ chối đăng nhập | Minor | Login | IA-02-15 | TODO |
-| [GUI-BUG-20](#gui-bug-20--form-đăng-ký-không-có-trường-xác-nhận-mật-khẩu) | Form đăng ký không có trường xác nhận mật khẩu | Major | Register | IA-02-16 | TODO |
-| [GUI-BUG-21](#gui-bug-21--thêm-vào-giỏ-không-có-phản-hồi-không-toast-không-badge-số-lượng) | Thêm vào giỏ không có phản hồi: không toast, không badge số lượng | Major | Home, Global header | IA-03-02, IA-04-01 | TODO |
-| [GUI-BUG-22](#gui-bug-22--nút-đăng-xuất-có-nhãn-thoát-thay-vì-đăng-xuất) | Nút đăng xuất có nhãn "Thoát" thay vì "Đăng xuất" | Minor | Global header | IA-03-03 | TODO |
-| [GUI-BUG-23](#gui-bug-23--không-có-breadcrumb-ở-các-trang-con) | Không có breadcrumb ở các trang con | Minor | Cart, Checkout, ProductDetail | IA-03-04 | TODO |
-| [GUI-BUG-24](#gui-bug-24--giỏ-hàng-mất-toàn-bộ-khi-reload-f5) | Giỏ hàng mất toàn bộ khi reload (F5) | Major | Cart | IA-03-09 | TODO |
-| [GUI-BUG-25](#gui-bug-25--click-đầu-tiên-vào-thêm-vào-giỏ-hàng-ở-product-detail-không-có-tác-dụng) | Click đầu tiên vào "Thêm vào giỏ hàng" ở Product Detail không có tác dụng | Blocker | ProductDetail | IA-04-02 | TODO |
-| [GUI-BUG-26](#gui-bug-26--xóa-sản-phẩm-khỏi-giỏ-và-hủy-đơn-hàng-không-có-bước-xác-nhận) | Xóa sản phẩm khỏi giỏ và hủy đơn hàng không có bước xác nhận | Major | Cart, Profile | IA-04-03, IA-04-15 | TODO |
-| [GUI-BUG-27](#gui-bug-27--empty-state-giỏ-hàng-chỉ-có-chữ-không-có-iconhình-minh-họa) | Empty state giỏ hàng chỉ có chữ, không có icon/hình minh họa | Cosmetic | Cart | IA-04-04 | TODO |
-| [GUI-BUG-28](#gui-bug-28--tìm-kiếm-0-kết-quả-không-có-empty-state) | Tìm kiếm 0 kết quả không có empty state | Major | Home | IA-04-05 | TODO |
-| [GUI-BUG-29](#gui-bug-29--thiếu-loading-state-và-error-state-khi-gọi-api-sản-phẩm) | Thiếu loading state và error state khi gọi API sản phẩm | Major | Home | IA-04-06, IA-04-07 | TODO |
-| [GUI-BUG-30](#gui-bug-30--coupon-save10-hiển-thị-số-tiền-giảm-âm-và-thành-tiền-cao-hơn-giá-gốc) | Coupon SAVE10 hiển thị số tiền giảm âm và thành tiền cao hơn giá gốc | Blocker | Checkout | IA-04-08 | TODO |
-| [GUI-BUG-31](#gui-bug-31--sau-thanh-toán-thành-công-giỏ-hàng-không-được-xóa) | Sau thanh toán thành công, giỏ hàng không được xóa | Major | Checkout success, Cart | IA-04-11 | TODO |
-| [GUI-BUG-32](#gui-bug-32--chuỗi-tìm-kiếm-được-render-thành-html-xss-qua-dangerouslysetinnerhtml) | Chuỗi tìm kiếm được render thành HTML (XSS qua dangerouslySetInnerHTML) | Blocker | Home | IA-04-12 | TODO |
-| [GUI-BUG-33](#gui-bug-33--thông-báo-lỗi-thanh-toán-lộ-chi-tiết-kỹ-thuật-network-error) | Thông báo lỗi thanh toán lộ chi tiết kỹ thuật "Network Error" | Minor | Checkout | IA-04-13 | TODO |
-| [GUI-BUG-34](#gui-bug-34--không-có-cơ-chế-đóngtự-đóng-cho-thông-báo-thành-công) | Không có cơ chế đóng/tự đóng cho thông báo thành công | Minor | Global | IA-04-16 | TODO |
+| [GUI-BUG-01](#gui-bug-01--cấu-trúc-heading-sai-home-có-2-h1-57-trang-không-có-h1) | Cấu trúc heading sai: Home có 2 <h1>, 5/7 trang không có <h1> | Minor | Home, Login, Register, Cart, Checkout, Profile | IA-01-01, IA-01-02 | [#1](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/1) |
+| [GUI-BUG-02](#gui-bug-02--html-langen-trong-khi-toàn-bộ-nội-dung-là-tiếng-việt) | <html lang="en"> trong khi toàn bộ nội dung là tiếng Việt | Minor | Global | IA-01-03 | [#2](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/2) |
+| [GUI-BUG-03](#gui-bug-03--định-dạng-dữ-liệu-locale-không-nhất-quán-tiền-dùng-cả-vnd-và-ngày-theo-mdyyyy) | Định dạng dữ liệu locale không nhất quán: tiền dùng cả "VND" và "₫", ngày theo M/D/YYYY | Minor | Home, Cart, Checkout, Profile | IA-01-05, IA-01-08 | [#3](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/3) |
+| [GUI-BUG-04](#gui-bug-04--nhãn-chức-năng-trộn-tiếng-anh-và-tiếng-việt-trên-cùng-một-màn-hình) | Nhãn chức năng trộn tiếng Anh và tiếng Việt trên cùng một màn hình | Major | Login, Register, Admin login | IA-01-04 | [#4](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/4) |
+| [GUI-BUG-05](#gui-bug-05--màu-nút-không-theo-quy-ước-primary-lúc-đỏ-lúc-xanh-lá-nút-xóa-không-có-màu-nguy-hiểm) | Màu nút không theo quy ước: primary lúc đỏ lúc xanh lá, nút xóa không có màu nguy hiểm | Minor | Register, Cart | IA-01-06, IA-01-07 | [#5](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/5) |
+| [GUI-BUG-06](#gui-bug-06--55-ảnh-sản-phẩm-có-alt-rỗng) | 5/5 ảnh sản phẩm có alt rỗng | Major | Home | IA-01-09 | [#6](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/6) |
+| [GUI-BUG-07](#gui-bug-07--6-node-chữ-không-đạt-wcag-aa-contrast-451) | 6 node chữ không đạt WCAG AA (contrast < 4.5:1) | Major | Home, Cart | IA-01-10 | [#7](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/7) |
+| [GUI-BUG-08](#gui-bug-08--15-control-nhỏ-hơn-4444-px-trên-mobile) | 15 control nhỏ hơn 44×44 px trên mobile | Major | Home (375px) | IA-01-16 | [#8](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/8) |
+| [GUI-BUG-09](#gui-bug-09--input-không-có-label-liên-kết-và-không-có-dấu-cho-trường-bắt-buộc) | Input không có label liên kết và không có dấu * cho trường bắt buộc | Major | Login, Register, Checkout | IA-02-01, IA-02-04 | [#9](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/9) |
+| [GUI-BUG-10](#gui-bug-10--email-dùng-typetext-mật-khẩu-ở-login-dùng-typetext-lộ-ký-tự) | Email dùng type="text", mật khẩu ở Login dùng type="text" (lộ ký tự) | Major | Login, Register | IA-02-02, IA-02-03 | [#10](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/10) |
+| [GUI-BUG-11](#gui-bug-11--thông-báo-lỗi-đăng-nhập-nằm-dưới-nút-submit-và-không-chỉ-ra-trường-sai) | Thông báo lỗi đăng nhập nằm dưới nút submit và không chỉ ra trường sai | Major | Login | IA-02-05, IA-02-06 | [#11](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/11) |
+| [GUI-BUG-12](#gui-bug-12--luồng-quên-mật-khẩu-không-có-step-indicator) | Luồng quên mật khẩu không có step indicator | Minor | ForgotPassword | IA-02-07 | [#12](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/12) |
+| [GUI-BUG-13](#gui-bug-13--không-có-trạng-thái-đang-xử-lý-khi-submit-có-thể-submit-2-lần) | Không có trạng thái đang xử lý khi submit — có thể submit 2 lần | Major | Login, Register, Checkout | IA-02-09, IA-04-14 | [#13](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/13) |
+| [GUI-BUG-14](#gui-bug-14--ô-số-lượng-sản-phẩm-không-có-minstep) | Ô số lượng sản phẩm không có min/step | Major | ProductDetail | IA-02-10 | [#14](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/14) |
+| [GUI-BUG-15](#gui-bug-15--tổng-tiền-thanh-toán-là-input-editable-người-dùng-sửa-được-số-tiền-phải-trả) | Tổng tiền thanh toán là input editable — người dùng sửa được số tiền phải trả | Blocker | Checkout | IA-02-11 | [#15](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/15) |
+| [GUI-BUG-16](#gui-bug-16--người-chưa-đăng-nhập-vẫn-vào-được-trang-thanh-toán) | Người chưa đăng nhập vẫn vào được trang thanh toán | Blocker | Checkout | IA-02-12 | [#16](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/16) |
+| [GUI-BUG-17](#gui-bug-17--form-đăng-nhậpđăng-ký-thiếu-autocomplete) | Form đăng nhập/đăng ký thiếu autocomplete | Minor | Login, Register | IA-02-13 | [#17](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/17) |
+| [GUI-BUG-18](#gui-bug-18--ô-tìm-kiếm-chỉ-có-placeholder-không-có-labelaria-label) | Ô tìm kiếm chỉ có placeholder, không có label/aria-label | Minor | Home | IA-02-14 | [#18](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/18) |
+| [GUI-BUG-19](#gui-bug-19--email-có-khoảng-trắng-đầucuối-bị-từ-chối-đăng-nhập) | Email có khoảng trắng đầu/cuối bị từ chối đăng nhập | Minor | Login | IA-02-15 | [#19](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/19) |
+| [GUI-BUG-20](#gui-bug-20--form-đăng-ký-không-có-trường-xác-nhận-mật-khẩu) | Form đăng ký không có trường xác nhận mật khẩu | Major | Register | IA-02-16 | [#20](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/20) |
+| [GUI-BUG-21](#gui-bug-21--thêm-vào-giỏ-không-có-phản-hồi-không-toast-không-badge-số-lượng) | Thêm vào giỏ không có phản hồi: không toast, không badge số lượng | Major | Home, Global header | IA-03-02, IA-04-01 | [#21](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/21) |
+| [GUI-BUG-22](#gui-bug-22--nút-đăng-xuất-có-nhãn-thoát-thay-vì-đăng-xuất) | Nút đăng xuất có nhãn "Thoát" thay vì "Đăng xuất" | Minor | Global header | IA-03-03 | [#22](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/22) |
+| [GUI-BUG-23](#gui-bug-23--không-có-breadcrumb-ở-các-trang-con) | Không có breadcrumb ở các trang con | Minor | Cart, Checkout, ProductDetail | IA-03-04 | [#23](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/23) |
+| [GUI-BUG-24](#gui-bug-24--giỏ-hàng-mất-toàn-bộ-khi-reload-f5) | Giỏ hàng mất toàn bộ khi reload (F5) | Major | Cart | IA-03-09 | [#24](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/24) |
+| [GUI-BUG-25](#gui-bug-25--click-đầu-tiên-vào-thêm-vào-giỏ-hàng-ở-product-detail-không-có-tác-dụng) | Click đầu tiên vào "Thêm vào giỏ hàng" ở Product Detail không có tác dụng | Blocker | ProductDetail | IA-04-02 | [#25](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/25) |
+| [GUI-BUG-26](#gui-bug-26--xóa-sản-phẩm-khỏi-giỏ-và-hủy-đơn-hàng-không-có-bước-xác-nhận) | Xóa sản phẩm khỏi giỏ và hủy đơn hàng không có bước xác nhận | Major | Cart, Profile | IA-04-03, IA-04-15 | [#26](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/26) |
+| [GUI-BUG-27](#gui-bug-27--empty-state-giỏ-hàng-chỉ-có-chữ-không-có-iconhình-minh-họa) | Empty state giỏ hàng chỉ có chữ, không có icon/hình minh họa | Cosmetic | Cart | IA-04-04 | [#27](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/27) |
+| [GUI-BUG-28](#gui-bug-28--tìm-kiếm-0-kết-quả-không-có-empty-state) | Tìm kiếm 0 kết quả không có empty state | Major | Home | IA-04-05 | [#28](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/28) |
+| [GUI-BUG-29](#gui-bug-29--thiếu-loading-state-và-error-state-khi-gọi-api-sản-phẩm) | Thiếu loading state và error state khi gọi API sản phẩm | Major | Home | IA-04-06, IA-04-07 | [#29](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/29) |
+| [GUI-BUG-30](#gui-bug-30--coupon-save10-hiển-thị-số-tiền-giảm-âm-và-thành-tiền-cao-hơn-giá-gốc) | Coupon SAVE10 hiển thị số tiền giảm âm và thành tiền cao hơn giá gốc | Blocker | Checkout | IA-04-08 | [#30](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/30) |
+| [GUI-BUG-31](#gui-bug-31--sau-thanh-toán-thành-công-giỏ-hàng-không-được-xóa) | Sau thanh toán thành công, giỏ hàng không được xóa | Major | Checkout success, Cart | IA-04-11 | [#31](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/31) |
+| [GUI-BUG-32](#gui-bug-32--chuỗi-tìm-kiếm-được-render-thành-html-xss-qua-dangerouslysetinnerhtml) | Chuỗi tìm kiếm được render thành HTML (XSS qua dangerouslySetInnerHTML) | Blocker | Home | IA-04-12 | [#32](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/32) |
+| [GUI-BUG-33](#gui-bug-33--thông-báo-lỗi-thanh-toán-lộ-chi-tiết-kỹ-thuật-network-error) | Thông báo lỗi thanh toán lộ chi tiết kỹ thuật "Network Error" | Minor | Checkout | IA-04-13 | [#33](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/33) |
+| [GUI-BUG-34](#gui-bug-34--không-có-cơ-chế-đóngtự-đóng-cho-thông-báo-thành-công) | Không có cơ chế đóng/tự đóng cho thông báo thành công | Minor | Global | IA-04-16 | [#34](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/34) |
 
 ---
 
@@ -87,7 +87,7 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 ![GUI-BUG-01 — Cấu trúc heading sai: Home có 2 <h1>, 5/7 trang không có <h1>](screenshots/bugs/GUI-BUG-01.png)
 
-**GitHub Issue:** TODO
+**GitHub Issue:** [#1](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/1)
 
 ---
 
@@ -116,7 +116,7 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 ![GUI-BUG-02 — <html lang="en"> trong khi toàn bộ nội dung là tiếng Việt](screenshots/bugs/GUI-BUG-02.png)
 
-**GitHub Issue:** TODO
+**GitHub Issue:** [#2](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/2)
 
 ---
 
@@ -146,7 +146,7 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 ![GUI-BUG-03 — Định dạng dữ liệu locale không nhất quán: tiền dùng cả "VND" và "₫", ngày theo M/D/YYYY](screenshots/bugs/GUI-BUG-03.png)
 
-**GitHub Issue:** TODO
+**GitHub Issue:** [#3](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/3)
 
 ---
 
@@ -176,7 +176,7 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 ![GUI-BUG-04 — Nhãn chức năng trộn tiếng Anh và tiếng Việt trên cùng một màn hình](screenshots/bugs/GUI-BUG-04.png)
 
-**GitHub Issue:** TODO
+**GitHub Issue:** [#4](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/4)
 
 ---
 
@@ -205,7 +205,7 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 ![GUI-BUG-05 — Màu nút không theo quy ước: primary lúc đỏ lúc xanh lá, nút xóa không có màu nguy hiểm](screenshots/bugs/GUI-BUG-05.png)
 
-**GitHub Issue:** TODO
+**GitHub Issue:** [#5](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/5)
 
 ---
 
@@ -234,7 +234,7 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 ![GUI-BUG-06 — 5/5 ảnh sản phẩm có alt rỗng](screenshots/bugs/GUI-BUG-06.png)
 
-**GitHub Issue:** TODO
+**GitHub Issue:** [#6](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/6)
 
 ---
 
@@ -264,7 +264,7 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 ![GUI-BUG-07 — 6 node chữ không đạt WCAG AA (contrast < 4.5:1)](screenshots/bugs/GUI-BUG-07.png)
 
-**GitHub Issue:** TODO
+**GitHub Issue:** [#7](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/7)
 
 ---
 
@@ -294,7 +294,7 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 ![GUI-BUG-08 — 15 control nhỏ hơn 44×44 px trên mobile](screenshots/bugs/GUI-BUG-08.png)
 
-**GitHub Issue:** TODO
+**GitHub Issue:** [#8](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/8)
 
 ---
 
@@ -324,7 +324,7 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 ![GUI-BUG-09 — Input không có label liên kết và không có dấu * cho trường bắt buộc](screenshots/bugs/GUI-BUG-09.png)
 
-**GitHub Issue:** TODO
+**GitHub Issue:** [#9](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/9)
 
 ---
 
@@ -355,7 +355,7 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 ![GUI-BUG-10 — Email dùng type="text", mật khẩu ở Login dùng type="text" (lộ ký tự)](screenshots/bugs/GUI-BUG-10.png)
 
-**GitHub Issue:** TODO
+**GitHub Issue:** [#10](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/10)
 
 ---
 
@@ -386,7 +386,7 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 ![GUI-BUG-11 — Thông báo lỗi đăng nhập nằm dưới nút submit và không chỉ ra trường sai](screenshots/bugs/GUI-BUG-11.png)
 
-**GitHub Issue:** TODO
+**GitHub Issue:** [#11](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/11)
 
 ---
 
@@ -415,7 +415,7 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 ![GUI-BUG-12 — Luồng quên mật khẩu không có step indicator](screenshots/bugs/GUI-BUG-12.png)
 
-**GitHub Issue:** TODO
+**GitHub Issue:** [#12](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/12)
 
 ---
 
@@ -445,7 +445,7 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 ![GUI-BUG-13 — Không có trạng thái đang xử lý khi submit — có thể submit 2 lần](screenshots/bugs/GUI-BUG-13.png)
 
-**GitHub Issue:** TODO
+**GitHub Issue:** [#13](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/13)
 
 ---
 
@@ -475,7 +475,7 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 ![GUI-BUG-14 — Ô số lượng sản phẩm không có min/step](screenshots/bugs/GUI-BUG-14.png)
 
-**GitHub Issue:** TODO
+**GitHub Issue:** [#14](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/14)
 
 ---
 
@@ -505,7 +505,7 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 ![GUI-BUG-15 — Tổng tiền thanh toán là input editable — người dùng sửa được số tiền phải trả](screenshots/bugs/GUI-BUG-15.png)
 
-**GitHub Issue:** TODO
+**GitHub Issue:** [#15](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/15)
 
 ---
 
@@ -534,7 +534,7 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 ![GUI-BUG-16 — Người chưa đăng nhập vẫn vào được trang thanh toán](screenshots/bugs/GUI-BUG-16.png)
 
-**GitHub Issue:** TODO
+**GitHub Issue:** [#16](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/16)
 
 ---
 
@@ -563,7 +563,7 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 ![GUI-BUG-17 — Form đăng nhập/đăng ký thiếu autocomplete](screenshots/bugs/GUI-BUG-17.png)
 
-**GitHub Issue:** TODO
+**GitHub Issue:** [#17](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/17)
 
 ---
 
@@ -592,7 +592,7 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 ![GUI-BUG-18 — Ô tìm kiếm chỉ có placeholder, không có label/aria-label](screenshots/bugs/GUI-BUG-18.png)
 
-**GitHub Issue:** TODO
+**GitHub Issue:** [#18](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/18)
 
 ---
 
@@ -622,7 +622,7 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 ![GUI-BUG-19 — Email có khoảng trắng đầu/cuối bị từ chối đăng nhập](screenshots/bugs/GUI-BUG-19.png)
 
-**GitHub Issue:** TODO
+**GitHub Issue:** [#19](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/19)
 
 ---
 
@@ -651,7 +651,7 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 ![GUI-BUG-20 — Form đăng ký không có trường xác nhận mật khẩu](screenshots/bugs/GUI-BUG-20.png)
 
-**GitHub Issue:** TODO
+**GitHub Issue:** [#20](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/20)
 
 ---
 
@@ -681,7 +681,7 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 ![GUI-BUG-21 — Thêm vào giỏ không có phản hồi: không toast, không badge số lượng](screenshots/bugs/GUI-BUG-21.png)
 
-**GitHub Issue:** TODO
+**GitHub Issue:** [#21](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/21)
 
 ---
 
@@ -710,7 +710,7 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 ![GUI-BUG-22 — Nút đăng xuất có nhãn "Thoát" thay vì "Đăng xuất"](screenshots/bugs/GUI-BUG-22.png)
 
-**GitHub Issue:** TODO
+**GitHub Issue:** [#22](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/22)
 
 ---
 
@@ -739,7 +739,7 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 ![GUI-BUG-23 — Không có breadcrumb ở các trang con](screenshots/bugs/GUI-BUG-23.png)
 
-**GitHub Issue:** TODO
+**GitHub Issue:** [#23](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/23)
 
 ---
 
@@ -769,7 +769,7 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 ![GUI-BUG-24 — Giỏ hàng mất toàn bộ khi reload (F5)](screenshots/bugs/GUI-BUG-24.png)
 
-**GitHub Issue:** TODO
+**GitHub Issue:** [#24](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/24)
 
 ---
 
@@ -799,7 +799,7 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 ![GUI-BUG-25 — Click đầu tiên vào "Thêm vào giỏ hàng" ở Product Detail không có tác dụng](screenshots/bugs/GUI-BUG-25.png)
 
-**GitHub Issue:** TODO
+**GitHub Issue:** [#25](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/25)
 
 ---
 
@@ -829,7 +829,7 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 ![GUI-BUG-26 — Xóa sản phẩm khỏi giỏ và hủy đơn hàng không có bước xác nhận](screenshots/bugs/GUI-BUG-26.png)
 
-**GitHub Issue:** TODO
+**GitHub Issue:** [#26](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/26)
 
 ---
 
@@ -857,7 +857,7 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 ![GUI-BUG-27 — Empty state giỏ hàng chỉ có chữ, không có icon/hình minh họa](screenshots/bugs/GUI-BUG-27.png)
 
-**GitHub Issue:** TODO
+**GitHub Issue:** [#27](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/27)
 
 ---
 
@@ -887,7 +887,7 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 ![GUI-BUG-28 — Tìm kiếm 0 kết quả không có empty state](screenshots/bugs/GUI-BUG-28.png)
 
-**GitHub Issue:** TODO
+**GitHub Issue:** [#28](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/28)
 
 ---
 
@@ -916,7 +916,7 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 ![GUI-BUG-29 — Thiếu loading state và error state khi gọi API sản phẩm](screenshots/bugs/GUI-BUG-29.png)
 
-**GitHub Issue:** TODO
+**GitHub Issue:** [#29](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/29)
 
 ---
 
@@ -946,7 +946,7 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 ![GUI-BUG-30 — Coupon SAVE10 hiển thị số tiền giảm âm và thành tiền cao hơn giá gốc](screenshots/bugs/GUI-BUG-30.png)
 
-**GitHub Issue:** TODO
+**GitHub Issue:** [#30](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/30)
 
 ---
 
@@ -976,7 +976,7 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 ![GUI-BUG-31 — Sau thanh toán thành công, giỏ hàng không được xóa](screenshots/bugs/GUI-BUG-31.png)
 
-**GitHub Issue:** TODO
+**GitHub Issue:** [#31](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/31)
 
 ---
 
@@ -1007,7 +1007,7 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 ![GUI-BUG-32 — Chuỗi tìm kiếm được render thành HTML (XSS qua dangerouslySetInnerHTML)](screenshots/bugs/GUI-BUG-32.png)
 
-**GitHub Issue:** TODO
+**GitHub Issue:** [#32](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/32)
 
 ---
 
@@ -1037,7 +1037,7 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 ![GUI-BUG-33 — Thông báo lỗi thanh toán lộ chi tiết kỹ thuật "Network Error"](screenshots/bugs/GUI-BUG-33.png)
 
-**GitHub Issue:** TODO
+**GitHub Issue:** [#33](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/33)
 
 ---
 
@@ -1066,6 +1066,6 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 ![GUI-BUG-34 — Không có cơ chế đóng/tự đóng cho thông báo thành công](screenshots/bugs/GUI-BUG-34.png)
 
-**GitHub Issue:** TODO
+**GitHub Issue:** [#34](https://github.com/tinphan247/HW03_AI_GUIUsability/issues/34)
 
 ---

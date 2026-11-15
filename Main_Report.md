@@ -4,6 +4,7 @@
 **Exercise ID:** HW03-AI
 **Student:** Phan Trung Tin — **MSSV:** 23120372
 **SUT:** EShop — https://github.com/ttbhanh/eshop-sut
+**Repo bài làm:** https://github.com/tinphan247/HW03_AI_GUIUsability · **34 GitHub Issues:** https://github.com/tinphan247/HW03_AI_GUIUsability/issues
 **Bloom-AI:** G9.3 (Analyse) + G9.4 (Collaborate with AI for exploratory testing)
 **Ngày thực hiện:** 15/11/2026 — …
 **Self-assessed grade:** `0__/100`

@@ -57,6 +57,17 @@ const SEV_LABEL = {
   Cosmetic: { name: 'severity: cosmetic', color: '0e8a16', description: 'Thuần thẩm mỹ / nhất quán' },
 };
 
+/** Lấy tên repo từ git remote origin (nếu có) để tránh tạo repo sai tên. */
+function detectRepoName() {
+  try {
+    const url = execFileSync('git', ['remote', 'get-url', 'origin'], { cwd: ROOT, encoding: 'utf8' }).trim();
+    const m = url.match(/[/:]([^/]+?)(?:\.git)?$/);
+    return m ? m[1] : null;
+  } catch {
+    return null;
+  }
+}
+
 function issueBody(b, repo, login) {
   const img = `https://raw.githubusercontent.com/${login}/${repo}/main/${b.evidence}`;
   return [
@@ -85,7 +96,7 @@ function issueBody(b, repo, login) {
 (async () => {
   const me = await gh('GET', '/user');
   const login = process.env.GITHUB_USER || me.login;
-  const repo = process.env.REPO_NAME || '23120372_HW03_AI_GUIUsability';
+  const repo = process.env.REPO_NAME || detectRepoName() || 'HW03_AI_GUIUsability';
   console.log(`GitHub user: ${login} | repo: ${repo}`);
 
   // 1. Repo
@@ -114,14 +125,19 @@ function issueBody(b, repo, login) {
     }
   }
 
-  // 2. Push code + screenshots (branch main)
-  const remote = `https://x-access-token:${TOKEN}@github.com/${login}/${repo}.git`;
+  // 2. Push code + screenshots (branch main) — token chỉ dùng trong header, không ghi vào .git/config
+  const remoteUrl = `https://github.com/${login}/${repo}.git`;
+  const basic = Buffer.from(`x-access-token:${TOKEN}`).toString('base64');
   const git = (...args) => execFileSync('git', args, { cwd: ROOT, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] });
   try {
     const remotes = git('remote').split('\n').map((s) => s.trim());
-    if (remotes.includes('origin')) git('remote', 'set-url', 'origin', remote);
-    else git('remote', 'add', 'origin', remote);
-    git('push', 'origin', 'HEAD:main', '--force');
+    if (remotes.includes('origin')) git('remote', 'set-url', 'origin', remoteUrl);
+    else git('remote', 'add', 'origin', remoteUrl);
+    execFileSync(
+      'git',
+      ['-c', `http.https://github.com/.extraheader=AUTHORIZATION: basic ${basic}`, 'push', remoteUrl, 'HEAD:main', '--force'],
+      { cwd: ROOT, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] }
+    );
     console.log('Đã push branch main (force).');
   } catch (e) {
     console.error('Push thất bại:', (e.stderr || e.message || '').toString().slice(0, 500));
@@ -137,12 +153,26 @@ function issueBody(b, repo, login) {
     }
   }
 
-  // 4. Issues
+  // 4. Issues (idempotent: bỏ qua issue đã có cùng tiêu đề)
   const map = JSON.parse(fs.readFileSync(path.join(ROOT, 'evidence', 'bug_map.json'), 'utf8'));
+  const existing = new Map();
+  for (let pageNo = 1; pageNo <= 10; pageNo++) {
+    const list = await gh('GET', `/repos/${login}/${repo}/issues?state=all&per_page=100&page=${pageNo}`);
+    if (!Array.isArray(list) || !list.length) break;
+    for (const it of list) if (!it.pull_request) existing.set(it.title, { number: it.number, url: it.html_url });
+    if (list.length < 100) break;
+  }
   const created = {};
   for (const b of map.bugs) {
+    const title = `[GUI] ${b.id} — ${b.title}`;
+    const found = existing.get(title);
+    if (found) {
+      created[b.id] = found;
+      console.log(`= #${found.number} ${b.id} (đã tồn tại)`);
+      continue;
+    }
     const issue = await gh('POST', `/repos/${login}/${repo}/issues`, {
-      title: `[GUI] ${b.id} — ${b.title}`,
+      title,
       body: issueBody(b, repo, login),
       labels: [SEV_LABEL[b.severity].name, 'GUI', 'HW03'],
     });
