@@ -1,37 +1,29 @@
 # Dựng Google Form cho 7 phiên usability
 
-> Form gồm **2 trang (section)**: Trang 1 = hướng dẫn + đồng ý + mã phiên; Trang 2 = kết quả + SUS.
-> Người tham gia **chỉ cần mở 1 link form** — mọi hướng dẫn nằm trong form, không phải nhắn riêng.
+> Bản **1 trang** (đúng như form đã dựng): toàn bộ hướng dẫn nằm trong **Form description**,
+> phía dưới là 16 câu hỏi. Người tham gia mở 1 link là biết làm gì.
 > Quan sát hành vi (nếu có moderator) vẫn ghi vào `usability/raw_sessions.txt`.
 
-## 1. Tạo form + Settings
+## 0. Kiểm tra form đã publish có bị chặn đăng nhập không
 
-1. https://forms.google.com → **Blank form**.
-2. Tiêu đề: `Đánh giá trải nghiệm trang mua hàng EShop (20 phút)`
-3. Mô tả form (dán vào ô "Form description"):
+Mở link `.../viewform` **trong tab ẩn danh (Ctrl+Shift+N)**. Nếu hiện hộp
+`Đăng nhập để tiếp tục` → người tham gia ngoài HCMUS **không vào được**, phải sửa:
 
-```text
-Bạn sẽ dùng thử một trang bán hàng trong ~20 phút rồi trả lời 1 phút.
-Không có đáp án đúng/sai — mình kiểm tra CHÍNH TRANG WEB, không kiểm tra bạn.
-Dữ liệu chỉ dùng cho bài tập môn học; thông tin cá nhân sẽ được che khi báo cáo.
-```
+| Cần tắt | Ở đâu |
+| :--- | :--- |
+| `Thu thập địa chỉ email` → **Không thu thập** | Cài đặt → Câu trả lời |
+| `Giới hạn 1 câu trả lời` → **TẮT** | Cài đặt → Câu trả lời |
+| `Hạn chế đối với người dùng trong HCMUS…` → **TẮT** | Cài đặt → Câu trả lời (chỉ hiện với tài khoản trường) |
 
-4. ⚙️ Settings:
-   - **Collect email addresses** = `Do not collect`
-   - **Limit to 1 response** = OFF
-   - **Edit after submit** = OFF
-   - **See summary charts** = OFF
-   - **Confirmation message** (xem mục 5)
+Nếu 3 mục trên bị **khoá** (biểu tượng ổ khoá) → chính sách trường bắt buộc thu thập email:
+tạo lại form bằng **tài khoản Gmail cá nhân**, dán lại description + 16 câu.
 
-## 2. Trang 1 — "Bước 1: Làm nhiệm vụ"
-
-Bấm **Add section** (biểu tượng `=` cạnh thanh công cụ) → đặt tên section:
-`Bước 1 — Làm nhiệm vụ trên trang (20 phút)`
-
-Dán vào **Description** của section này (Google Forms cho phép chèn link):
+## 1. Form description (dán nguyên khối)
 
 ```text
-⏱ 20 phút · Không có đáp án đúng/sai
+Cảm ơn bạn đã dùng thử trang bán hàng này. Form này KHÔNG chấm điểm đúng/sai —
+câu trả lời của bạn giúp mình cải thiện giao diện. Dữ liệu chỉ dùng cho bài tập môn học;
+số điện thoại/email sẽ được che bớt khi báo cáo. Bạn có thể dừng tham gia bất cứ lúc nào.
 
 1) MỞ TRANG NÀY Ở TAB MỚI:
 https://eshop-sut-snowy.vercel.app/
@@ -51,40 +43,23 @@ Lần đầu mở có thể chậm ~1 phút (server khởi động) — chờ nh
    • Không xong cũng không sao — cứ trả lời thật
 
 4) ĐỪNG ĐÓNG TAB FORM NÀY.
-   Làm xong nhiệm vụ (hoặc quyết định dừng) RỒI MỚI bấm "Tiếp theo" ở cuối trang.
-   Trang sau là phần trả lời — chỉ điền khi bạn đã dùng thử xong.
+   Cứ để form ở tab này, mở trang web ở tab khác và làm nhiệm vụ.
+   Làm xong (hoặc quyết định dừng) → quay lại tab này điền tiếp và bấm "Gửi".
 ```
 
-Sau description, thêm **3 câu hỏi của trang 1**:
+## 2. 16 câu hỏi (theo đúng thứ tự form hiện tại)
 
-| # | Tên câu (dán nguyên văn) | Kiểu | Required | Ghi chú |
-| :-: | :--- | :--- | :-: | :--- |
-| 1 | `Tôi đồng ý tham gia (dữ liệu dùng cho bài tập - thông tin liên hệ được che)` | Checkboxes | ✅ | 1 lựa chọn: `Đồng ý` |
-| 2 | `Mã phiên P? (người mời bạn cung cấp - ví dụ P1)` | Short answer | ✅ | Description: `Mã này người mời đã gửi cho bạn, dạng P1…P7` |
-| 3 | `Tuổi của bạn` | Short answer | ✅ | |
-| 4 | `SĐT hoặc email liên hệ (để giảng viên xác minh khi cần - sẽ che khi báo cáo)` | Short answer | ✅ | Bỏ câu này nếu bạn tự giữ liên hệ ở `raw_sessions.txt` |
+| # | Câu | Kiểu | Required |
+| :-: | :--- | :--- | :-: |
+| 1 | `Tôi đồng ý tham gia (dữ liệu dùng cho bài tập - thông tin liên hệ được che)` | Checkboxes (`Đồng ý`) | ✅ |
+| 2 | `Mã phiên P? P1 - P7 (người mời bạn cung cấp - ví dụ P1)` | Short answer | ✅ |
+| 3 | `Số điện thoại hoặc Zalo liên hệ: (Dùng để Trợ giảng xác minh ngẫu nhiên bạn có tham gia test thật, sẽ được che 4 số giữa trong báo cáo nộp)` | Short answer | ✅ |
+| 4 | `Tuổi của bạn` | Short answer | ✅ |
+| 5 | `Bạn hoàn thành tác vụ (tạo tài khoản → mua điện thoại → áp mã SAVE10 → thanh toán → xem lại đơn) thế nào?` | Multiple choice (3 lựa chọn) | ✅ |
+| 6 | `Điều bạn muốn thay đổi nhất trên trang này là gì? (không bắt buộc)` | Paragraph | ☐ |
+| 7–16 | `SUS Q1` … `SUS Q10` | Linear scale 1→5 | ✅ |
 
-> Cuối trang 1 Google Forms tự có nút **Tiếp theo** (Next). Đây chính là "cổng" để
-> người tham gia đi làm nhiệm vụ rồi quay lại.
-
-## 3. Trang 2 — "Bước 2: Trả lời"
-
-**Add section** → tên: `Bước 2 — Trả lời (1 phút)`
-Description:
-
-```text
-Cảm ơn bạn đã dùng thử! Trả lời theo cảm nhận thật của bạn — kể cả khi bạn không hoàn thành.
-10 câu cuối: 1 = hoàn toàn không đồng ý … 5 = hoàn toàn đồng ý (không có đáp án đúng/sai).
-```
-
-| # | Tên câu | Kiểu | Required | Options / ghi chú |
-| :-: | :--- | :--- | :-: | :--- |
-| 5 | `Bạn hoàn thành tác vụ (tạo tài khoản → mua điện thoại → áp mã SAVE10 → thanh toán → xem lại đơn) thế nào?` | Multiple choice | ✅ | `Tôi tự làm xong - không cần gợi ý` · `Làm xong nhưng cần được gợi ý ít nhất 1 lần` · `Không hoàn thành` |
-| 6 | `Tổng thời gian bạn mất (phút:giây - ví dụ 4:30)` | Short answer | ✅ | Description: `Không nhớ chính xác thì ghi khoảng đúng, ví dụ "khoảng 8 phút"` |
-| 7 | `Điều bạn muốn thay đổi nhất trên trang này là gì? (không bắt buộc)` | Paragraph | ☐ | |
-| 8–17 | `SUS Q1` … `SUS Q10` | Linear scale 1→5 | ✅ | Label trái `1 - Hoàn toàn không đồng ý`, phải `5 - Hoàn toàn đồng ý` |
-
-Nội dung 10 câu SUS (**tên câu phải đúng `SUS Q1`…`SUS Q10`** — script đọc theo tên):
+Nội dung 10 câu SUS (**tên câu phải chứa `SUS Q1`…`SUS Q10`** — script đọc theo tên):
 
 ```text
 SUS Q1  — Tôi nghĩ mình sẽ muốn dùng hệ thống này thường xuyên.
@@ -99,33 +74,30 @@ SUS Q9  — Tôi cảm thấy tự tin khi dùng hệ thống.
 SUS Q10 — Tôi cần học nhiều thứ trước khi có thể dùng hệ thống.
 ```
 
-> 💡 Tạo `SUS Q1` → ⋮ → **Duplicate** 9 lần, chỉ sửa tên + nội dung.
-> ⚠️ Không cắt bớt câu SUS — cắt là mất giá trị thang chuẩn. 10 câu chỉ ~30 giây.
+## 3. Nên thêm 2 câu (vẫn ~1 phút, script đọc sẵn)
 
-## 4. Bản đầy đủ (tuỳ chọn — thêm 5 câu trước SUS)
+Không có moderator thì **không ai đo thời gian** — thêm câu này để có số liệu time-on-task:
 
-| Tên câu | Kiểu | Required |
-| :--- | :--- | :-: |
-| `Khi áp mã SAVE10 - bạn thấy con số trên trang thế nào? Cảm giác của bạn lúc đó?` | Paragraph | ☐ |
-| `Sau khi bấm xác nhận thanh toán - bạn có tin đơn đã được ghi nhận không? Vì sao?` | Paragraph | ☐ |
-| `Bước nào khiến bạn rối nhất? Vì sao?` | Paragraph | ☐ |
-| `Bước nào chậm nhất?` | Paragraph | ☐ |
-| `Một câu bạn đã nói trong lúc dùng trang (nguyên văn - ví dụ: sao nó ra số âm?)` | Paragraph | ☐ |
+| Vị trí | Câu | Kiểu | Required |
+| :--- | :--- | :--- | :-: |
+| sau câu 6 | `Tổng thời gian bạn mất từ lúc bắt đầu đến khi xong (phút:giây - ví dụ 4:30)` | Short answer | ✅ |
+| sau câu 6 | `Thiết bị bạn dùng (ví dụ: Laptop Windows + Chrome / iPhone + Safari)` | Short answer | ✅ |
 
-`gform_to_csv.py` tự nhận diện câu có/không — không cần chỉnh script.
+Script map theo từ khoá `tổng thời gian` và `thiết bị` → tự vào cột `time_seconds`, `device`.
+Không thêm cũng chạy được, chỉ là báo cáo thiếu time-on-task và thiếu dữ liệu thiết bị.
 
-## 5. Confirmation message (Settings → Presentation)
+## 4. Confirmation message (Cài đặt → Trình bày)
 
 ```text
 Cảm ơn bạn rất nhiều! 🙏
-Nếu giảng viên gọi hỏi xác minh (khoảng 1 phút), bạn xác nhận giúp mình là đã tham gia
-buổi dùng thử này nhé. Chúc bạn một ngày tốt lành!
+Nếu giảng viên/trợ giảng gọi hỏi xác minh (khoảng 1 phút), bạn xác nhận giúp mình
+là đã tham gia buổi dùng thử này nhé. Chúc bạn một ngày tốt lành!
 ```
 
-## 6. Gửi + lấy dữ liệu
+## 5. Gửi + lấy dữ liệu
 
-- **Send** → link rút gọn → chỉ cần gửi **1 link duy nhất** (hướng dẫn đã nằm trong form).
-- Responses → **View in Sheets** → File → Download → **CSV** → lưu `usability/gform_responses.csv`.
+- **Gửi** → lấy link `.../viewform` → gửi 1 link duy nhất (hướng dẫn đã nằm trong form).
+- Responses → **Xem trong Trang tính** → File → Tải xuống → **CSV** → lưu `usability/gform_responses.csv`.
 - Chạy:
 
 ```powershell
@@ -134,10 +106,10 @@ python scripts\gform_to_csv.py
 python scripts\sus_score.py
 ```
 
-## 7. Kiểm tra trước khi gửi (30 giây)
+## 6. Checklist trước khi gửi (1 phút)
 
-- [ ] Mở link bằng **điện thoại** — chữ/link trong description có bấm được không.
-- [ ] Bấm **Tiếp theo** ở trang 1 → sang trang 2 được không.
-- [ ] Gửi thử 1 response của chính bạn rồi xoá (Responses → ⋮ → Delete all responses).
-- [ ] 10 câu SUS đều là Linear scale 1–5, required ✅.
-- [ ] Câu SUS Q9 **không** bị dính chữ của câu khác.
+- [ ] Mở link bằng tab ẩn danh → **không** hiện "Đăng nhập để tiếp tục".
+- [ ] Mở link bằng điện thoại → link `eshop-sut-snowy.vercel.app` bấm được.
+- [ ] Câu SUS Q9 chỉ có 1 câu, không dính chữ Q8.
+- [ ] 10 câu SUS đều Linear scale 1–5 + required.
+- [ ] Gửi thử 1 response của chính bạn → tải CSV → chạy `--dry-run` thấy map đúng cột → xoá response thử.
