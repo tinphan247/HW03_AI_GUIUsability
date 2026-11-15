@@ -1,0 +1,13 @@
+{
+  "target": "macos-chrome",
+  "label": "macOS Sonoma · Chrome (BrowserStack, real)",
+  "url": "",
+  "shots": [
+    "screenshots/cross-platform/bs-macos-chrome/01-home.png",
+    "screenshots/cross-platform/bs-macos-chrome/02-login.png",
+    "screenshots/cross-platform/bs-macos-chrome/03-cart.png",
+    "screenshots/cross-platform/bs-macos-chrome/04-checkout-coupon.png"
+  ],
+  "errors": [],
+  "console": []
+}

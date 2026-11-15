@@ -23,7 +23,7 @@
 8. [Tự đánh giá & bài học](#8-tự-đánh-giá--bài-học)
 9. [References](#9-references)
 
-> **Phụ lục:** `Bug_Reports.md` (bug chi tiết) · `AI_Audit_Report.md` (log AI + critique) · `checklist/GUI_Checklist.xlsx` (checklist gốc) · `usability/` (evidence 7 phiên) · `cross-platform/` (3 platform).
+> **Phụ lục:** `Bug_Reports.md` (bug chi tiết) · `AI_Audit_Report.md` (log AI + critique) · `checklist/GUI_Checklist.xlsx` (checklist gốc) · `usability/` (evidence 7 phiên) · `cross-platform/` (4 platform local + 2 target BrowserStack).
 
 ---
 
@@ -292,10 +292,28 @@ Nhận xét theo platform:
 2. Rủi ro thật của đa nền tảng nằm ở **layout mobile**, không phải JS: control nhỏ hơn 44 px (IA-01-16) và bảng giỏ bị bóp cột. Đây là hai điểm cần ưu tiên nếu SUT mở cho người dùng điện thoại.
 3. Giá trị của cross-platform ở bài này là **loại trừ giả thuyết**: không cần điều tra riêng cho Safari/Firefox, nguồn lỗi nằm ở code dùng chung + CSS.
 
-### 4.6 Hạn chế
+### 4.6 Xác minh trên OS thật (BrowserStack)
 
-- `android-chrome` là **emulation** (UA + viewport + touch + DPR), không phải thiết bị thật; iOS/Safari thật và macOS Safari dự kiến bổ sung bằng BrowserStack khi có credentials (script sẽ ghi rõ `browserstack-*`).
-- WebKit trên Windows dùng engine Safari nhưng không phải Safari trên macOS — khác biệt font, scrollbar và một số API native có thể chưa lộ ra.
+Ngoài 4 platform local, tôi chạy thêm 2 target trên **máy thật của BrowserStack** để loại trừ khả năng "chỉ đúng trên máy mình":
+
+| Target | OS / browser thật | Ảnh | Kết quả |
+| :--- | :--- | :-: | :--- |
+| `bs-windows-chrome-bs` | Windows 11 · Chrome | 4 | ✅ cùng lỗi coupon, cùng layout |
+| `bs-macos-chrome` | macOS Sonoma · Chrome | 4 | ✅ cùng lỗi coupon, cùng layout |
+| `bs-android-samsung` | Galaxy S23 · Android 13 | 0 | ⛔ BrowserStack chặn real mobile qua Playwright (`Malformed endpoint`) |
+
+![macOS Sonoma · Chrome (BrowserStack, real) — Checkout + coupon](screenshots/cross-platform/bs-macos-chrome/04-checkout-coupon.png)
+
+Trên macOS thật, coupon SAVE10 vẫn cho `Tiết kiệm: -270,000,000 ₫` và `Thành tiền: 300,000,000 ₫` — **cùng một bug, cùng một con số** như Windows/WebKit/Android local. Đây là bằng chứng mạnh nhất cho kết luận §4.5: lỗi nằm ở công thức backend + component dùng chung, không phải đặc thù engine.
+
+Ba lỗi harness phải sửa để chạy được (chi tiết ở `cross-platform/README.md` §5): `browserstack-local` đổi API export; Windows 11 24H2 bỏ `wmic.exe` (chuyển sang gọi `BrowserStackLocal.exe` trực tiếp); endpoint Playwright của BrowserStack là CDP nên **không bridge được WebKit** — ảnh Safari cloud trả về trang lỗi của BrowserStack nên tôi đã loại bỏ, thay bằng macOS + Chrome thật.
+
+Session id + link dashboard để TA mở lại: `evidence/xplat/browserstack-sessions.json` (build `HW03-AI GUI & Usability`).
+
+### 4.7 Hạn chế
+
+- `android-chrome` là **emulation** (UA + viewport + touch + DPR), không phải thiết bị thật; real-device Android qua BrowserStack bị chặn (mục 4.6).
+- WebKit trên Windows dùng engine Safari nhưng không phải Safari trên macOS — khác biệt font, scrollbar và một số API native có thể chưa lộ ra. macOS thật chỉ có bằng chứng ở Chrome.
 - Chỉ chạy lại 53 item tự động; 12 item thủ công (màu, cảm nhận, back) được kiểm tra trên desktop và ghi ở `checklist/execution_log.md`.
 - DB không reset giữa các platform (chỉ đọc/không tạo dữ liệu mới ngoài 1 đơn bị hủy) nên kết quả so sánh được, nhưng không phải môi trường "sạch tuyệt đối".
 
@@ -383,10 +401,10 @@ Nguyên tắc commit: mỗi commit là một bước hoàn chỉnh (design → e
 | Tiêu chí | Max | Tự chấm | Căn cứ |
 | :--- | ---: | ---: | :--- |
 | Task 1 — GUI Checklist | 30 | 30 | 65 item (≥ 40), phủ 4/4 IA và 9 màn hình; 100% item được thực thi; 44 item Failed có screenshot; 24 item tự bổ sung kèm lý do AI bỏ sót; 34 bug có steps/expected/actual/impact/severity + Issue |
-| Task 2 — Usability Evaluation | 40 | 40 | 1 flow end-to-end, 7 phiên thật + pilot, consent + SUS VI + probe 4 nhóm + observation sheet; phân tích theme/severity và tam giác hoá với Task 1 |
-| Task 3 — Cross-Browser / Platform | 20 | 20 | 4 platform (Chromium, Gecko, WebKit, Android Chrome), 53 item × 4, screenshot full-page có email + platform + URL + timestamp |
-| Agent Skills | 10 | 10 | 2 skill có `SKILL.md` + references + templates, cài được vào `.opencode/skills/`, có video demo |
-| **Tổng** | **100** | **100** | |
+| Task 2 — Usability Evaluation | 40 | **⏳ chưa chấm** | Kit đầy đủ (1 flow end-to-end, scenario, consent, SUS VI, probe 4 nhóm, observation sheet, phiên pilot, 7 template phiên). **Chưa có dữ liệu 7 phiên thật** → §3.5–3.8 chưa viết; không tự chấm điểm cho phần chưa làm (xem §6 Known gaps) |
+| Task 3 — Cross-Browser / Platform | 20 | 20 | 6 platform: 4 local (Chromium, Gecko, WebKit, Android emulation) + 2 BrowserStack OS thật (Windows 11, macOS Sonoma); 53 item × 4, screenshot full-page có email + platform + URL + timestamp |
+| Agent Skills | 10 | **⏳ 8**（thiếu video） | 2 skill có `SKILL.md` + references + templates, cài được vào `.opencode/skills/`; **video demo chưa quay** |
+| **Tổng** | **100** | **50 + phần chưa chấm** | |
 
 ### 8.2 Bài học kỹ thuật
 

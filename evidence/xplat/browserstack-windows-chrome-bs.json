@@ -1,0 +1,12 @@
+{
+  "target": "windows-chrome-bs",
+  "label": "Windows 11 · Chrome (BrowserStack, real)",
+  "url": "",
+  "shots": [
+    "screenshots/cross-platform/bs-windows-chrome-bs/01-home.png",
+    "screenshots/cross-platform/bs-windows-chrome-bs/02-login.png",
+    "screenshots/cross-platform/bs-windows-chrome-bs/03-cart.png",
+    "screenshots/cross-platform/bs-windows-chrome-bs/04-checkout-coupon.png"
+  ],
+  "errors": []
+}

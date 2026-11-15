@@ -1,0 +1,84 @@
+{
+  "build": "HW03-AI GUI & Usability",
+  "buildId": "2920a2e38179ebb339b007d0e8623d3b40803496",
+  "dashboard": "https://automate.browserstack.com/dashboard/v2/builds/2920a2e38179ebb339b007d0e8623d3b40803496",
+  "sessions": [
+    {
+      "name": "HW03 Task 3  Android 13  Samsung Galaxy S23  Chrome Mobile  BrowserStack  real device",
+      "status": "error",
+      "browser": "chrome_android null",
+      "os": "android 13.0",
+      "device": "Samsung Galaxy S23",
+      "duration": 7,
+      "createdAt": "2026-11-15T07:04:13.000Z",
+      "publicUrl": "https://automate.browserstack.com/builds/2920a2e38179ebb339b007d0e8623d3b40803496/sessions/33db9dae851c0e621b5d21691584abde8a5f309d?auth_token=88aa32e59295ce6f954fd3919a9c35840636cd4c6ae3a57c7ddf275035ee5c6c",
+      "dashboardUrl": "https://automate.browserstack.com/dashboard/v2/builds/2920a2e38179ebb339b007d0e8623d3b40803496/sessions/33db9dae851c0e621b5d21691584abde8a5f309d"
+    },
+    {
+      "name": "HW03 Task 3  macOS Sonoma  Chrome  BrowserStack  real",
+      "status": "done",
+      "browser": "playwright-chromium 156.0",
+      "os": "OS X Sonoma",
+      "device": null,
+      "duration": 36,
+      "createdAt": "2026-11-15T07:03:36.000Z",
+      "publicUrl": "https://automate.browserstack.com/builds/2920a2e38179ebb339b007d0e8623d3b40803496/sessions/2b2d976aed1c76976a265a2f1a5206fe6d3af101?auth_token=9cb87a559e4535559b804e90ef2ab68b70bcf0ea357b3878259e8b5345c08ec7",
+      "dashboardUrl": "https://automate.browserstack.com/dashboard/v2/builds/2920a2e38179ebb339b007d0e8623d3b40803496/sessions/2b2d976aed1c76976a265a2f1a5206fe6d3af101"
+    },
+    {
+      "name": "HW03 Task 3  Android 13  Samsung Galaxy S23  Chrome Mobile  BrowserStack  real device",
+      "status": "error",
+      "browser": "chrome_android null",
+      "os": "android 13.0",
+      "device": "Samsung Galaxy S23",
+      "duration": 7,
+      "createdAt": "2026-11-15T06:58:29.000Z",
+      "publicUrl": "https://automate.browserstack.com/builds/2920a2e38179ebb339b007d0e8623d3b40803496/sessions/c79658231f4c73dcf2dd94eb46c9dd11b848bc3f?auth_token=d7f81d2fc4608e44fe3c81b00bf6256a6337585c4288e2321dd10513e179aea8",
+      "dashboardUrl": "https://automate.browserstack.com/dashboard/v2/builds/2920a2e38179ebb339b007d0e8623d3b40803496/sessions/c79658231f4c73dcf2dd94eb46c9dd11b848bc3f"
+    },
+    {
+      "name": "HW03 Task 3  macOS Sonoma  Safari 17  BrowserStack  real",
+      "status": "done",
+      "browser": "playwright-webkit 17.0",
+      "os": "OS X Sonoma",
+      "device": null,
+      "duration": 10,
+      "createdAt": "2026-11-15T06:58:18.000Z",
+      "publicUrl": "https://automate.browserstack.com/builds/2920a2e38179ebb339b007d0e8623d3b40803496/sessions/d60d3fe840f82c9298c1c36c7bafcf80279d1a77?auth_token=c7f4fba6d5105a208b86ba180ef86b8ec1cd7673263df2a517bc16927c0cb73b",
+      "dashboardUrl": "https://automate.browserstack.com/dashboard/v2/builds/2920a2e38179ebb339b007d0e8623d3b40803496/sessions/d60d3fe840f82c9298c1c36c7bafcf80279d1a77"
+    },
+    {
+      "name": "HW03 Task 3  Android 13  Samsung Galaxy S23  Chrome Mobile  BrowserStack  real device",
+      "status": "error",
+      "browser": "chrome_android null",
+      "os": "android 13.0",
+      "device": "Samsung Galaxy S23",
+      "duration": 8,
+      "createdAt": "2026-11-15T06:55:40.000Z",
+      "publicUrl": "https://automate.browserstack.com/builds/2920a2e38179ebb339b007d0e8623d3b40803496/sessions/720690322ea925089c32d1f71c668f8c0b866da4?auth_token=24838626de4ded64d491c46a9b7a04122c9ee2554188c02bf87f719f430468c9",
+      "dashboardUrl": "https://automate.browserstack.com/dashboard/v2/builds/2920a2e38179ebb339b007d0e8623d3b40803496/sessions/720690322ea925089c32d1f71c668f8c0b866da4"
+    },
+    {
+      "name": "HW03 Task 3  Windows 11  Chrome  BrowserStack  real",
+      "status": "done",
+      "browser": "playwright-chromium 156.0",
+      "os": "Windows 11",
+      "device": null,
+      "duration": 53,
+      "createdAt": "2026-11-15T06:54:47.000Z",
+      "publicUrl": "https://automate.browserstack.com/builds/2920a2e38179ebb339b007d0e8623d3b40803496/sessions/49f99eb1dcd1e248f5d716078d472bba28f7ef30?auth_token=ec7d7e4c7c8f658db92cd3da69950a14d98d263d42bc1206c67ccd0085c3c6f4",
+      "dashboardUrl": "https://automate.browserstack.com/dashboard/v2/builds/2920a2e38179ebb339b007d0e8623d3b40803496/sessions/49f99eb1dcd1e248f5d716078d472bba28f7ef30"
+    },
+    {
+      "name": "HW03 Task 3  macOS Sonoma  Safari 17  BrowserStack  real",
+      "status": "done",
+      "browser": "playwright-webkit 17.0",
+      "os": "OS X Sonoma",
+      "device": null,
+      "duration": 54,
+      "createdAt": "2026-11-15T06:53:52.000Z",
+      "publicUrl": "https://automate.browserstack.com/builds/2920a2e38179ebb339b007d0e8623d3b40803496/sessions/e74e4c8ea6c805eb0c2800c0694a534e8d5e070c?auth_token=cb2828f0b6aeb42e723877531e7ff07aecb31524fb4254a9acac7ff5ad4902a5",
+      "dashboardUrl": "https://automate.browserstack.com/dashboard/v2/builds/2920a2e38179ebb339b007d0e8623d3b40803496/sessions/e74e4c8ea6c805eb0c2800c0694a534e8d5e070c"
+    }
+  ]
+}

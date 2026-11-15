@@ -18,8 +18,10 @@
  * không chạy toàn bộ 53 item.
  */
 const fs = require('fs');
+const os = require('os');
 const path = require('path');
 const crypto = require('crypto');
+const { spawn } = require('child_process');
 const playwright = require('playwright');
 const { addOverlay } = require('./lib/overlay');
 
@@ -32,6 +34,18 @@ const CREDS = { email: 'test@eshop.com', password: 'Test1234!' };
 const LOCAL_ID = process.env.BS_LOCAL_ID || `hw03-${crypto.randomBytes(4).toString('hex')}`;
 const LOG = [];
 
+// Windows 11 24H2 đã bỏ wmic.exe; browserstack-local vẫn spawn `wmic` để monitor
+// process và ném lỗi ENOENT không có listener → làm sập cả script. Bắt và bỏ qua.
+process.on('uncaughtException', (err) => {
+  const msg = `${err && err.code ? err.code : ''} ${err && err.syscall ? err.syscall : ''} ${err && err.message ? err.message : err}`;
+  if (/wmic/i.test(msg)) {
+    console.warn('[warn] browserstack-local: bỏ qua lỗi wmic.exe ENOENT (Windows 11 24H2)');
+    return;
+  }
+  console.error('[fatal]', err);
+  process.exit(1);
+});
+
 if (!USER || !KEY) {
   console.error('FATAL: set $env:BROWSERSTACK_USERNAME and $env:BROWSERSTACK_ACCESS_KEY');
   process.exit(1);
@@ -39,22 +53,56 @@ if (!USER || !KEY) {
 
 const targets = JSON.parse(
   fs.readFileSync(path.join(ROOT, 'cross-platform', 'browserstack.json'), 'utf8')
-).filter((t) => (process.argv.length > 2 ? process.argv.slice(2).includes(t.id) : true));
+)
+  .filter((t) => !t.skip)
+  .filter((t) => (process.argv.length > 2 ? process.argv.slice(2).includes(t.id) : true));
 
 function log(s) {
   console.log(s);
   LOG.push(s);
 }
 
+/**
+ * Tunnel: ưu tiên chạy BrowserStackLocal.exe trực tiếp.
+ * Lý do: package `browserstack-local` trên Windows 11 24H2 spawn `wmic.exe`
+ * (đã bị Microsoft bỏ) và crash khi parse output → không dùng được.
+ */
 async function startTunnel() {
-  const Local = require('browserstack-local');
+  const exe = path.join(os.homedir(), '.browserstack', 'BrowserStackLocal.exe');
+  if (process.platform === 'win32' && fs.existsSync(exe)) {
+    const args = [KEY, '--localIdentifier', LOCAL_ID, '--force-local', '--verbose', '1'];
+    const proc = spawn(exe, args, { stdio: ['ignore', 'pipe', 'pipe'] });
+    proc.stderr.on('data', (d) => {
+      const s = String(d).trim();
+      if (s) log(`  [tunnel] ${s.slice(0, 200)}`);
+    });
+    await new Promise((resolve, reject) => {
+      const timer = setTimeout(() => reject(new Error('Tunnel không sẵn sàng sau 60s')), 60000);
+      proc.stdout.on('data', (d) => {
+        const s = String(d);
+        if (/You can now access your local server/i.test(s)) {
+          clearTimeout(timer);
+          resolve();
+        }
+      });
+      proc.on('exit', (code) => {
+        clearTimeout(timer);
+        reject(new Error(`BrowserStackLocal thoát sớm (code ${code})`));
+      });
+    });
+    log(`Tunnel started (exe trực tiếp, localIdentifier=${LOCAL_ID})`);
+    return { stop: (cb) => { try { proc.kill(); } catch {} cb(); } };
+  }
+
+  const bs = require('browserstack-local');
+  const Local = bs.Local || bs.default || bs;
   const tunnel = new Local();
   await new Promise((resolve, reject) => {
     tunnel.start({ key: KEY, localIdentifier: LOCAL_ID, forceLocal: true }, (err) =>
       err ? reject(err) : resolve()
     );
   });
-  log(`Tunnel started (localIdentifier=${LOCAL_ID})`);
+  log(`Tunnel started (browserstack-local, localIdentifier=${LOCAL_ID})`);
   return tunnel;
 }
 
@@ -85,13 +133,17 @@ async function runTarget(target, tunnelOn) {
     target.viewport ? { viewport: { width: target.viewport[0], height: target.viewport[1] }, isMobile: !!target.realMobile, hasTouch: !!target.realMobile } : {}
   );
   const page = await ctx.newPage();
-  const report = { target: target.id, label: target.label, sessionId, url: '', shots: [], errors: [] };
+  const report = { target: target.id, label: target.label, sessionId, url: '', shots: [], errors: [], console: [] };
+  page.on('console', (m) => {
+    if (m.type() === 'error') report.console.push(m.text().slice(0, 200));
+  });
 
   const snap = async (name) => {
     await addOverlay(page, target.label);
     fs.mkdirSync(path.join(ROOT, outDir), { recursive: true });
     const rel = path.join(outDir, `${name}.png`).replace(/\\/g, '/');
     await page.screenshot({ path: path.join(ROOT, rel), fullPage: true });
+    report.url = page.url();
     report.shots.push(rel);
     log(`  shot ${rel}`);
   };
@@ -115,7 +167,38 @@ async function runTarget(target, tunnelOn) {
       await page.locator('nav a', { hasText: 'Giỏ hàng' }).first().click();
       await page.waitForTimeout(1200);
     };
-    await page.getByRole('button', { name: 'Thêm vào giỏ' }).first().click();
+
+    // Sản phẩm load qua tunnel có thể chậm/không ổn định trên Safari real device.
+    // Chờ tối đa 3 lần reload trước khi kết luận là lỗi.
+    const addBtn = page.getByRole('button', { name: 'Thêm vào giỏ' });
+    let productsReady = false;
+    for (let attempt = 1; attempt <= 3; attempt++) {
+      try {
+        await addBtn.first().waitFor({ state: 'visible', timeout: 30000 });
+        productsReady = true;
+        break;
+      } catch {
+        const diag = await page.evaluate(async () => {
+          try {
+            const r = await fetch('http://localhost:3001/api/products');
+            const j = await r.json();
+            return `api=${r.status} items=${Array.isArray(j) ? j.length : 'n/a'}`;
+          } catch (e) {
+            return `api=ERR ${String(e).slice(0, 120)}`;
+          }
+        }).catch((e) => `eval=ERR ${String(e).slice(0, 120)}`);
+        log(`  chưa thấy sản phẩm (lần ${attempt}/3): ${diag}`);
+        report.console.push(`attempt ${attempt}: ${diag}`);
+        await page.reload({ waitUntil: 'domcontentloaded', timeout: 90000 }).catch(() => {});
+        await page.waitForTimeout(3000);
+      }
+    }
+    if (!productsReady) {
+      await snap('03-home-no-products');
+      throw new Error('Không thấy nút "Thêm vào giỏ" sau 3 lần reload — xem report.console để biết API status');
+    }
+
+    await addBtn.first().click();
     await page.waitForTimeout(900);
     await openCart();
     if ((await rows()) === 0) {

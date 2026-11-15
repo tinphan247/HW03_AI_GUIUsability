@@ -55,22 +55,39 @@ Ví dụ: `23120372@student.hcmus.edu.vn | Windows 11 · Firefox (Gecko) · Desk
 
 Xem `cross-platform/matrix.md`. Tóm tắt điền ở `Main_Report.md` §4.
 
-## 5. BrowserStack (thiết bị/OS thật — tuỳ chọn)
+## 5. BrowserStack (OS thật — đã chạy)
 
 ```powershell
 $env:BROWSERSTACK_USERNAME = '<username>'
 $env:BROWSERSTACK_ACCESS_KEY = '<access key>'
-node scripts/run_browserstack.js                  # cả 3 target trong browserstack.json
-node scripts/run_browserstack.js macos-safari     # chọn 1 target
+node scripts/run_browserstack.js                    # cả target đang bật trong browserstack.json
+node scripts/run_browserstack.js macos-chrome       # chọn 1 target
 ```
 
-- Script tự mở **BrowserStack Local tunnel** (`browserstack-local`, `localIdentifier` ngẫu nhiên) để cloud browser truy cập được `http://localhost:5173`.
-- Target mặc định: macOS Sonoma + Safari 17 (WebKit thật), Windows 11 + Chrome, Android 13 + Galaxy S23 (real device).
-- Output: `screenshots/cross-platform/bs-<target>/01-home.png … 04-checkout-coupon.png` (có overlay), `evidence/xplat/browserstack-<target>.json` (session id, danh sách ảnh, lỗi), log `cross-platform/browserstack.log`.
+**Kết quả đã chạy (15/11/2026):**
+
+| Target | Thiết bị/OS | Ảnh | Trạng thái |
+| :--- | :--- | :-: | :--- |
+| `bs-windows-chrome-bs` | Windows 11 · Chrome (real) | 4 | ✅ đủ 4 ảnh |
+| `bs-macos-chrome` | macOS Sonoma · Chrome (real) | 4 | ✅ đủ 4 ảnh |
+| `bs-android-samsung` | Galaxy S23 · Android 13 (real device) | 0 | ⛔ bị chặn — xem dưới |
+
+Hai target chạy được đều tái hiện đúng bug coupon (`Tiết kiệm: -270,000,000 ₫`, `Thành tiền: 300,000,000 ₫`) → củng cố kết luận §4.5: lỗi thuộc về SUT, không phụ thuộc engine/OS.
+
+**Ba lỗi harness đã gặp và cách xử lý (ghi lại để tái lập):**
+
+1. `Local is not a constructor` → package `browserstack-local` export khác nhau giữa version; sửa `bs.Local || bs.default || bs`.
+2. `spawn wmic.exe ENOENT` + crash parse output trong `Local.js` → Windows 11 24H2 đã bỏ `wmic.exe`. Script chuyển sang **chạy `BrowserStackLocal.exe` trực tiếp** (`%USERPROFILE%\.browserstack\BrowserStackLocal.exe`) và bắt riêng lỗi wmic bằng `uncaughtException`.
+3. `playwright-webkit` (Safari) trên BrowserStack trả về trang "Unable to display the page" — endpoint Playwright của BrowserStack là **CDP**, không bridge được WebKit. Đã bỏ target Safari cloud, thay bằng **macOS + Chrome thật**; engine WebKit vẫn có bằng chứng local `windows-webkit`.
+4. Real mobile device (`device` + `realMobile`) trả `Malformed endpoint`; Android emulator trả `OS and OS Version not supported`. Target này được đánh dấu `"skip": true` trong `browserstack.json` — Android đã có bằng chứng emulation local `android-chrome`.
+
+- Overlay trong ảnh BrowserStack: `<email> | <label target> | http://localhost:5173/... | <thời điểm>`.
+- Output: `screenshots/cross-platform/bs-<target>/*.png`, `evidence/xplat/browserstack-<target>.json`, log `cross-platform/browserstack.log`.
+- **Truy vết session:** `node scripts/bs_sessions.js` → `evidence/xplat/browserstack-sessions.json` (build id, session id, trạng thái, link dashboard/public URL để TA mở lại đúng session).
 - Trial giới hạn phút → chỉ chụp 4 màn hình chính, không chạy lại 53 item.
 
 ## 6. Hạn chế
 
-- Android/iOS trong bảng trên là **emulation** của Playwright (UA + viewport + touch), không phải thiết bị thật. Nếu có BrowserStack, bằng chứng thiết bị thật được bổ sung và ghi rõ.
-- WebKit trên Windows là engine Safari nhưng không phải Safari trên macOS; khác biệt font/scrollbar có thể có.
+- `android-chrome` là **emulation** của Playwright (UA + viewport + touch), không phải thiết bị thật; real-device Android qua BrowserStack bị chặn (mục 5).
+- WebKit trên Windows là engine Safari nhưng không phải Safari trên macOS; macOS thật chỉ có bằng chứng ở Chrome (BrowserStack).
 - Trial BrowserStack giới hạn phút → chỉ chạy subset + screenshot, không chạy toàn bộ 53 item trên cloud.

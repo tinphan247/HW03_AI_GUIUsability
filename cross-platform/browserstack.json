@@ -1,12 +1,13 @@
 [
   {
-    "id": "macos-safari",
-    "label": "macOS Sonoma · Safari 17 (BrowserStack, real)",
-    "browserName": "playwright-webkit",
+    "id": "macos-chrome",
+    "label": "macOS Sonoma · Chrome (BrowserStack, real)",
+    "browserName": "playwright-chromium",
     "os": "OS X",
     "os_version": "Sonoma",
-    "browser_version": "17.0",
-    "viewport": [1440, 900]
+    "browser_version": "latest",
+    "viewport": [1440, 900],
+    "note": "BrowserStack Playwright chỉ hỗ trợ engine CDP (Chromium/Firefox); WebKit Safari đã có bằng chứng ở platform local windows-webkit."
   },
   {
     "id": "windows-chrome-bs",
@@ -24,6 +25,8 @@
     "os": "android",
     "os_version": "13.0",
     "device": "Samsung Galaxy S23",
-    "realMobile": true
+    "realMobile": true,
+    "skip": true,
+    "note": "BrowserStack Playwright trả 'Malformed endpoint' cho real mobile device (trial/Playwright chưa hỗ trợ) — Android đã có bằng chứng emulation local android-chrome."
   }
 ]

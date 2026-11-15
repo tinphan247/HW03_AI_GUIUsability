@@ -1,0 +1,10 @@
+Tunnel started (exe trực tiếp, localIdentifier=hw03-54a1f933)
+
+=== macos-chrome — macOS Sonoma · Chrome (BrowserStack, real)
+  shot screenshots/cross-platform/bs-macos-chrome/01-home.png
+  shot screenshots/cross-platform/bs-macos-chrome/02-login.png
+  shot screenshots/cross-platform/bs-macos-chrome/03-cart.png
+  shot screenshots/cross-platform/bs-macos-chrome/04-checkout-coupon.png
+
+=== android-samsung — Android 13 · Samsung Galaxy S23 · Chrome Mobile (BrowserStack, real device)
+Tunnel stopped.

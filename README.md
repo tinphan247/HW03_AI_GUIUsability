@@ -16,13 +16,13 @@
 | No. | Criteria | Max | Self-Assessed |
 | :--- | :--- | ---: | ---: |
 | 1 | Task 1 — GUI Checklist (design + execution + bug report) | 30 | 30 |
-| 2 | Task 2 — Usability Evaluation (scenario + 7 sessions + analysis) | 40 | 40 |
+| 2 | Task 2 — Usability Evaluation (scenario + 7 sessions + analysis) | 40 | ⏳ chưa chấm — chưa có dữ liệu 7 phiên |
 | 3 | Task 3 — Cross-Browser / Cross-Platform (≥ 3 platforms) | 20 | 20 |
-| 4 | Agent Skills | 10 | 10 |
-| **Total** | | **100** | **100** |
+| 4 | Agent Skills | 10 | ⏳ 8 (thiếu video demo) |
+| **Total** | | **100** | **50 + phần chưa chấm** |
 
 > Bảng trên là **điểm tự chấm theo barem**; phần trừ điểm thực tế (nếu có) nằm ở mục 6 "Known gaps".
-> Các mục còn chờ dữ liệu (7 phiên usability, link video, GitHub Issues) được đánh dấu rõ — xem mục 6.
+> Các mục **chưa hoàn tất** (7 phiên usability, link video) được đánh dấu ⏳ và **không được cộng điểm** cho tới khi có dữ liệu thật — xem mục 6.
 
 ---
 
@@ -37,7 +37,7 @@
 | Failed | 44 (67,7%) |
 | Bugs reported (GitHub Issues) | 34 (5 Blocker · 16 Major · 12 Minor · 1 Cosmetic) |
 | Usability participants (valid sessions) | 7 + 1 pilot |
-| Platforms (Task 3) | 4 (Chrome, Firefox, WebKit desktop + Android Chrome; BrowserStack bổ sung nếu có) |
+| Platforms (Task 3) | 6 (Windows Chrome/Firefox/WebKit + Android Chrome local; Windows 11 Chrome + macOS Sonoma Chrome trên BrowserStack) |
 
 ---
 
@@ -53,7 +53,7 @@
 | `checklist/checklist_design.md` | Bộ AI sinh, review log, item tự thêm + lý do |
 | `checklist/execution_log.md` | Biên bản thực thi |
 | `usability/` | Kế hoạch, scenario, instruments, pilot, 7 phiên, phân tích |
-| `cross-platform/` | Ma trận + screenshot 3 platform |
+| `cross-platform/` | Ma trận + screenshot 4 platform local + 2 target BrowserStack |
 | `skills/` | 2 Agent Skill tái sử dụng |
 | `screenshots/` | Evidence cho item Failed và bug |
 
@@ -85,7 +85,7 @@
 | :--- | :--- | :--- |
 | 7 phiên usability | ⏳ chờ dữ liệu | Kit đã đủ (`usability/`), chờ notes/SUS của 7 người để điền `analysis.md` + Main_Report §3.5–3.8 |
 | GitHub Issues | ✅ | 34 issue tại https://github.com/tinphan247/HW03_AI_GUIUsability/issues (mỗi issue có screenshot + steps + severity label) |
-| BrowserStack | ⏳ chờ credentials | `scripts/run_browserstack.js` + `cross-platform/browserstack.json` sẵn sàng; Task 3 đã đủ 4 platform local |
+| BrowserStack | ✅ 2/3 target | Windows 11 Chrome + macOS Sonoma Chrome (real) trong `screenshots/cross-platform/bs-*`; Galaxy S23 bị BrowserStack chặn (`Malformed endpoint`) — ghi ở `cross-platform/README.md` §5 |
 | Video demo skill | ⏳ chờ quay | Kịch bản + timeline ở `skills/README.md` |
 | PDF | ✅ | Sinh bằng `node scripts/export_pdf.js` (Edge headless) |
 
