@@ -83,7 +83,7 @@
 
 | Hạng mục | Trạng thái | Ghi chú |
 | :--- | :--- | :--- |
-| 7 phiên usability | ⛔ không thực hiện (n = 0) | Không tuyển được người tham gia trong hạn. Kit đầy đủ (`usability/` + `FILL_7_SESSIONS.md` + `sus_from_lines.py` + `ONE_NIGHT_RUNBOOK.md`) — chạy được bất cứ lúc nào. **Từ chối điền dữ liệu giả** vì TA có quyền gọi xác minh |
+| 7 phiên usability | ⛔ không thực hiện (n = 0) | Không tuyển được người tham gia trong hạn. Đang mở đường bổ sung: Google Form (`usability/GOOGLE_FORM_GUIDE.md`) + kit (`FILL_7_SESSIONS.md`, `sus_from_lines.py`, `gform_to_csv.py`, `ONE_NIGHT_RUNBOOK.md`) — có response là có phân tích trong ~20 phút. **Từ chối điền dữ liệu giả** vì TA có quyền gọi xác minh |
 | GitHub Issues | ✅ | 34 issue tại https://github.com/tinphan247/HW03_AI_GUIUsability/issues (mỗi issue có screenshot + steps + severity label) |
 | BrowserStack | ✅ 2/3 target | Windows 11 Chrome + macOS Sonoma Chrome (real) trong `screenshots/cross-platform/bs-*`; Galaxy S23 bị BrowserStack chặn (`Malformed endpoint`) — ghi ở `cross-platform/README.md` §5 |
 | Video demo skill | ⏳ chờ quay | Kịch bản + timeline ở `skills/README.md` |
@@ -104,6 +104,7 @@
 | `scripts/build_xplat_matrix.js` | Sinh `cross-platform/matrix.md` + `matrix.csv` |
 | `scripts/run_browserstack.js` | Chụp 4 màn hình trên BrowserStack (tunnel local) |
 | `scripts/sus_from_lines.py` | Nhập `usability/raw_sessions.txt` (1 dòng/người) → `participants.csv` + `sus_scores.csv` |
+| `scripts/gform_to_csv.py` | Chuyển CSV Google Form (dựng theo `GOOGLE_FORM_GUIDE.md`) → `participants.csv` + `sus_scores.csv` |
 | `scripts/sus_score.py` | Tính SUS → `usability/sus_results.md` |
 | `scripts/bs_sessions.js` | Lấy session id + link dashboard BrowserStack → `evidence/xplat/browserstack-sessions.json` |
 | `scripts/publish_github.js` | Tạo repo + 34 GitHub Issue kèm screenshot |

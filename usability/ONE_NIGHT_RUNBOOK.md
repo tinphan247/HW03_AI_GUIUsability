@@ -41,13 +41,16 @@ Mỗi phiên: 3 phút chào + consent → 12 phút làm task → 5 phút SUS + p
 
 ## 3. Sau mỗi phiên (3 phút)
 
-Điền ngay **1 dòng** vào `usability/raw_sessions.txt` (định dạng ở `usability/FILL_7_SESSIONS.md`), ví dụ:
+Có 2 cách ghi — chọn 1 (hoặc dùng cả hai, dữ liệu sẽ đối chiếu):
+
+- **Google Form** (khuyên dùng): người tham gia tự điền demographics + SUS + probe — dựng theo `usability/GOOGLE_FORM_GUIDE.md`; cuối buổi tải CSV về chạy `python scripts/gform_to_csv.py`.
+- **1 dòng tay** vào `usability/raw_sessions.txt` (định dạng ở `usability/FILL_7_SESSIONS.md`), ví dụ:
 
 ```text
 P1 | 22 | Sinh viên | 0912345678 | 15/11 19:00 | Chrome / Win 11 | Success | 4:30 | 0 | thấy -270.000.000 | 4,2,5,1,4,2,5,1,4,2 | "Tưởng nút lỗi nên bấm 2 lần"
 ```
 
-Sau khi xong cả 7: `python scripts/sus_from_lines.py` → tự sinh `participants.csv` + `sus_scores.csv` (không phải gõ CSV tay).
+Cả hai cách đều kết thúc bằng `python scripts/sus_from_lines.py` (tay) hoặc `python scripts/gform_to_csv.py` (form) → `participants.csv` + `sus_scores.csv`. Quan sát của bạn (thời gian thật, số lần trợ giúp) vẫn ghi vào `raw_sessions.txt` dù dùng form.
 
 ## 4. Sau khi xong 7 phiên
 
