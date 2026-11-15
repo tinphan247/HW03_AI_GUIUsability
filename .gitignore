@@ -14,3 +14,6 @@ evidence/raw/
 
 # Build artefacts
 *.zip
+
+# BrowserStack CLI log (sinh tự động khi chạy tunnel)
+local.log
