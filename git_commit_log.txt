@@ -1,4 +1,6 @@
-﻿343a6e4 | 2026-11-15 13:32 | docs(report): add Task 3 results, self-assessment, and BrowserStack runner
+﻿9beea11 | 2026-11-15 13:44 | docs(bugs): link 34 GitHub issues and embed screenshots in bug report
+035c472 | 2026-11-15 13:32 | docs(audit): log cross-platform harness fixes and add usability data request form
+343a6e4 | 2026-11-15 13:32 | docs(report): add Task 3 results, self-assessment, and BrowserStack runner
 f39981f | 2026-11-15 13:27 | test(xplat): run GUI checklist on 4 platforms with watermarked evidence
 b787cb0 | 2026-11-15 13:08 | feat(usability): add 7-session test kit, SUS scoring, and cross-platform harness
 e9eb25b | 2026-11-15 12:52 | test(checklist): design and execute 65 GUI checklist items, report 34 bugs

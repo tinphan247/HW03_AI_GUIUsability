@@ -369,6 +369,8 @@ Repo cục bộ `hw3/23120372_HW03_AI_GUIUsability`, commit theo từng bước 
 | 4 | `b787cb0` | 15/11/2026 13:08 | `feat(usability): add 7-session test kit, SUS scoring, and cross-platform harness` | `usability/` (plan, scenario, consent, script, instruments, P1–P7, pilot), `sus_score.py`, harness cross-platform, `publish_github.js`, `export_pdf.js`, `package_submission.ps1` |
 | 5 | `f39981f` | 15/11/2026 13:27 | `test(xplat): run GUI checklist on 4 platforms with watermarked evidence` | `evidence/xplat/*` (4 platform), 4×42 screenshot có overlay, `cross-platform/matrix.md|csv`, Main_Report §4 |
 | 6 | `343a6e4` | 15/11/2026 13:32 | `docs(report): add Task 3 results, self-assessment, and BrowserStack runner` | README self-assessment, §8, `run_browserstack.js`, Bug_Reports nhúng ảnh, PDF bản đầu |
+| 7 | `035c472` | 15/11/2026 13:32 | `docs(audit): log cross-platform harness fixes and add usability data request form` | AI Audit Artifact 3, `usability/DATA_REQUEST.md`, `git_commit_log.txt` |
+| 8 | `9beea11` | 15/11/2026 13:44 | `docs(bugs): link 34 GitHub issues and embed screenshots in bug report` | `evidence/created_issues.json`, Bug_Reports có link issue, README/Main_Report thêm URL repo |
 
 Nguyên tắc commit: mỗi commit là một bước hoàn chỉnh (design → execute → report), message theo Conventional Commits (`chore`, `test`, `feat`, `docs`), không có commit "wip".
 
