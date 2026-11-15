@@ -59,4 +59,83 @@
 
 ---
 
-<!-- Các artifact tiếp theo được thêm theo từng bước thực hiện (G1…G9). -->
+## Artifact 1 — Sinh bộ checklist 65 item và thực thi (G9.3 Analyse + G9.4 Collaborate)
+
+### (1) Prompt + Tool
+
+- **Tool:** DeepSeek V4.1 Flash Free (OpenCode agent, **Build mode**), sau đó Playwright 1.64.1 + axe-core 4.10.2 (không AI) để thực thi.
+- **Timestamp:** 15/11/2026, ~10:10–13:40 (UTC+7)
+- **Full prompt (user, nguyên văn):**
+  ```text
+  Tiếp tục Task 1. Với inventory đã có ở evidence/inventory.json:
+  1) Sinh checklist item cho từng IA-01..IA-04, mỗi item có Expected, Spec ref,
+     Method (automated/manual), Priority. Không sinh item chung chung.
+  2) Tự chỉ ra 10 nhóm item còn thiếu cho người dùng biên.
+  3) Viết runner Playwright thực thi các item automated, chỉ chụp screenshot
+     cho item Failed.
+  ```
+
+### (2) AI Output
+
+- 46 item thô trải 4 IA (IA-01 9, IA-02 12, IA-03 13, IA-04 12) kèm Expected/Spec/Method.
+- Danh sách 6 nhóm gap: accessibility, mobile, dark mode, RTL, loading/empty, locale.
+- `scripts/inventory.js`, `scripts/checklist_runner.js` (53 check), `scripts/capture_evidence.js` (12 check thủ công).
+- Sau review + gap-fill: 65 item; kết quả 21 Passed / 44 Failed.
+
+### (3) Verdict
+
+**PARTIALLY VALID** — dùng được nhưng phải sửa 5 điểm:
+
+1. AI sinh 12 item IA-04 nhưng 1 item bị gộp và chỉ còn 11 sau review, trong khi IA-04 là nơi SUT lỗi nhiều nhất → sinh viên tự bổ sung 5 item IA-04 (empty state, error API, XSS, lộ lỗi, dismiss).
+2. AI sinh 5 item không thể Fail hoặc không có trong spec (hover state, font dễ đọc, nút Reset, social login, footer policy) → drop.
+3. AI chỉ liệt kê 6 nhóm gap, thiếu 4 nhóm quan trọng: persistence, dead-end sau route guard, lộ lỗi kỹ thuật, vòng đời thông báo → sinh viên thêm.
+4. Runner ban đầu dùng `page.goto('/cart')` sau khi thêm giỏ, làm mất React state và tạo **false positive** "giỏ trống" ở IA-03-07/IA-04-08/IA-04-11 → sửa thành click navbar (SPA navigation).
+5. Check IA-04-15 ban đầu coi "có dialog" là Pass, nhưng dialog xuất hiện **sau** request hủy → sửa để kiểm tra thứ tự dialog-before-request.
+
+### (4) Reasoning
+
+Checklist chỉ có giá trị khi (a) mỗi item đo được và có thể Fail, (b) phương pháp thực thi không tự tạo ra lỗi giả. Hai lỗi runner ở mục 4–5 nguy hiểm hơn lỗi code: chúng làm báo cáo sai bản chất SUT. Vì vậy mỗi lần đổi runner, tôi chạy lại toàn bộ 53 check và đối chiếu screenshot trước khi ghi kết quả. Việc AI không nghĩ tới persistence/XSS/dead-end cho thấy AI giỏi "liệt kê chuẩn chung" nhưng yếu ở "trạng thái biên đặc thù sản phẩm" — đúng vai trò con người phải bù.
+
+### (5) Student Fix
+
+- Tự viết 24 item gap-fill, mỗi item gắn 1 trong 4 nhóm lý do AI bỏ sót (không dùng lý do chung chung).
+- Sửa runner: thêm `clickCart()`/`clickCheckout()` điều hướng SPA; đổi check coupon sang đọc `p.text-red-600`; thêm kiểm tra `request` trước `dialog` cho hủy đơn; đổi IA-01-14 sang so sánh light vs dark thay vì kỳ vọng app có dark theme.
+- Không chấp nhận kết quả nào không có screenshot/measurement; item thủ công đo `getComputedStyle` thay vì "nhìn thấy đẹp".
+- Gom 44 item Failed thành 34 bug theo nguyên nhân gốc, giữ mapping item → bug trong `evidence/bug_map.json`.
+
+---
+
+## Artifact 2 — Viết bug report và kiểm tra chéo kết quả (G9.4)
+
+### (1) Prompt + Tool
+
+- **Tool:** DeepSeek V4.1 Flash Free (OpenCode agent), Playwright để tái hiện.
+- **Timestamp:** 15/11/2026, ~14:00 (UTC+7)
+- **Prompt (user):** `Từ 44 item Failed, gom thành bug theo nguyên nhân gốc. Mỗi bug phải có steps, expected/actual, impact, severity và screenshot. Đừng gộp bug khác nguyên nhân chỉ để giảm số lượng.`
+
+### (2) AI Output
+
+- Đề xuất gom thành 34 bug: 5 Blocker, 16 Major, 12 Minor, 1 Cosmetic; sinh `Bug_Reports.md` + copy screenshot.
+- Với mỗi bug, AI viết lại actual dựa trên note của runner và đọc source để giải thích nguyên nhân (ví dụ coupon percent: `total*(1−value)`).
+
+### (3) Verdict
+
+**VALID with correction** — cách gom hợp lý, nhưng AI có 2 lần suy diễn quá mức:
+
+1. AI xếp IA-04-08 (coupon) là "Major" — thực tế là **Blocker** vì số tiền gửi lên server sai 10 lần, ảnh hưởng trực tiếp giao dịch.
+2. AI định gộp "không có badge giỏ" và "không có toast" thành 1 bug — đúng vì cùng root cause (không có cơ chế feedback giỏ hàng), nhưng phải giữ cả 2 item trong cột Checklist item để traceability.
+3. AI mô tả "hủy đơn có dialog" là Pass ở lần chạy đầu — sai, đã sửa ở Artifact 1.
+
+### (4) Reasoning
+
+Severity phải theo **tác động nghiệp vụ**, không theo "mức khó chịu khi nhìn". Coupon sai số tiền và tổng tiền editable đều là lỗi toàn vẹn dữ liệu → Blocker, dù UI vẫn "chạy". Việc giữ mapping item → bug là bắt buộc để TA đối chiếu Excel với Issue mà không phải đọc lại toàn bộ báo cáo.
+
+### (5) Student Fix
+
+- Nâng IA-04-08 lên Blocker; giữ 5 Blocker: coupon, tổng tiền editable, guest checkout, first-click, XSS.
+- Giữ trường `items[]` trong `bug_map.json`; script sinh báo cáo đọc từ JSON để bảng tổng hợp và phần chi tiết không lệch nhau.
+- Tự kiểm tra chéo 6 bug Blocker/Major bằng cách chạy lại thủ công trên UI trước khi đưa vào báo cáo.
+
+---
+
+<!-- Các artifact tiếp theo được thêm theo từng bước thực hiện (Task 2, Task 3). -->

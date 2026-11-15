@@ -1,0 +1,496 @@
+{
+  "meta": {
+    "sut": "EShop (web storefront + admin)",
+    "baseUrl": "http://localhost:5173",
+    "adminUrl": "http://localhost:5174",
+    "apiUrl": "http://localhost:3001/api",
+    "scope": ["Cart", "Checkout", "Login", "Register", "ForgotPassword", "Home", "ProductDetail", "Profile", "Admin"],
+    "totalItems": 65,
+    "byAspect": { "IA-01": 16, "IA-02": 17, "IA-03": 16, "IA-04": 16 },
+    "origin": { "AI": 41, "Human": 24 }
+  },
+  "items": [
+    {
+      "id": "IA-01-01", "ia": "IA-01", "screen": "Home", "priority": "High",
+      "item": "Trang chủ có đúng một thẻ <h1> mô tả nội dung trang",
+      "expected": "document.querySelectorAll('h1').length === 1",
+      "spec": "FR-21", "method": "automated", "origin": "AI", "check": "h1_home",
+      "review": "keep"
+    },
+    {
+      "id": "IA-01-02", "ia": "IA-01", "screen": "Tất cả trang", "priority": "High",
+      "item": "Mỗi trang có đúng một <h1> và không nhảy cấp heading",
+      "expected": "1 h1/trang; h2/h3 theo sau h1",
+      "spec": "FR-21", "method": "automated", "origin": "Human", "check": "h1_all",
+      "whyMissed": "Prompt ban đầu chỉ nêu 'trang chủ' nên AI sinh item cho Home rồi dừng; AI không tự mở rộng phạm vi sang các trang không được liệt kê.",
+      "review": "added"
+    },
+    {
+      "id": "IA-01-03", "ia": "IA-01", "screen": "Global", "priority": "High",
+      "item": "Thuộc tính lang của <html> khớp ngôn ngữ nội dung (tiếng Việt)",
+      "expected": "document.documentElement.lang startsWith 'vi'",
+      "spec": "FR-21", "method": "automated", "origin": "Human", "check": "html_lang",
+      "whyMissed": "AI chỉ kiểm tra nội dung nhìn thấy; thuộc tính lang là chi tiết accessibility/SEO nằm ngoài 'visual checklist' điển hình.",
+      "review": "added"
+    },
+    {
+      "id": "IA-01-04", "ia": "IA-01", "screen": "Tất cả trang", "priority": "High",
+      "item": "Nhãn chức năng chính dùng tiếng Việt nhất quán",
+      "expected": "Không lẫn 'Username', 'Sign In', 'Login', 'Dashboard' ở luồng người dùng",
+      "spec": "FR-21", "method": "manual", "origin": "AI", "check": null,
+      "review": "keep"
+    },
+    {
+      "id": "IA-01-05", "ia": "IA-01", "screen": "Home, Cart, Checkout", "priority": "Medium",
+      "item": "Đơn vị tiền hiển thị nhất quán (₫ + phân cách hàng nghìn)",
+      "expected": "Cùng một định dạng '1.000.000 ₫' trên mọi màn hình",
+      "spec": "FR-21", "method": "automated", "origin": "AI", "check": "currency_consistency",
+      "review": "keep"
+    },
+    {
+      "id": "IA-01-06", "ia": "IA-01", "screen": "Global", "priority": "Medium",
+      "item": "Nút hành động chính (submit/mua) dùng màu xanh dương",
+      "expected": "Nút primary dùng bg-blue-600 (FR-21)",
+      "spec": "FR-21", "method": "manual", "origin": "AI", "check": null,
+      "review": "keep"
+    },
+    {
+      "id": "IA-01-07", "ia": "IA-01", "screen": "Global", "priority": "Medium",
+      "item": "Nút nguy hiểm (xóa/hủy) dùng màu đỏ",
+      "expected": "Nút destructive dùng bg-red-500/600",
+      "spec": "FR-21", "method": "manual", "origin": "AI", "check": null,
+      "review": "keep"
+    },
+    {
+      "id": "IA-01-08", "ia": "IA-01", "screen": "Profile", "priority": "Low",
+      "item": "Ngày tháng hiển thị theo định dạng Việt Nam dd/mm/yyyy",
+      "expected": "Ngày đặt đơn đọc được theo dd/mm/yyyy",
+      "spec": "FR-21", "method": "automated", "origin": "Human", "check": "date_format",
+      "whyMissed": "AI kiểm tra 'định dạng tiền' nhưng bỏ qua 'định dạng ngày' — lỗi locale điển hình khi app dùng toLocaleDateString() mặc định.",
+      "review": "added"
+    },
+    {
+      "id": "IA-01-09", "ia": "IA-01", "screen": "Home", "priority": "High",
+      "item": "Ảnh sản phẩm có alt mô tả nội dung ảnh",
+      "expected": "Không có ảnh nào alt rỗng/rỗng nghĩa",
+      "spec": "FR-24", "method": "automated", "origin": "AI", "check": "alt_home",
+      "review": "keep"
+    },
+    {
+      "id": "IA-01-10", "ia": "IA-01", "screen": "Global", "priority": "High",
+      "item": "Độ tương phản chữ/nền đạt WCAG AA (≥ 4.5:1 cho text thường)",
+      "expected": "axe-core không báo color-contrast nghiêm trọng",
+      "spec": "FR-21", "method": "automated", "origin": "Human", "check": "contrast_axe",
+      "whyMissed": "AI sinh checklist theo 'màu sắc nhất quán' (nhìn bằng mắt) chứ không quy về ngưỡng đo được; contrast cần công cụ và kiến thức WCAG.",
+      "review": "added"
+    },
+    {
+      "id": "IA-01-11", "ia": "IA-01", "screen": "Global", "priority": "High",
+      "item": "Mọi control tương tác có focus indicator rõ khi dùng bàn phím",
+      "expected": "Tab vào button/link → thấy outline/ring, không bị reset outline",
+      "spec": "FR-21", "method": "automated", "origin": "Human", "check": "focus_visible",
+      "whyMissed": "AI không mô phỏng thao tác bàn phím; item 'tab order' được sinh nhưng 'nhìn thấy focus' bị bỏ qua.",
+      "review": "added"
+    },
+    {
+      "id": "IA-01-12", "ia": "IA-01", "screen": "Home, Cart, Checkout", "priority": "High",
+      "item": "Layout không tràn ngang ở viewport 375px",
+      "expected": "document.scrollWidth <= window.innerWidth + 1",
+      "spec": "FR-21", "method": "automated", "origin": "AI", "check": "responsive_375",
+      "review": "keep"
+    },
+    {
+      "id": "IA-01-13", "ia": "IA-01", "screen": "Checkout, Cart", "priority": "Medium",
+      "item": "Zoom 200% không mất nội dung hoặc chồng chữ",
+      "expected": "Không cắt nội dung, không tràn ngang ở zoom 200%",
+      "spec": "FR-21", "method": "automated", "origin": "Human", "check": "zoom_200",
+      "whyMissed": "AI chỉ nghĩ tới responsive theo breakpoint, không nghĩ tới zoom trình duyệt (WCAG 1.4.4) — nhóm người dùng khiếm thị.",
+      "review": "added"
+    },
+    {
+      "id": "IA-01-14", "ia": "IA-01", "screen": "Global", "priority": "Medium",
+      "item": "Ở chế độ OS dark mode, chữ vẫn đọc được (không trắng trên trắng)",
+      "expected": "prefers-color-scheme: dark → contrast chữ/nền vẫn đạt",
+      "spec": "FR-21", "method": "automated", "origin": "Human", "check": "dark_mode",
+      "whyMissed": "Dark mode là ví dụ điển hình AI bỏ sót: app không khai báo dark variant nên AI mặc định 'không áp dụng'.",
+      "review": "added"
+    },
+    {
+      "id": "IA-01-15", "ia": "IA-01", "screen": "Cart, Checkout", "priority": "Low",
+      "item": "Khi ép dir=rtl, nội dung không bị tràn/che khuất",
+      "expected": "Không overflow ngang, không chồng chữ ở RTL",
+      "spec": "FR-21", "method": "automated", "origin": "Human", "check": "rtl",
+      "whyMissed": "RTL cần kiểm tra ngôn ngữ/thị trường khác; AI mặc định LTR và bỏ qua hoàn toàn.",
+      "review": "added"
+    },
+    {
+      "id": "IA-01-16", "ia": "IA-01", "screen": "Home, Cart (mobile)", "priority": "Medium",
+      "item": "Touch target của nút/link ≥ 44×44 px trên viewport mobile",
+      "expected": "Mọi button/link chính có kích thước chạm ≥ 44px",
+      "spec": "FR-21", "method": "automated", "origin": "Human", "check": "touch_target",
+      "whyMissed": "AI kiểm tra 'responsive' nhưng không kiểm tra kích thước vùng chạm — đặc thù thiết bị di động.",
+      "review": "added"
+    },
+
+    {
+      "id": "IA-02-01", "ia": "IA-02", "screen": "Login, Register, Checkout", "priority": "High",
+      "item": "Trường bắt buộc có ký hiệu * bên cạnh nhãn",
+      "expected": "Mọi input required có dấu * trong label",
+      "spec": "FR-22", "method": "automated", "origin": "AI", "check": "required_asterisk",
+      "review": "keep"
+    },
+    {
+      "id": "IA-02-02", "ia": "IA-02", "screen": "Login, Register", "priority": "High",
+      "item": "Trường email dùng type=\"email\"",
+      "expected": "input email có type=email",
+      "spec": "FR-22, FR-02", "method": "automated", "origin": "AI", "check": "email_type",
+      "review": "keep"
+    },
+    {
+      "id": "IA-02-03", "ia": "IA-02", "screen": "Login", "priority": "High",
+      "item": "Trường mật khẩu dùng type=\"password\"",
+      "expected": "input password có type=password (không lộ ký tự)",
+      "spec": "FR-22", "method": "automated", "origin": "AI", "check": "password_type",
+      "review": "keep"
+    },
+    {
+      "id": "IA-02-04", "ia": "IA-02", "screen": "Tất cả form", "priority": "High",
+      "item": "Mỗi input có label liên kết (for/id) hoặc aria-label",
+      "expected": "input.labels.length > 0 hoặc aria-label",
+      "spec": "FR-22", "method": "automated", "origin": "Human", "check": "label_association",
+      "whyMissed": "AI kiểm tra 'có nhãn nhìn thấy' nhưng không kiểm tra liên kết lập trình được (screen reader).",
+      "review": "added"
+    },
+    {
+      "id": "IA-02-05", "ia": "IA-02", "screen": "Login, Register", "priority": "High",
+      "item": "Thông báo lỗi hiển thị phía trên nút submit",
+      "expected": "Error DOM đứng trước button submit",
+      "spec": "FR-22", "method": "automated", "origin": "AI", "check": "error_above_submit",
+      "review": "keep"
+    },
+    {
+      "id": "IA-02-06", "ia": "IA-02", "screen": "Login, Register", "priority": "High",
+      "item": "Thông báo lỗi nêu rõ trường nào sai và cách sửa",
+      "expected": "Lỗi cụ thể theo field, có hướng dẫn sửa; không chỉ 'thất bại'",
+      "spec": "FR-22", "method": "manual", "origin": "AI", "check": null,
+      "review": "keep"
+    },
+    {
+      "id": "IA-02-07", "ia": "IA-02", "screen": "ForgotPassword", "priority": "High",
+      "item": "Luồng 2 bước có step indicator rõ ràng",
+      "expected": "Hiển thị 'Bước 1/2', 'Bước 2/2'",
+      "spec": "FR-22, FR-03", "method": "automated", "origin": "AI", "check": "step_indicator",
+      "review": "keep"
+    },
+    {
+      "id": "IA-02-08", "ia": "IA-02", "screen": "Login", "priority": "Medium",
+      "item": "Dữ liệu đã nhập vẫn còn sau khi submit lỗi",
+      "expected": "Email/password không bị xóa trắng sau lỗi",
+      "spec": "FR-22", "method": "automated", "origin": "AI", "check": "keep_input_after_error",
+      "review": "keep"
+    },
+    {
+      "id": "IA-02-09", "ia": "IA-02", "screen": "Login, Register, Checkout", "priority": "Medium",
+      "item": "Nút submit bị disable và có phản hồi khi đang xử lý (chống submit 2 lần)",
+      "expected": "Trong lúc gửi, button disabled/đổi text",
+      "spec": "FR-22", "method": "automated", "origin": "Human", "check": "submit_double",
+      "whyMissed": "AI mô tả trạng thái 'loading' chung chung, không sinh item chống double-submit cho từng form.",
+      "review": "added"
+    },
+    {
+      "id": "IA-02-10", "ia": "IA-02", "screen": "ProductDetail", "priority": "High",
+      "item": "Ô số lượng chỉ nhận số nguyên ≥ 1 (chặn 0, số âm, thập phân, chữ)",
+      "expected": "Có min=1, step=1 và thông báo lỗi khi nhập sai",
+      "spec": "FR-06", "method": "automated", "origin": "AI", "check": "quantity_constraints",
+      "review": "keep"
+    },
+    {
+      "id": "IA-02-11", "ia": "IA-02", "screen": "Checkout", "priority": "High",
+      "item": "Tổng tiền thanh toán tự tính và không cho người dùng sửa trực tiếp",
+      "expected": "Tổng tiền là text/readonly, không phải input editable",
+      "spec": "FR-08", "method": "automated", "origin": "AI", "check": "total_readonly",
+      "review": "keep"
+    },
+    {
+      "id": "IA-02-12", "ia": "IA-02", "screen": "Checkout", "priority": "High",
+      "item": "Người chưa đăng nhập bị chặn khỏi trang thanh toán (kèm lối đăng nhập)",
+      "expected": "Truy cập /checkout khi chưa login → thông báo + điều hướng đăng nhập",
+      "spec": "FR-08", "method": "automated", "origin": "AI", "check": "guest_checkout_guard",
+      "review": "keep"
+    },
+    {
+      "id": "IA-02-13", "ia": "IA-02", "screen": "Login, Register, Checkout", "priority": "Medium",
+      "item": "Autocomplete đúng ngữ nghĩa (email / current-password / new-password)",
+      "expected": "Có thuộc tính autocomplete phù hợp",
+      "spec": "FR-22", "method": "automated", "origin": "Human", "check": "autocomplete",
+      "whyMissed": "AI không nghĩ tới autofill/password manager — chi tiết UX ít được nhắc trong checklist GUI cơ bản.",
+      "review": "added"
+    },
+    {
+      "id": "IA-02-14", "ia": "IA-02", "screen": "Home", "priority": "Low",
+      "item": "Placeholder không được thay thế label",
+      "expected": "Input tìm kiếm có label/aria-label, không chỉ placeholder",
+      "spec": "FR-22", "method": "automated", "origin": "Human", "check": "placeholder_only_label",
+      "whyMissed": "AI coi placeholder là đủ mô tả; đây là lỗi accessibility phổ biến.",
+      "review": "added"
+    },
+    {
+      "id": "IA-02-15", "ia": "IA-02", "screen": "Login, Register", "priority": "Medium",
+      "item": "Khoảng trắng đầu/cuối được trim trước khi validate/gửi",
+      "expected": "Email '  test@eshop.com  ' được chấp nhận hoặc báo lỗi rõ ràng",
+      "spec": "FR-22", "method": "automated", "origin": "Human", "check": "trim_whitespace",
+      "whyMissed": "AI sinh item 'validate email format' nhưng không nghĩ tới dữ liệu bẩn dạng khoảng trắng.",
+      "review": "added"
+    },
+    {
+      "id": "IA-02-16", "ia": "IA-02", "screen": "Register", "priority": "High",
+      "item": "Có trường xác nhận mật khẩu và chặn khi hai trường không khớp",
+      "expected": "Có input confirm password + thông báo mismatch",
+      "spec": "FR-01", "method": "automated", "origin": "AI", "check": "confirm_password",
+      "review": "keep"
+    },
+    {
+      "id": "IA-02-17", "ia": "IA-02", "screen": "Register", "priority": "Medium",
+      "item": "Yêu cầu mật khẩu mạnh được hiển thị ngay tại field (không chỉ khi đã lỗi)",
+      "expected": "Hint về độ dài/chữ hoa/số/ký tự đặc biệt trước khi submit",
+      "spec": "FR-01, FR-22", "method": "manual", "origin": "Human", "check": null,
+      "whyMissed": "AI sinh item 'validate password strength' nhưng bỏ qua khía cạnh hướng dẫn trước khi nhập.",
+      "review": "added"
+    },
+
+    {
+      "id": "IA-03-01", "ia": "IA-03", "screen": "Global header", "priority": "High",
+      "item": "Navbar highlight trang đang hiển thị",
+      "expected": "Link hiện tại có aria-current/active style",
+      "spec": "FR-23", "method": "automated", "origin": "AI", "check": "nav_active",
+      "review": "keep"
+    },
+    {
+      "id": "IA-03-02", "ia": "IA-03", "screen": "Global header", "priority": "High",
+      "item": "Link Giỏ hàng hiển thị badge số lượng sản phẩm",
+      "expected": "Badge số lượng cập nhật theo giỏ",
+      "spec": "FR-23", "method": "automated", "origin": "AI", "check": "cart_badge",
+      "review": "keep"
+    },
+    {
+      "id": "IA-03-03", "ia": "IA-03", "screen": "Global header", "priority": "Medium",
+      "item": "Nút đăng xuất có nhãn 'Đăng xuất'",
+      "expected": "Nhãn đúng 'Đăng xuất', không phải 'Thoát'",
+      "spec": "FR-23", "method": "automated", "origin": "AI", "check": "logout_label",
+      "review": "keep"
+    },
+    {
+      "id": "IA-03-04", "ia": "IA-03", "screen": "Cart, Checkout, ProductDetail", "priority": "High",
+      "item": "Có breadcrumb ở các trang con",
+      "expected": "Breadcrumb hiển thị đường dẫn về trang chủ",
+      "spec": "FR-23", "method": "automated", "origin": "AI", "check": "breadcrumb",
+      "review": "keep"
+    },
+    {
+      "id": "IA-03-05", "ia": "IA-03", "screen": "Global header", "priority": "Low",
+      "item": "Logo EShop là link về trang chủ",
+      "expected": "Click logo → /",
+      "spec": "FR-23", "method": "automated", "origin": "AI", "check": "logo_home",
+      "review": "keep"
+    },
+    {
+      "id": "IA-03-06", "ia": "IA-03", "screen": "Global header", "priority": "Medium",
+      "item": "Các link điều hướng chính hoạt động, không 404",
+      "expected": "Giỏ hàng/Đăng nhập/Đăng ký mở đúng trang",
+      "spec": "FR-23", "method": "automated", "origin": "AI", "check": "links_no_404",
+      "review": "keep"
+    },
+    {
+      "id": "IA-03-07", "ia": "IA-03", "screen": "Cart", "priority": "Medium",
+      "item": "Có đường quay lại mua sắm từ giỏ hàng",
+      "expected": "Link 'Tiếp tục mua sắm' về trang chủ",
+      "spec": "FR-07", "method": "automated", "origin": "AI", "check": "continue_shopping",
+      "review": "keep"
+    },
+    {
+      "id": "IA-03-08", "ia": "IA-03", "screen": "Profile", "priority": "High",
+      "item": "Trang yêu cầu đăng nhập hiển thị thông báo + lối đăng nhập (không trang trắng)",
+      "expected": "/profile khi chưa login có nội dung và link đăng nhập",
+      "spec": "FR-04, FR-11", "method": "automated", "origin": "Human", "check": "profile_guard",
+      "whyMissed": "AI chỉ kiểm tra 'route guard chặn truy cập', không kiểm tra trải nghiệm sau khi chặn (trang trắng = dead-end).",
+      "review": "added"
+    },
+    {
+      "id": "IA-03-09", "ia": "IA-03", "screen": "Cart, Profile", "priority": "High",
+      "item": "Reload trang giữ nguyên giỏ hàng đã thêm",
+      "expected": "Sau F5, giỏ hàng vẫn còn sản phẩm",
+      "spec": "FR-07", "method": "automated", "origin": "Human", "check": "reload_cart_persist",
+      "whyMissed": "AI kiểm tra thao tác trong 1 session, không kiểm tra persistence qua reload/tab mới.",
+      "review": "added"
+    },
+    {
+      "id": "IA-03-10", "ia": "IA-03", "screen": "Global", "priority": "Low",
+      "item": "Chuyển trang đưa scroll về đầu trang",
+      "expected": "scrollY === 0 sau khi điều hướng",
+      "spec": "FR-23", "method": "automated", "origin": "Human", "check": "scroll_reset",
+      "whyMissed": "AI không nghĩ tới vị trí scroll sau điều hướng (SPA routing).",
+      "review": "added"
+    },
+    {
+      "id": "IA-03-11", "ia": "IA-03", "screen": "Checkout success", "priority": "Medium",
+      "item": "Sau thanh toán thành công có đường quay lại trang chủ rõ ràng",
+      "expected": "Có link/button về trang chủ",
+      "spec": "FR-08", "method": "automated", "origin": "AI", "check": "success_exit",
+      "review": "keep"
+    },
+    {
+      "id": "IA-03-12", "ia": "IA-03", "screen": "Admin sidebar", "priority": "Medium",
+      "item": "Tab đang chọn trong admin được highlight và phân biệt",
+      "expected": "Tab active có style khác biệt rõ",
+      "spec": "FR-23", "method": "manual", "origin": "AI", "check": null,
+      "review": "keep"
+    },
+    {
+      "id": "IA-03-13", "ia": "IA-03", "screen": "Global mobile 375px", "priority": "High",
+      "item": "Điều hướng trên mobile không bị che khuất/không cần scroll ngang",
+      "expected": "Navbar hiển thị đủ link ở 375px",
+      "spec": "FR-23", "method": "manual", "origin": "AI", "check": null,
+      "review": "keep"
+    },
+    {
+      "id": "IA-03-14", "ia": "IA-03", "screen": "Cart", "priority": "Low",
+      "item": "Nút/ link điều hướng có nhãn mô tả đích đến (không chỉ icon)",
+      "expected": "Icon có text hoặc aria-label",
+      "spec": "FR-23", "method": "manual", "origin": "Human", "check": null,
+      "whyMissed": "AI đánh giá theo 'có link không', bỏ qua khả năng hiểu của người dùng screen reader.",
+      "review": "added"
+    },
+    {
+      "id": "IA-03-15", "ia": "IA-03", "screen": "Global", "priority": "Medium",
+      "item": "Browser Back sau khi rời trang hoạt động hợp lý (không kẹt vòng lặp)",
+      "expected": "Back quay lại trang trước, không loop",
+      "spec": "FR-23", "method": "manual", "origin": "AI", "check": null,
+      "review": "keep"
+    },
+    {
+      "id": "IA-03-16", "ia": "IA-03", "screen": "ForgotPassword", "priority": "Medium",
+      "item": "Có nút quay lại đăng nhập ở luồng quên mật khẩu",
+      "expected": "Link 'Quay lại đăng nhập' hiển thị",
+      "spec": "FR-03", "method": "automated", "origin": "AI", "check": "back_to_login",
+      "review": "keep"
+    },
+
+    {
+      "id": "IA-04-01", "ia": "IA-04", "screen": "Home", "priority": "High",
+      "item": "Sau 'Thêm vào giỏ' có phản hồi trực quan (toast/badge)",
+      "expected": "Toast hoặc badge thay đổi ngay sau click",
+      "spec": "FR-24, FR-06", "method": "automated", "origin": "AI", "check": "add_feedback_home",
+      "review": "keep"
+    },
+    {
+      "id": "IA-04-02", "ia": "IA-04", "screen": "ProductDetail", "priority": "High",
+      "item": "Click đầu tiên vào 'Thêm vào giỏ hàng' thực hiện thêm sản phẩm",
+      "expected": "Click 1 lần → giỏ tăng 1",
+      "spec": "FR-06, FR-24", "method": "automated", "origin": "Human", "check": "add_first_click",
+      "whyMissed": "AI giả định control hoạt động đúng; chỉ kiểm tra 'có toast' mà không kiểm tra hành động có thực sự xảy ra.",
+      "review": "added"
+    },
+    {
+      "id": "IA-04-03", "ia": "IA-04", "screen": "Cart", "priority": "High",
+      "item": "Xóa sản phẩm khỏi giỏ có dialog xác nhận",
+      "expected": "Hiện confirm trước khi xóa",
+      "spec": "FR-24, FR-07", "method": "automated", "origin": "AI", "check": "delete_confirm",
+      "review": "keep"
+    },
+    {
+      "id": "IA-04-04", "ia": "IA-04", "screen": "Cart", "priority": "Medium",
+      "item": "Empty state giỏ hàng có hình minh họa/icon và thông điệp thân thiện",
+      "expected": "Có illustration/icon + câu thông báo rõ",
+      "spec": "FR-24, FR-07", "method": "automated", "origin": "AI", "check": "empty_cart_visual",
+      "review": "keep"
+    },
+    {
+      "id": "IA-04-05", "ia": "IA-04", "screen": "Home", "priority": "High",
+      "item": "Tìm kiếm không có kết quả hiển thị empty state phù hợp",
+      "expected": "Thông báo 'không tìm thấy' thay vì khoảng trắng",
+      "spec": "FR-05, FR-24", "method": "automated", "origin": "AI", "check": "empty_search",
+      "review": "keep"
+    },
+    {
+      "id": "IA-04-06", "ia": "IA-04", "screen": "Home, Profile", "priority": "High",
+      "item": "Có loading state khi đang tải dữ liệu",
+      "expected": "Skeleton/spinner/text khi fetch chậm",
+      "spec": "FR-05, FR-24", "method": "automated", "origin": "AI", "check": "loading_state",
+      "review": "keep"
+    },
+    {
+      "id": "IA-04-07", "ia": "IA-04", "screen": "Home", "priority": "High",
+      "item": "Khi API lỗi, hiển thị thông báo thân thiện + cách thử lại",
+      "expected": "Error state có nút 'Thử lại', không màn hình trắng",
+      "spec": "FR-24", "method": "automated", "origin": "Human", "check": "api_error_state",
+      "whyMissed": "AI sinh 'loading/empty' nhưng thường bỏ 'error state' và retry — trạng thái biên khó nghĩ tới.",
+      "review": "added"
+    },
+    {
+      "id": "IA-04-08", "ia": "IA-04", "screen": "Checkout", "priority": "High",
+      "item": "Áp coupon thành công hiển thị rõ số tiền giảm và thành tiền",
+      "expected": "Feedback thành công có discount + final amount hợp lý",
+      "spec": "FR-09, FR-24", "method": "automated", "origin": "AI", "check": "coupon_success_feedback",
+      "review": "keep"
+    },
+    {
+      "id": "IA-04-09", "ia": "IA-04", "screen": "Checkout", "priority": "High",
+      "item": "Áp coupon lỗi có thông báo phân biệt nguyên nhân",
+      "expected": "Phân biệt mã sai / hết hạn / chưa đủ ngưỡng",
+      "spec": "FR-09, FR-24", "method": "automated", "origin": "AI", "check": "coupon_error_feedback",
+      "review": "keep"
+    },
+    {
+      "id": "IA-04-10", "ia": "IA-04", "screen": "Profile", "priority": "Medium",
+      "item": "Trạng thái đơn hàng dịch tiếng Việt và phân biệt màu",
+      "expected": "pending/confirmed/shipping/delivered/canceled → nhãn VI + màu riêng",
+      "spec": "FR-11", "method": "manual", "origin": "AI", "check": null,
+      "review": "keep"
+    },
+    {
+      "id": "IA-04-11", "ia": "IA-04", "screen": "Checkout success", "priority": "High",
+      "item": "Sau thanh toán thành công, giỏ hàng được xóa",
+      "expected": "Badge/giỏ trống sau success",
+      "spec": "FR-08, FR-24", "method": "automated", "origin": "AI", "check": "success_clears_cart",
+      "review": "keep"
+    },
+    {
+      "id": "IA-04-12", "ia": "IA-04", "screen": "Home", "priority": "High",
+      "item": "Nội dung người dùng nhập không được render thành HTML",
+      "expected": "Nhập '<b>x</b>' → hiển thị nguyên văn, không in đậm",
+      "spec": "SEC-04, FR-05", "method": "automated", "origin": "Human", "check": "xss_search",
+      "whyMissed": "AI tách 'GUI' khỏi 'security'; XSS-rendering là lỗi giao diện (hiển thị sai) nhưng AI không nghĩ tới.",
+      "review": "added"
+    },
+    {
+      "id": "IA-04-13", "ia": "IA-04", "screen": "Checkout, Profile", "priority": "Medium",
+      "item": "Thông báo lỗi không lộ chi tiết kỹ thuật (stack trace, message thô)",
+      "expected": "Thông báo thân thiện, không lộ Axios/Express error",
+      "spec": "FR-24", "method": "automated", "origin": "Human", "check": "error_leak",
+      "whyMissed": "AI không đặt mình vào tình huống API fail; chỉ kiểm tra lỗi validation thông thường.",
+      "review": "added"
+    },
+    {
+      "id": "IA-04-14", "ia": "IA-04", "screen": "Login, Register", "priority": "Medium",
+      "item": "Nút submit hiển thị trạng thái đang xử lý khi gửi form",
+      "expected": "Text đổi thành 'Đang đăng nhập…' / spinner",
+      "spec": "FR-24", "method": "manual", "origin": "AI", "check": null,
+      "review": "keep"
+    },
+    {
+      "id": "IA-04-15", "ia": "IA-04", "screen": "Profile", "priority": "High",
+      "item": "Hủy đơn hàng có dialog xác nhận trước khi thực hiện",
+      "expected": "Confirm trước khi gọi API hủy",
+      "spec": "FR-10, FR-24", "method": "automated", "origin": "AI", "check": "cancel_confirm",
+      "review": "keep"
+    },
+    {
+      "id": "IA-04-16", "ia": "IA-04", "screen": "Global", "priority": "Low",
+      "item": "Thông báo thành công có thể tự đóng hoặc có nút đóng",
+      "expected": "Toast/banner có cơ chế dismiss",
+      "spec": "FR-24", "method": "manual", "origin": "Human", "check": null,
+      "whyMissed": "AI chỉ kiểm tra 'có thông báo', không kiểm tra vòng đời (dismiss) của thông báo.",
+      "review": "added"
+    }
+  ]
+}

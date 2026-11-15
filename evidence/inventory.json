@@ -1,0 +1,726 @@
+{
+  "baseUrl": "http://localhost:5173",
+  "capturedAt": "2026-11-15T05:33:31.188Z",
+  "pages": [
+    {
+      "id": "home",
+      "url": "/",
+      "title": "frontend-web",
+      "h1": [
+        "Danh sách sản phẩm",
+        "Hiển thị 5 sản phẩm"
+      ],
+      "h2": [
+        "iPhone 15 Pro Max",
+        "Samsung Galaxy S24 Ultra",
+        "MacBook Pro M3",
+        "Tai nghe AirPods Pro 2",
+        "Bàn phím cơ Keychron Q1"
+      ],
+      "h3": [],
+      "headingsOrder": [
+        "H1:Danh sách sản phẩm",
+        "H2:iPhone 15 Pro Max",
+        "H2:Samsung Galaxy S24 Ultra",
+        "H2:MacBook Pro M3",
+        "H2:Tai nghe AirPods Pro 2",
+        "H2:Bàn phím cơ Keychron Q1",
+        "H1:Hiển thị 5 sản phẩm"
+      ],
+      "inputs": [
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "",
+          "id": "",
+          "placeholder": "Tìm kiếm...",
+          "required": false,
+          "disabled": false,
+          "readOnly": false,
+          "tabIndex": null,
+          "ariaLabel": "",
+          "hasLabel": false,
+          "labelText": "",
+          "autocomplete": ""
+        }
+      ],
+      "buttons": [
+        {
+          "text": "Tìm",
+          "type": "submit",
+          "disabled": false,
+          "tabIndex": null
+        },
+        {
+          "text": "Thêm vào giỏ",
+          "type": "submit",
+          "disabled": false,
+          "tabIndex": null
+        },
+        {
+          "text": "Thêm vào giỏ",
+          "type": "submit",
+          "disabled": false,
+          "tabIndex": null
+        },
+        {
+          "text": "Thêm vào giỏ",
+          "type": "submit",
+          "disabled": false,
+          "tabIndex": null
+        },
+        {
+          "text": "Thêm vào giỏ",
+          "type": "submit",
+          "disabled": false,
+          "tabIndex": null
+        },
+        {
+          "text": "Thêm vào giỏ",
+          "type": "submit",
+          "disabled": false,
+          "tabIndex": null
+        }
+      ],
+      "links": [
+        {
+          "text": "EShop",
+          "href": "/"
+        },
+        {
+          "text": "Giỏ hàng",
+          "href": "/cart"
+        },
+        {
+          "text": "Đăng nhập",
+          "href": "/login"
+        },
+        {
+          "text": "Đăng ký",
+          "href": "/register"
+        },
+        {
+          "text": "Xem chi tiết",
+          "href": "/product/1"
+        },
+        {
+          "text": "Xem chi tiết",
+          "href": "/product/2"
+        },
+        {
+          "text": "Xem chi tiết",
+          "href": "/product/3"
+        },
+        {
+          "text": "Xem chi tiết",
+          "href": "/product/4"
+        },
+        {
+          "text": "Xem chi tiết",
+          "href": "/product/5"
+        }
+      ],
+      "images": [
+        {
+          "src": "https://placehold.co/300x300/png?text=iPhone+15",
+          "alt": "",
+          "hasAlt": true,
+          "altEmpty": true
+        },
+        {
+          "src": "https://placehold.co/300x300/png?text=Samsung+S24",
+          "alt": "",
+          "hasAlt": true,
+          "altEmpty": true
+        },
+        {
+          "src": "https://placehold.co/300x300/png?text=Macbook+Pro",
+          "alt": "",
+          "hasAlt": true,
+          "altEmpty": true
+        },
+        {
+          "src": "https://placehold.co/300x300/png?text=AirPods+Pro",
+          "alt": "",
+          "hasAlt": true,
+          "altEmpty": true
+        },
+        {
+          "src": "https://placehold.co/300x300/png?text=Keychron+Q1",
+          "alt": "",
+          "hasAlt": true,
+          "altEmpty": true
+        }
+      ],
+      "tables": [],
+      "nav": [
+        {
+          "links": [
+            "Giỏ hàng",
+            "Đăng nhập",
+            "Đăng ký"
+          ],
+          "activeMarks": []
+        }
+      ],
+      "breadcrumb": false,
+      "lang": "en",
+      "dir": "(none)",
+      "darkModeQuery": false,
+      "bodyTextSample": "EShop Giỏ hàng Đăng nhập Đăng ký Danh sách sản phẩm Tìm iPhone 15 Pro Max 30,000,000 VND Xem chi tiết Thêm vào giỏ Samsung Galaxy S24 Ultra 28,000,000 VND Xem chi tiết Thêm vào giỏ MacBook Pro M3 45,000,000 VND Xem chi tiết Thêm vào giỏ Tai nghe AirPods Pro 2 6,000,000 VND Xem chi tiết Thêm vào giỏ Bàn phím cơ Keychron Q1 4,000,000 VND Xem chi tiết Thêm vào giỏ Hiển thị 5 sản phẩm © 2026"
+    },
+    {
+      "id": "product-detail",
+      "url": "/product/1",
+      "title": "frontend-web",
+      "h1": [
+        "iPhone 15 Pro Max"
+      ],
+      "h2": [],
+      "h3": [],
+      "headingsOrder": [
+        "H1:iPhone 15 Pro Max"
+      ],
+      "inputs": [
+        {
+          "tag": "input",
+          "type": "number",
+          "name": "",
+          "id": "",
+          "placeholder": "",
+          "required": false,
+          "disabled": false,
+          "readOnly": false,
+          "tabIndex": null,
+          "ariaLabel": "",
+          "hasLabel": false,
+          "labelText": "",
+          "autocomplete": ""
+        }
+      ],
+      "buttons": [
+        {
+          "text": "Thêm vào giỏ hàng",
+          "type": "submit",
+          "disabled": false,
+          "tabIndex": null
+        }
+      ],
+      "links": [
+        {
+          "text": "EShop",
+          "href": "/"
+        },
+        {
+          "text": "Giỏ hàng",
+          "href": "/cart"
+        },
+        {
+          "text": "Đăng nhập",
+          "href": "/login"
+        },
+        {
+          "text": "Đăng ký",
+          "href": "/register"
+        }
+      ],
+      "images": [
+        {
+          "src": "https://placehold.co/300x300/png?text=iPhone+15",
+          "alt": "iPhone 15 Pro Max",
+          "hasAlt": true,
+          "altEmpty": false
+        }
+      ],
+      "tables": [],
+      "nav": [
+        {
+          "links": [
+            "Giỏ hàng",
+            "Đăng nhập",
+            "Đăng ký"
+          ],
+          "activeMarks": []
+        }
+      ],
+      "breadcrumb": false,
+      "lang": "en",
+      "dir": "(none)",
+      "darkModeQuery": false,
+      "bodyTextSample": "EShop Giỏ hàng Đăng nhập Đăng ký iPhone 15 Pro Max 30,000,000 ₫ Điện thoại cao cấp của Apple Số lượng: Thêm vào giỏ hàng © 2026 EShop SUT. Dành cho mục đích kiểm thử."
+    },
+    {
+      "id": "login",
+      "url": "/login",
+      "title": "frontend-web",
+      "h1": [],
+      "h2": [
+        "Đăng Ký"
+      ],
+      "h3": [],
+      "headingsOrder": [
+        "H2:Đăng Ký"
+      ],
+      "inputs": [
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "",
+          "id": "",
+          "placeholder": "",
+          "required": true,
+          "disabled": false,
+          "readOnly": false,
+          "tabIndex": null,
+          "ariaLabel": "",
+          "hasLabel": false,
+          "labelText": "",
+          "autocomplete": ""
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "",
+          "id": "",
+          "placeholder": "",
+          "required": true,
+          "disabled": false,
+          "readOnly": false,
+          "tabIndex": null,
+          "ariaLabel": "",
+          "hasLabel": false,
+          "labelText": "",
+          "autocomplete": ""
+        }
+      ],
+      "buttons": [
+        {
+          "text": "Sign In",
+          "type": "submit",
+          "disabled": false,
+          "tabIndex": "1"
+        }
+      ],
+      "links": [
+        {
+          "text": "EShop",
+          "href": "/"
+        },
+        {
+          "text": "Giỏ hàng",
+          "href": "/cart"
+        },
+        {
+          "text": "Đăng nhập",
+          "href": "/login"
+        },
+        {
+          "text": "Đăng ký",
+          "href": "/register"
+        },
+        {
+          "text": "Quên mật khẩu?",
+          "href": "/forgot-password"
+        },
+        {
+          "text": "Đăng ký ngay",
+          "href": "/register"
+        }
+      ],
+      "images": [],
+      "tables": [],
+      "nav": [
+        {
+          "links": [
+            "Giỏ hàng",
+            "Đăng nhập",
+            "Đăng ký"
+          ],
+          "activeMarks": []
+        }
+      ],
+      "breadcrumb": false,
+      "lang": "en",
+      "dir": "(none)",
+      "darkModeQuery": false,
+      "bodyTextSample": "EShop Giỏ hàng Đăng nhập Đăng ký Đăng Ký Username Mật khẩu Quên mật khẩu? Sign In Chưa có tài khoản? Đăng ký ngay © 2026 EShop SUT. Dành cho mục đích kiểm thử."
+    },
+    {
+      "id": "register",
+      "url": "/register",
+      "title": "frontend-web",
+      "h1": [],
+      "h2": [
+        "Đăng Ký Tài Khoản"
+      ],
+      "h3": [],
+      "headingsOrder": [
+        "H2:Đăng Ký Tài Khoản"
+      ],
+      "inputs": [
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "",
+          "id": "",
+          "placeholder": "",
+          "required": true,
+          "disabled": false,
+          "readOnly": false,
+          "tabIndex": null,
+          "ariaLabel": "",
+          "hasLabel": false,
+          "labelText": "",
+          "autocomplete": ""
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "",
+          "id": "",
+          "placeholder": "",
+          "required": true,
+          "disabled": false,
+          "readOnly": false,
+          "tabIndex": null,
+          "ariaLabel": "",
+          "hasLabel": false,
+          "labelText": "",
+          "autocomplete": ""
+        },
+        {
+          "tag": "input",
+          "type": "password",
+          "name": "",
+          "id": "",
+          "placeholder": "",
+          "required": true,
+          "disabled": false,
+          "readOnly": false,
+          "tabIndex": null,
+          "ariaLabel": "",
+          "hasLabel": false,
+          "labelText": "",
+          "autocomplete": ""
+        }
+      ],
+      "buttons": [
+        {
+          "text": "Đăng Ký",
+          "type": "submit",
+          "disabled": false,
+          "tabIndex": null
+        }
+      ],
+      "links": [
+        {
+          "text": "EShop",
+          "href": "/"
+        },
+        {
+          "text": "Giỏ hàng",
+          "href": "/cart"
+        },
+        {
+          "text": "Đăng nhập",
+          "href": "/login"
+        },
+        {
+          "text": "Đăng ký",
+          "href": "/register"
+        },
+        {
+          "text": "Đăng nhập",
+          "href": "/login"
+        }
+      ],
+      "images": [],
+      "tables": [],
+      "nav": [
+        {
+          "links": [
+            "Giỏ hàng",
+            "Đăng nhập",
+            "Đăng ký"
+          ],
+          "activeMarks": []
+        }
+      ],
+      "breadcrumb": false,
+      "lang": "en",
+      "dir": "(none)",
+      "darkModeQuery": false,
+      "bodyTextSample": "EShop Giỏ hàng Đăng nhập Đăng ký Đăng Ký Tài Khoản Họ Tên Email Mật khẩu Yêu cầu: Tối thiểu 8 ký tự, có chữ hoa, chữ thường, số và ký tự đặc biệt. Đăng Ký Đã có tài khoản? Đăng nhập © 2026 EShop SUT. Dành cho mục đích kiểm thử."
+    },
+    {
+      "id": "forgot-password",
+      "url": "/forgot-password",
+      "title": "frontend-web",
+      "h1": [],
+      "h2": [
+        "Quên Mật Khẩu"
+      ],
+      "h3": [],
+      "headingsOrder": [
+        "H2:Quên Mật Khẩu"
+      ],
+      "inputs": [
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "",
+          "id": "",
+          "placeholder": "",
+          "required": true,
+          "disabled": false,
+          "readOnly": false,
+          "tabIndex": null,
+          "ariaLabel": "",
+          "hasLabel": false,
+          "labelText": "",
+          "autocomplete": ""
+        }
+      ],
+      "buttons": [
+        {
+          "text": "Lấy mã OTP",
+          "type": "submit",
+          "disabled": false,
+          "tabIndex": null
+        }
+      ],
+      "links": [
+        {
+          "text": "EShop",
+          "href": "/"
+        },
+        {
+          "text": "Giỏ hàng",
+          "href": "/cart"
+        },
+        {
+          "text": "Đăng nhập",
+          "href": "/login"
+        },
+        {
+          "text": "Đăng ký",
+          "href": "/register"
+        }
+      ],
+      "images": [],
+      "tables": [],
+      "nav": [
+        {
+          "links": [
+            "Giỏ hàng",
+            "Đăng nhập",
+            "Đăng ký"
+          ],
+          "activeMarks": []
+        }
+      ],
+      "breadcrumb": false,
+      "lang": "en",
+      "dir": "(none)",
+      "darkModeQuery": false,
+      "bodyTextSample": "EShop Giỏ hàng Đăng nhập Đăng ký Quên Mật Khẩu Nhập Email của bạn Lấy mã OTP © 2026 EShop SUT. Dành cho mục đích kiểm thử."
+    },
+    {
+      "id": "cart-empty",
+      "url": "/cart",
+      "title": "frontend-web",
+      "h1": [],
+      "h2": [
+        "Giỏ hàng của bạn đang trống"
+      ],
+      "h3": [],
+      "headingsOrder": [
+        "H2:Giỏ hàng của bạn đang trống"
+      ],
+      "inputs": [],
+      "buttons": [],
+      "links": [
+        {
+          "text": "EShop",
+          "href": "/"
+        },
+        {
+          "text": "Giỏ hàng",
+          "href": "/cart"
+        },
+        {
+          "text": "Đăng nhập",
+          "href": "/login"
+        },
+        {
+          "text": "Đăng ký",
+          "href": "/register"
+        },
+        {
+          "text": "Tiếp tục mua sắm",
+          "href": "/"
+        }
+      ],
+      "images": [],
+      "tables": [],
+      "nav": [
+        {
+          "links": [
+            "Giỏ hàng",
+            "Đăng nhập",
+            "Đăng ký"
+          ],
+          "activeMarks": []
+        }
+      ],
+      "breadcrumb": false,
+      "lang": "en",
+      "dir": "(none)",
+      "darkModeQuery": false,
+      "bodyTextSample": "EShop Giỏ hàng Đăng nhập Đăng ký Giỏ hàng của bạn đang trống Tiếp tục mua sắm © 2026 EShop SUT. Dành cho mục đích kiểm thử."
+    },
+    {
+      "id": "checkout-guest",
+      "url": "/checkout",
+      "title": "frontend-web",
+      "h1": [],
+      "h2": [
+        "Xác Nhận Đơn Hàng"
+      ],
+      "h3": [
+        "Sản phẩm:"
+      ],
+      "headingsOrder": [
+        "H2:Xác Nhận Đơn Hàng",
+        "H3:Sản phẩm:"
+      ],
+      "inputs": [
+        {
+          "tag": "input",
+          "type": "number",
+          "name": "",
+          "id": "",
+          "placeholder": "",
+          "required": false,
+          "disabled": false,
+          "readOnly": false,
+          "tabIndex": null,
+          "ariaLabel": "",
+          "hasLabel": false,
+          "labelText": "",
+          "autocomplete": ""
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "",
+          "id": "",
+          "placeholder": "Nhập mã giảm giá...",
+          "required": false,
+          "disabled": false,
+          "readOnly": false,
+          "tabIndex": null,
+          "ariaLabel": "",
+          "hasLabel": false,
+          "labelText": "",
+          "autocomplete": ""
+        }
+      ],
+      "buttons": [
+        {
+          "text": "Áp dụng",
+          "type": "submit",
+          "disabled": true,
+          "tabIndex": null
+        },
+        {
+          "text": "Xác Nhận Thanh Toán",
+          "type": "submit",
+          "disabled": false,
+          "tabIndex": null
+        }
+      ],
+      "links": [
+        {
+          "text": "EShop",
+          "href": "/"
+        },
+        {
+          "text": "Giỏ hàng",
+          "href": "/cart"
+        },
+        {
+          "text": "Đăng nhập",
+          "href": "/login"
+        },
+        {
+          "text": "Đăng ký",
+          "href": "/register"
+        }
+      ],
+      "images": [],
+      "tables": [],
+      "nav": [
+        {
+          "links": [
+            "Giỏ hàng",
+            "Đăng nhập",
+            "Đăng ký"
+          ],
+          "activeMarks": []
+        }
+      ],
+      "breadcrumb": false,
+      "lang": "en",
+      "dir": "(none)",
+      "darkModeQuery": false,
+      "bodyTextSample": "EShop Giỏ hàng Đăng nhập Đăng ký Xác Nhận Đơn Hàng Sản phẩm: Tổng tiền thanh toán (VND): Mã Giảm Giá Áp dụng Tổng thanh toán: 0 ₫ Xác Nhận Thanh Toán © 2026 EShop SUT. Dành cho mục đích kiểm thử."
+    },
+    {
+      "id": "profile-guest",
+      "url": "/profile",
+      "title": "frontend-web",
+      "h1": [],
+      "h2": [],
+      "h3": [],
+      "headingsOrder": [],
+      "inputs": [],
+      "buttons": [],
+      "links": [
+        {
+          "text": "EShop",
+          "href": "/"
+        },
+        {
+          "text": "Giỏ hàng",
+          "href": "/cart"
+        },
+        {
+          "text": "Đăng nhập",
+          "href": "/login"
+        },
+        {
+          "text": "Đăng ký",
+          "href": "/register"
+        }
+      ],
+      "images": [],
+      "tables": [],
+      "nav": [
+        {
+          "links": [
+            "Giỏ hàng",
+            "Đăng nhập",
+            "Đăng ký"
+          ],
+          "activeMarks": []
+        }
+      ],
+      "breadcrumb": false,
+      "lang": "en",
+      "dir": "(none)",
+      "darkModeQuery": false,
+      "bodyTextSample": "EShop Giỏ hàng Đăng nhập Đăng ký Vui lòng đăng nhập © 2026 EShop SUT. Dành cho mục đích kiểm thử."
+    }
+  ]
+}

@@ -1,0 +1,330 @@
+{
+  "ranAt": "2026-11-15T05:47:30.388Z",
+  "results": {
+    "IA-01-01": {
+      "status": "Failed",
+      "note": "Trang chủ có 2 thẻ <h1>: Danh sách sản phẩm | Hiển thị 5 sản phẩm",
+      "evidence": "screenshots/checklist/IA-01-01.png"
+    },
+    "IA-01-02": {
+      "status": "Failed",
+      "note": "Sai số lượng <h1>: /=2 h1 (heading đầu: H1); /login=0 h1 (heading đầu: H2); /register=0 h1 (heading đầu: H2); /forgot-password=0 h1 (heading đầu: H2); /cart=0 h1 (heading đầu: H2); /profile=0 h1 (heading đầu: none)",
+      "evidence": "screenshots/checklist/IA-01-02.png"
+    },
+    "IA-01-03": {
+      "status": "Failed",
+      "note": "html lang=\"en\" trong khi nội dung là tiếng Việt",
+      "evidence": "screenshots/checklist/IA-01-03.png"
+    },
+    "IA-01-05": {
+      "status": "Failed",
+      "note": "Home dùng \"VND\" (30,000,000 VND), Cart dùng \"₫\" — không nhất quán đơn vị",
+      "evidence": "screenshots/checklist/IA-01-05.png"
+    },
+    "IA-01-08": {
+      "status": "Failed",
+      "note": "Ngày hiển thị \"11/15/2026\" theo M/D/YYYY (tháng=11, ngày=15), không phải dd/mm/yyyy",
+      "evidence": "screenshots/checklist/IA-01-08.png"
+    },
+    "IA-01-09": {
+      "status": "Failed",
+      "note": "5/5 ảnh có alt rỗng (ví dụ: png?text=iPhone+15)",
+      "evidence": "screenshots/checklist/IA-01-09.png"
+    },
+    "IA-01-10": {
+      "status": "Failed",
+      "note": "6 node vi phạm color-contrast (ví dụ: <p class=\"text-red-500 font-bold mb-2\">30,000,000 VND</p>)",
+      "evidence": "screenshots/checklist/IA-01-10.png"
+    },
+    "IA-01-11": {
+      "status": "Passed",
+      "note": "focus trên BUTTON có outline/box-shadow",
+      "evidence": null
+    },
+    "IA-01-12": {
+      "status": "Passed",
+      "note": "",
+      "evidence": null
+    },
+    "IA-01-13": {
+      "status": "Passed",
+      "note": "",
+      "evidence": null
+    },
+    "IA-01-14": {
+      "status": "Passed",
+      "note": "Không có dark theme; nền vẫn sáng (rgba(0, 0, 0, 0)) và không phát sinh thêm lỗi contrast so với light (6 node).",
+      "evidence": null
+    },
+    "IA-01-15": {
+      "status": "Passed",
+      "note": "",
+      "evidence": null
+    },
+    "IA-01-16": {
+      "status": "Failed",
+      "note": "15 control < 44px (ví dụ \"EShop\": 70×32)",
+      "evidence": "screenshots/checklist/IA-01-16.png"
+    },
+    "IA-02-01": {
+      "status": "Failed",
+      "note": "Thiếu dấu * ở 5 trường: /login: \"(không nhãn)\", /login: \"(không nhãn)\", /register: \"(không nhãn)\"",
+      "evidence": "screenshots/checklist/IA-02-01.png"
+    },
+    "IA-02-02": {
+      "status": "Failed",
+      "note": "Không có input type=email — /login: types=[text,text]; /register: types=[text,text,password]",
+      "evidence": "screenshots/checklist/IA-02-02.png"
+    },
+    "IA-02-03": {
+      "status": "Failed",
+      "note": "Ô mật khẩu ở /login có type=\"text\" — ký tự hiện rõ",
+      "evidence": "screenshots/checklist/IA-02-03.png"
+    },
+    "IA-02-04": {
+      "status": "Failed",
+      "note": "8 input không có label liên kết: /login: \"\", /login: \"\", /register: \"\", /register: \"\"",
+      "evidence": "screenshots/checklist/IA-02-04.png"
+    },
+    "IA-02-05": {
+      "status": "Failed",
+      "note": "Lỗi nằm dưới nút submit (\"Đăng nhập thất bại. Vui lòng kiểm tra lại.\")",
+      "evidence": "screenshots/checklist/IA-02-05.png"
+    },
+    "IA-02-07": {
+      "status": "Failed",
+      "note": "Không có step indicator (\"Bước 1/2\") ở bước lấy OTP",
+      "evidence": "screenshots/checklist/IA-02-07.png"
+    },
+    "IA-02-08": {
+      "status": "Passed",
+      "note": "",
+      "evidence": null
+    },
+    "IA-02-09": {
+      "status": "Failed",
+      "note": "Nút vẫn enabled và giữ nhãn \"Sign In\" ngay sau khi bấm — có thể submit 2 lần",
+      "evidence": "screenshots/checklist/IA-02-09.png"
+    },
+    "IA-02-10": {
+      "status": "Failed",
+      "note": "Ô số lượng thiếu ràng buộc (min=null, step=null)",
+      "evidence": "screenshots/checklist/IA-02-10.png"
+    },
+    "IA-02-11": {
+      "status": "Failed",
+      "note": "Tổng tiền là input number editable (không readonly/disabled)",
+      "evidence": "screenshots/checklist/IA-02-11.png"
+    },
+    "IA-02-12": {
+      "status": "Failed",
+      "note": "Người chưa đăng nhập vẫn thấy form thanh toán đầy đủ (không bị chặn)",
+      "evidence": "screenshots/checklist/IA-02-12.png"
+    },
+    "IA-02-13": {
+      "status": "Failed",
+      "note": "Thiếu autocomplete: /login input#0 (text), /login input#1 (text), /register input#0 (text), /register input#1 (text), /register input#2 (password)",
+      "evidence": "screenshots/checklist/IA-02-13.png"
+    },
+    "IA-02-14": {
+      "status": "Failed",
+      "note": "Ô tìm kiếm chỉ có placeholder \"Tìm kiếm...\", không có label/aria-label",
+      "evidence": "screenshots/checklist/IA-02-14.png"
+    },
+    "IA-02-15": {
+      "status": "Failed",
+      "note": "Email có khoảng trắng đầu/cuối bị từ chối (không trim trước khi gửi)",
+      "evidence": "screenshots/checklist/IA-02-15.png"
+    },
+    "IA-02-16": {
+      "status": "Failed",
+      "note": "Chỉ có 1 trường mật khẩu — thiếu \"Xác nhận mật khẩu\" (FR-01)",
+      "evidence": "screenshots/checklist/IA-02-16.png"
+    },
+    "IA-03-01": {
+      "status": "Passed",
+      "note": "",
+      "evidence": null
+    },
+    "IA-03-02": {
+      "status": "Failed",
+      "note": "Link \"Giỏ hàng\" không có badge số lượng (nav text: \"Giỏ hàng | Đăng nhập | Đăng ký\")",
+      "evidence": "screenshots/checklist/IA-03-02.png"
+    },
+    "IA-03-03": {
+      "status": "Failed",
+      "note": "Nút đăng xuất có nhãn \"Thoát\" (FR-23 yêu cầu \"Đăng xuất\")",
+      "evidence": "screenshots/checklist/IA-03-03.png"
+    },
+    "IA-03-04": {
+      "status": "Failed",
+      "note": "Không có breadcrumb ở: /cart, /checkout, /product/1",
+      "evidence": "screenshots/checklist/IA-03-04.png"
+    },
+    "IA-03-05": {
+      "status": "Passed",
+      "note": "",
+      "evidence": null
+    },
+    "IA-03-06": {
+      "status": "Passed",
+      "note": "",
+      "evidence": null
+    },
+    "IA-03-07": {
+      "status": "Passed",
+      "note": "",
+      "evidence": null
+    },
+    "IA-03-08": {
+      "status": "Passed",
+      "note": "",
+      "evidence": null
+    },
+    "IA-03-09": {
+      "status": "Failed",
+      "note": "Sau F5 giỏ hàng trống — giỏ chỉ lưu trong React state, không persist",
+      "evidence": "screenshots/checklist/IA-03-09.png"
+    },
+    "IA-03-10": {
+      "status": "Passed",
+      "note": "",
+      "evidence": null
+    },
+    "IA-03-11": {
+      "status": "Passed",
+      "note": "",
+      "evidence": null
+    },
+    "IA-03-16": {
+      "status": "Passed",
+      "note": "",
+      "evidence": null
+    },
+    "IA-04-01": {
+      "status": "Failed",
+      "note": "Không có toast/badge sau khi thêm vào giỏ; người dùng không biết thao tác đã thành công",
+      "evidence": "screenshots/checklist/IA-04-01.png"
+    },
+    "IA-04-02": {
+      "status": "Failed",
+      "note": "Click đầu tiên vào \"Thêm vào giỏ hàng\" không thêm gì (cart vẫn trống) — phải click 2 lần",
+      "evidence": "screenshots/checklist/IA-04-02.png"
+    },
+    "IA-04-03": {
+      "status": "Failed",
+      "note": "Click \"Xóa\" xóa ngay không hỏi xác nhận — item đã bị xóa khỏi giỏ",
+      "evidence": "screenshots/checklist/IA-04-03.png"
+    },
+    "IA-04-04": {
+      "status": "Failed",
+      "note": "Empty state chỉ có chữ \"Giỏ hàng của bạn đang trống\", không có icon/hình minh họa (SVG/IMG=0)",
+      "evidence": "screenshots/checklist/IA-04-04.png"
+    },
+    "IA-04-05": {
+      "status": "Failed",
+      "note": "Không có empty state; trang chỉ còn tiêu đề + dòng \"Kết quả tìm kiếm cho: …\", không thông báo 0 kết quả",
+      "evidence": "screenshots/checklist/IA-04-05.png"
+    },
+    "IA-04-06": {
+      "status": "Failed",
+      "note": "Trong 2.5s chờ API không có loading indicator; chỉ hiện tiêu đề và lưới trống",
+      "evidence": "screenshots/checklist/IA-04-06.png"
+    },
+    "IA-04-07": {
+      "status": "Failed",
+      "note": "Khi API bị chặn, trang không có thông báo lỗi hay nút thử lại (im lặng thất bại)",
+      "evidence": "screenshots/checklist/IA-04-07.png"
+    },
+    "IA-04-08": {
+      "status": "Failed",
+      "note": "Feedback hiển thị giảm \"-270,000,000 ₫\" và thành tiền \"300,000,000 ₫\" — số tiền giảm âm/lớn hơn tổng, gây hiểu sai",
+      "evidence": "screenshots/checklist/IA-04-08.png"
+    },
+    "IA-04-09": {
+      "status": "Passed",
+      "note": "{\"KHONGCO\":\"Mã giảm giá không tồn tại hoặc đã bị vô hiệu hóa\",\"EXPIRED\":\"Mã giảm giá đã hết hạn\"}",
+      "evidence": null
+    },
+    "IA-04-11": {
+      "status": "Failed",
+      "note": "Sau khi thanh toán thành công, giỏ hàng vẫn còn sản phẩm (clearCart không được gọi)",
+      "evidence": "screenshots/checklist/IA-04-11.png"
+    },
+    "IA-04-12": {
+      "status": "Failed",
+      "note": "Chuỗi \"<b>abc</b>\" được render thành HTML (<b> xuất hiện 1 lần) — dangerouslySetInnerHTML",
+      "evidence": "screenshots/checklist/IA-04-12.png"
+    },
+    "IA-04-13": {
+      "status": "Failed",
+      "note": "Lộ chi tiết kỹ thuật trong thông báo: \"Lỗi khi thanh toán: Network Error\"",
+      "evidence": "screenshots/checklist/IA-04-13.png"
+    },
+    "IA-04-15": {
+      "status": "Failed",
+      "note": "Bấm \"Hủy đơn\" gọi API ngay (dialog xuất hiện sau request chỉ là alert kết quả), không có bước xác nhận",
+      "evidence": "screenshots/checklist/IA-04-15.png"
+    },
+    "IA-01-04": {
+      "status": "Not executed",
+      "note": "Manual check — xem evidence/screenshots",
+      "evidence": null
+    },
+    "IA-01-06": {
+      "status": "Not executed",
+      "note": "Manual check — xem evidence/screenshots",
+      "evidence": null
+    },
+    "IA-01-07": {
+      "status": "Not executed",
+      "note": "Manual check — xem evidence/screenshots",
+      "evidence": null
+    },
+    "IA-02-06": {
+      "status": "Not executed",
+      "note": "Manual check — xem evidence/screenshots",
+      "evidence": null
+    },
+    "IA-02-17": {
+      "status": "Not executed",
+      "note": "Manual check — xem evidence/screenshots",
+      "evidence": null
+    },
+    "IA-03-12": {
+      "status": "Not executed",
+      "note": "Manual check — xem evidence/screenshots",
+      "evidence": null
+    },
+    "IA-03-13": {
+      "status": "Not executed",
+      "note": "Manual check — xem evidence/screenshots",
+      "evidence": null
+    },
+    "IA-03-14": {
+      "status": "Not executed",
+      "note": "Manual check — xem evidence/screenshots",
+      "evidence": null
+    },
+    "IA-03-15": {
+      "status": "Not executed",
+      "note": "Manual check — xem evidence/screenshots",
+      "evidence": null
+    },
+    "IA-04-10": {
+      "status": "Not executed",
+      "note": "Manual check — xem evidence/screenshots",
+      "evidence": null
+    },
+    "IA-04-14": {
+      "status": "Not executed",
+      "note": "Manual check — xem evidence/screenshots",
+      "evidence": null
+    },
+    "IA-04-16": {
+      "status": "Not executed",
+      "note": "Manual check — xem evidence/screenshots",
+      "evidence": null
+    }
+  }
+}

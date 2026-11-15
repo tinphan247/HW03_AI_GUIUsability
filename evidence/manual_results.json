@@ -1,0 +1,60 @@
+{
+  "capturedAt": "2026-11-15T13:40:00+07:00",
+  "method": "manual — quan sát screenshot + đo computed style/DOM (scripts/capture_evidence.js)",
+  "results": {
+    "IA-01-04": {
+      "status": "Failed",
+      "note": "Nhãn chức năng trộn tiếng Anh: /login hiển thị \"Username\", \"Sign In\" cạnh \"Đăng Ký\"; admin hiển thị \"Admin Login\", \"Login\".",
+      "evidence": "screenshots/checklist/manual-IA-01-04-login-language.png"
+    },
+    "IA-01-06": {
+      "status": "Failed",
+      "note": "Nút hành động chính không dùng một màu: \"Đăng Ký\" đỏ rgb(239,68,68), \"Tiến hành thanh toán\" xanh lá rgb(34,197,94), \"Cập nhật\" xanh dương — không theo FR-21 (primary = blue-600).",
+      "evidence": "screenshots/checklist/manual-IA-01-06-register-primary.png"
+    },
+    "IA-01-07": {
+      "status": "Failed",
+      "note": "Nút phá hủy \"Xóa\" trong giỏ là text button không nền (rgba(0,0,0,0)), không dùng màu đỏ như \"Hủy đơn\" — người dùng dễ bấm nhầm.",
+      "evidence": "screenshots/checklist/manual-IA-01-07-cart-buttons.png"
+    },
+    "IA-02-06": {
+      "status": "Failed",
+      "note": "Lỗi đăng nhập chỉ nói \"Đăng nhập thất bại. Vui lòng kiểm tra lại.\" — không chỉ ra trường nào sai (email không tồn tại hay mật khẩu sai) và không có cách sửa.",
+      "evidence": "screenshots/checklist/manual-IA-02-06-login-error.png"
+    },
+    "IA-02-17": {
+      "status": "Passed",
+      "note": "Register có hint ngay dưới field: \"Yêu cầu: Tối thiểu 8 ký tự, có chữ hoa, chữ thường, số và ký tự đặc biệt.\""
+    },
+    "IA-03-12": {
+      "status": "Passed",
+      "note": "Tab \"Sản phẩm\" đang chọn có class text-blue-400, khác 6 tab còn lại (hover:text-blue-300)."
+    },
+    "IA-03-13": {
+      "status": "Passed",
+      "note": "Ở 375×812 nav rộng 232/232 px, 3 link hiển thị đủ, không cần scroll ngang (h1 bị wrap hẹp — đã ghi ở IA-01-12)."
+    },
+    "IA-03-14": {
+      "status": "Passed",
+      "note": "Không có control icon-only ở /cart: mọi link/button đều có text hiển thị (danh sách control thiếu text = rỗng)."
+    },
+    "IA-03-15": {
+      "status": "Passed",
+      "note": "Từ /product/1 bấm Back → về http://localhost:5173/ đúng trang trước, không vòng lặp."
+    },
+    "IA-04-10": {
+      "status": "Passed",
+      "note": "Trạng thái dịch tiếng Việt và phân biệt màu: \"Chờ xác nhận\" vàng, \"Đã giao\" xanh lá, \"Đã hủy\" đỏ."
+    },
+    "IA-04-14": {
+      "status": "Failed",
+      "note": "Sau khi bấm \"Sign In\", nhãn nút giữ nguyên \"Sign In\", không có spinner/\"Đang đăng nhập…\" — không có phản hồi đang xử lý.",
+      "evidence": "screenshots/checklist/manual-IA-04-14-submit-state.png"
+    },
+    "IA-04-16": {
+      "status": "Failed",
+      "note": "Không có toast/banner thành công nào trên UI (hasToast=false) và không có nút đóng (hasCloseButton=false); các thông báo inline như coupon thành công chỉ mất khi người dùng sửa input.",
+      "evidence": "screenshots/checklist/manual-IA-04-16-no-toast.png"
+    }
+  }
+}
