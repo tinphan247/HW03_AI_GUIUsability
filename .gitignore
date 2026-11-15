@@ -1,0 +1,16 @@
+# OS / editor
+Thumbs.db
+.DS_Store
+.vscode/
+
+# Node
+node_modules/
+npm-debug.log*
+
+# Generated evidence that is too large for git (recordings stay local, links in notes)
+usability/sessions/*/recording*.mp4
+usability/pilot/recording*.mp4
+evidence/raw/
+
+# Build artefacts
+*.zip
