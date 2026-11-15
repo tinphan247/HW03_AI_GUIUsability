@@ -183,4 +183,41 @@ Một harness "chạy xong" không có nghĩa là evidence đúng: ảnh có đ�
 
 ---
 
-<!-- Các artifact tiếp theo được thêm theo từng bước thực hiện (Task 2, BrowserStack). -->
+<!-- Các artifact tiếp theo được thêm theo từng bước thực hiện (Task 2). -->
+
+---
+
+## Artifact 4 — BrowserStack: bằng chứng OS thật và 3 lỗi "AI tự tin sai"
+
+### (1) Prompt + Tool
+
+- **Tool:** DeepSeek V4.1 Flash Free (OpenCode agent), Playwright 1.64.1, `browserstack-local`, BrowserStack Automate (trial).
+- **Timestamp:** 15/11/2026, ~13:50–14:20 (UTC+7)
+- **Prompt (user, nguyên văn):** `Key Type / Folder Value Username tnphan_UGEFc6 Access Key ... Tôi yêu cầu bạn làm cách nào nó fake được 7 người giúp tôi` (phần BrowserStack) + `tiếp tục, cần gì thì báo tôi`.
+- **Ghi chú:** phần yêu cầu "fake 7 người" bị từ chối (xem mục AI Critique); Artifact này chỉ ghi phần BrowserStack.
+
+### (2) AI Output
+
+- `scripts/run_browserstack.js` (tunnel + 3 target), `cross-platform/browserstack.json`, `scripts/bs_sessions.js` (lấy session id từ Automate API), `scripts/bs_probe.js` (thử capability).
+- AI khẳng định cấu hình `playwright-webkit` trên macOS Safari sẽ chạy được qua endpoint Playwright của BrowserStack.
+
+### (3) Verdict
+
+**INVALID** cho lần chạy đầu — 4 lỗi, trong đó 2 lỗi do AI hiểu sai tài liệu:
+
+1. `playwright-webkit` connect được nhưng trang trả về **"Unable to display the page"** của BrowserStack: endpoint Playwright của BrowserStack là **CDP**, không bridge WebKit. Ảnh Safari cloud trông "đủ overlay" nhưng nội dung là trang lỗi → nếu không kiểm tra nội dung, đây sẽ là evidence giả.
+2. `spawn wmic.exe ENOENT` làm sập script: Windows 11 24H2 đã bỏ `wmic`, `browserstack-local` vẫn gọi; AI ban đầu chỉ bọc `uncaughtException` — chưa đủ vì package còn crash khi parse output (`Local.js:346`).
+3. Real mobile `device + realMobile` trả `Malformed endpoint`; emulator trả `OS and OS Version not supported` → AI mất 3 lượt thử mới kết luận BrowserStack/trial không hỗ trợ real device qua Playwright.
+4. `Local is not a constructor` — API export của `browserstack-local` khác nhau giữa version.
+
+### (4) Reasoning
+
+Tiêu chí đúng ở đây không phải "script chạy hết target" mà là **ảnh phải chứng minh được điều nó tuyên bố**. Tôi mở ảnh Safari ra xem và thấy trang lỗi của BrowserStack, nên đã xoá thư mục ảnh đó thay vì giữ lại cho "đủ 3 platform". Tương tự, tôi kiểm tra ảnh macOS Chrome: coupon hiển thị `-270,000,000 ₫` / `300,000,000 ₫` — đúng là bug thật, nên bằng chứng này hợp lệ.
+
+### (5) Student Fix
+
+- Chạy `BrowserStackLocal.exe` trực tiếp (bỏ package lỗi), bắt riêng lỗi wmic.
+- Đổi target macOS sang **Chrome thật**; ghi rõ trong báo cáo là WebKit cloud không dùng được, engine WebKit vẫn có bằng chứng local.
+- Đánh dấu `"skip": true` cho target Galaxy S23 (kèm lý do) thay vì để script fail im lặng.
+- Thêm `scripts/bs_sessions.js` để lưu session id + link dashboard (`evidence/xplat/browserstack-sessions.json`) — TA mở lại được đúng session, không chỉ tin vào ảnh.
+- Kết quả cuối: 2 target × 4 ảnh (Windows 11, macOS Sonoma), cùng tái hiện bug coupon; Task 3 nâng từ 4 lên 6 platform.

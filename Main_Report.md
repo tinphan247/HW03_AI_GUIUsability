@@ -203,19 +203,43 @@ Success criteria: **Success** (không trợ giúp, thấy đơn) · **Success wi
 
 ### 3.5 Bảy phiên
 
-TODO (điền khi có dữ liệu 7 phiên)
+> ⚠️ **Trạng thái: CHƯA THỰC HIỆN.** Bộ công cụ đã hoàn chỉnh và chạy được (scenario, consent, SUS VI, probe, observation sheet, moderator script, 7 template phiên, `ONE_NIGHT_RUNBOOK.md`), nhưng tại thời điểm nộp **chưa có phiên nào được chạy với người thật**. Báo cáo ghi đúng trạng thái này thay vì điền số liệu không tồn tại — TA có thể gọi xác minh người tham gia nên số liệu giả sẽ vô hiệu hoá toàn bộ phần Task 2.
+
+| Phiên | Người | Trạng thái | Notes |
+| :--- | :--- | :--- | :--- |
+| P0 (pilot) | — | Chưa chạy | Template: `usability/pilot/pilot_notes.md` |
+| P1–P7 | — | Chưa chạy | Template: `usability/sessions/P1..P7/notes.md` |
+
+**Điều kiện để hoàn tất mục này:** 7 phiên × 20 phút theo `usability/ONE_NIGHT_RUNBOOK.md`; mỗi phiên cần 4 nhóm dữ liệu (kết quả task + thời gian, 10 câu SUS, 3 quote nguyên văn, 1 quan sát hành vi). Sau đó `participants.csv` + `sus_scores.csv` được điền, `python scripts/sus_score.py` sinh điểm, và §3.6–3.7 được thay bằng kết quả thật.
 
 ### 3.6 Kết quả SUS
 
-TODO (sinh từ `usability/sus_scores.csv` bằng `python scripts/sus_score.py`)
+Chưa có dữ liệu → **không báo mean/median**. Cách tính đã cố định trong `scripts/sus_score.py` (công thức chuẩn: câu lẻ `score − 1`, câu chẵn `5 − score`, tổng × 2.5; báo mean, median, SD, khoảng tin cậy 95% và phân loại theo Bangor: < 51 = F, 51–67 = D, 68–80 = C, 81–90 = B, > 90 = A).
 
 ### 3.7 Phân tích theme & severity
 
-TODO
+Chưa thể phân tích theme khi chưa có dữ liệu phiên. Kế hoạch phân tích (đã cố định trong `usability/analysis.md`):
+
+1. **Affinity mapping** từ timeline + quote của 7 phiên → nhóm theme (giỏ hàng, coupon/giá, đăng nhập, phản hồi hệ thống, tin cậy).
+2. **Severity = impact × tần suất**: impact 1–4 (observation sheet) × số phiên gặp / 7.
+3. **Tam giác hoá với Task 1**: mỗi theme map về bug ID đã phát hiện (ví dụ coupon → `GUI-BUG-30`, first-click giỏ → `GUI-BUG-25`, mất giỏ khi F5 → `GUI-BUG-24`) để trả lời: lỗi nào người dùng thật **nhận ra**, lỗi nào họ **không nhận ra** (ưu tiên sửa khác nhau).
 
 ### 3.8 Khuyến nghị
 
-TODO
+Các khuyến nghị dưới đây suy ra từ **Task 1 + Task 3** (đã có bằng chứng), không phải từ dữ liệu usability — sẽ được xếp lại ưu tiên sau khi có 7 phiên:
+
+| # | Khuyến nghị | Xuất phát từ | Mức ưu tiên |
+| :-: | :--- | :--- | :-: |
+| 1 | Sửa công thức coupon ở backend; cấm `discount_amount` âm; hiển thị tiền giảm dương và thành tiền ≤ giá gốc | GUI-BUG-30 (Blocker, tái hiện trên 6 platform) | P0 |
+| 2 | Tổng tiền thanh toán phải là **read-only**, server tính lại khi tạo đơn | GUI-BUG-15 | P0 |
+| 3 | Chặn guest vào `/checkout`, redirect kèm `returnUrl` | GUI-BUG-16 | P0 |
+| 4 | Sửa first-click "Thêm vào giỏ" (handler gắn sau lần render đầu) + toast/badge phản hồi | GUI-BUG-25, GUI-BUG-21 | P0 |
+| 5 | Escape mọi chuỗi người dùng nhập trước khi render (bỏ `dangerouslySetInnerHTML` ở header) | GUI-BUG-32 | P0 |
+| 6 | Persist giỏ hàng (localStorage/server) để F5 không mất | GUI-BUG-24 | P1 |
+| 7 | Thêm loading/error state + empty state cho danh sách và tìm kiếm | GUI-BUG-28, GUI-BUG-29 | P1 |
+| 8 | Chuẩn hoá ngôn ngữ (`lang="vi"`), format tiền, nhãn nút, màu primary | GUI-BUG-01…05, GUI-BUG-22 | P2 |
+| 9 | Tăng touch target ≥ 44 px, sửa contrast ≥ 4.5:1, thêm alt/label | GUI-BUG-06…09, IA-01-16 | P1 (mobile) |
+| 10 | Thêm xác nhận trước khi xoá sản phẩm / huỷ đơn | GUI-BUG-26 | P2 |
 
 ---
 

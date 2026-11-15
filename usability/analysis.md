@@ -3,13 +3,13 @@
 **Flow:** Đăng ký → tìm sản phẩm → thêm giỏ → áp coupon SAVE10 → thanh toán → xem lịch sử đơn.
 **Dữ liệu nguồn:** `usability/participants.csv`, `usability/sus_scores.csv`, `usability/sessions/P1…P7/notes.md`, `usability/pilot/pilot_notes.md`.
 
-> Trạng thái: chờ dữ liệu 7 phiên. Các bảng dưới được điền từ notes + CSV; không suy diễn số liệu.
+> **Trạng thái: CHƯA CÓ DỮ LIỆU.** Chưa chạy phiên nào với người thật. File này giữ (a) khung phân tích đã định nghĩa trước, (b) **danh sách theme dự kiến** suy ra từ 34 bug của Task 1 — chưa phải kết quả. Khi có notes + SUS của 7 phiên, các bảng được điền từ dữ liệu thật; không suy diễn số liệu.
 
 ## 1. Tổng quan mẫu
 
 | Field | Value |
 | :--- | :--- |
-| Số phiên hợp lệ | TODO / 7 |
+| Số phiên hợp lệ | 0 / 7 (chưa chạy) |
 | Độ tuổi | TODO |
 | Nghề nghiệp | TODO |
 | Tần suất mua online | TODO |
@@ -37,7 +37,7 @@ Xem `usability/sus_results.md` (sinh bằng `python scripts/sus_score.py`).
 | Min – Max | TODO |
 | Diễn giải | TODO |
 
-## 4. Theme (affinity)
+## 4. Theme dự kiến (giả thuyết từ Task 1 — chờ xác nhận bằng dữ liệu)
 
 | Theme | Mô tả | Số người gặp | Bước | Evidence |
 | :--- | :--- | :-: | :--- | :--- |

@@ -83,7 +83,7 @@
 
 | Hạng mục | Trạng thái | Ghi chú |
 | :--- | :--- | :--- |
-| 7 phiên usability | ⏳ chờ dữ liệu | Kit đã đủ (`usability/`), chờ notes/SUS của 7 người để điền `analysis.md` + Main_Report §3.5–3.8 |
+| 7 phiên usability | ⛔ chưa chạy phiên nào | Kit đầy đủ (`usability/` + `ONE_NIGHT_RUNBOOK.md`) nhưng **chưa có dữ liệu người thật**; §3.5–3.8 ghi rõ trạng thái thay vì điền số giả. Cần 7 phiên × 20 phút để hoàn tất |
 | GitHub Issues | ✅ | 34 issue tại https://github.com/tinphan247/HW03_AI_GUIUsability/issues (mỗi issue có screenshot + steps + severity label) |
 | BrowserStack | ✅ 2/3 target | Windows 11 Chrome + macOS Sonoma Chrome (real) trong `screenshots/cross-platform/bs-*`; Galaxy S23 bị BrowserStack chặn (`Malformed endpoint`) — ghi ở `cross-platform/README.md` §5 |
 | Video demo skill | ⏳ chờ quay | Kịch bản + timeline ở `skills/README.md` |
