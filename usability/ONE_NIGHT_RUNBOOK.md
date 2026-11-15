@@ -16,6 +16,10 @@
 
 ## 1. Lịch 1 buổi tối (7 người)
 
+> **Người ở xa không ngồi được cạnh bạn?** Xem `usability/PARTICIPANT_GUIDE.md` — có 3 cách
+> tham gia (trực tiếp / Zoom điều khiển từ xa ⭐ / Meet chỉ dẫn qua lời) + kịch bản đọc cho
+> người tham gia + danh sách câu không được nói.
+
 | Giờ | Người | Ghi chú |
 | :--- | :--- | :--- |
 | 18:30 | P0 (pilot) | Chạy thử, sửa lời lẽ scenario nếu cần — **không tính vào 7** |
