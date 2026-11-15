@@ -49,10 +49,14 @@ Lần đầu mở có thể chậm ~1 phút (server khởi động) — chờ nh
 
 ## 2. 16 câu hỏi (theo đúng thứ tự form hiện tại)
 
+> **Không có câu "mã phiên P1…P7".** Người tham gia không phải nhớ/gõ mã — định danh lấy từ
+> **họ tên + SĐT** họ tự điền (thứ họ biết sẵn). Script tự đánh `P1…P7` theo thứ tự response
+> và che thông tin khi ghi `participants.csv`.
+
 | # | Câu | Kiểu | Required |
 | :-: | :--- | :--- | :-: |
 | 1 | `Tôi đồng ý tham gia (dữ liệu dùng cho bài tập - thông tin liên hệ được che)` | Checkboxes (`Đồng ý`) | ✅ |
-| 2 | `Mã phiên P? P1 - P7 (người mời bạn cung cấp - ví dụ P1)` | Short answer | ✅ |
+| 2 | `Họ tên hoặc biệt danh của bạn (báo cáo chỉ dùng mã P1 - P7 - tên sẽ được che)` | Short answer | ✅ |
 | 3 | `Số điện thoại hoặc Zalo liên hệ: (Dùng để Trợ giảng xác minh ngẫu nhiên bạn có tham gia test thật, sẽ được che 4 số giữa trong báo cáo nộp)` | Short answer | ✅ |
 | 4 | `Tuổi của bạn` | Short answer | ✅ |
 | 5 | `Bạn hoàn thành tác vụ (tạo tài khoản → mua điện thoại → áp mã SAVE10 → thanh toán → xem lại đơn) thế nào?` | Multiple choice (3 lựa chọn) | ✅ |

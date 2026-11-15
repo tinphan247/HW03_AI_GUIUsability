@@ -16,7 +16,7 @@ THỜI GIAN: [ngày/giờ], mất khoảng 25 phút (20 phút dùng thử + 5 ph
 BẠN CẦN: 1 máy tính hoặc điện thoại có trình duyệt (dùng được cả 2).
 LINK TRANG: https://eshop-sut-snowy.vercel.app/
    ⏳ Lần đầu mở có thể chậm ~1 phút (server khởi động) — chờ nhé, đừng refresh liên tục.
-MÃ PHIÊN CỦA BẠN: P_  (nhớ số này, điền vào form ở bước cuối)
+MÃ PHIÊN: không cần — form chỉ hỏi họ tên + SĐT/Zalo (báo cáo sẽ che).
 
 Bạn sẽ làm 1 việc như người mua hàng thật trên một trang bán điện thoại:
 tạo tài khoản → tìm 1 chiếc điện thoại phù hợp công việc (ngân sách dưới 50 triệu)
@@ -32,7 +32,7 @@ Nếu mình gọi video cùng: bạn cứ nói to suy nghĩ ("đang tìm nút �
 
 | Cách | Phù hợp khi | Bạn (người chạy test) cần làm |
 | :--- | :--- | :--- |
-| **D. Link host công khai** ⭐ khuyên dùng | Hầu hết trường hợp — người ở xa dùng **thiết bị của chính họ** | Gửi link `https://eshop-sut-snowy.vercel.app/` + mã phiên. **Không moderator trực tiếp**: thời gian do họ tự ghi vào form, quote lấy từ form + tin nhắn. Ghi vào notes: `hinh-thuc: online, khong moderator truc tiep` |
+| **D. Link host công khai** ⭐ khuyên dùng | Hầu hết trường hợp — người ở xa dùng **thiết bị của chính họ** | Gửi link form. **Không moderator trực tiếp**: thời gian do họ tự ghi vào form, quote lấy từ form + tin nhắn. Ghi vào notes: `hinh-thuc: online, khong moderator truc tiep` |
 | **A. Trực tiếp** | Bạn bè cùng khu | Mời tới, ngồi cạnh nhưng **không ra chỉ dẫn**, mở sẵn link host (hoặc `localhost:5173`) |
 | **B. Zoom + điều khiển từ xa** | Muốn quan sát thật khi người ở xa có máy tính | Zoom share màn hình → người tham gia **Request Remote Control** → họ tự thao tác; bạn bấm giờ + đếm gợi ý như trực tiếp |
 | **C. Meet/Facebook + bạn điều khiển theo lời** | Không cài được Zoom | Gọi video, họ chỉ dẫn, bạn bấm theo. Ghi chú: cách này đo "độ dễ hiểu bằng lời" — ghi vào notes |
@@ -52,7 +52,7 @@ Nếu mình gọi video cùng: bạn cứ nói to suy nghĩ ("đang tìm nút �
 4. Nói to suy nghĩ suốt phiên. Bí thì im 10 giây mình sẽ hỏi "bạn đang nghĩ gì?".
 5. Không sao nếu không xong — dừng cũng được.
 6. Xong (hoặc dừng) → bạn mở link form này và điền ~1 phút: [LINK FORM]
-   Điền mã phiên: P_
+   Form hỏi họ tên, SĐT/Zalo, tuổi, rồi 10 câu đánh giá nhanh.
 ```
 
 ### Bản không moderator (cách D — tự làm ở nhà)
@@ -61,8 +61,8 @@ Nếu mình gọi video cùng: bạn cứ nói to suy nghĩ ("đang tìm nút �
 1. Mở trang: https://eshop-sut-snowy.vercel.app/ (lần đầu chậm ~1 phút là bình thường).
 2. Nhiệm vụ như trên; bấm giờ từ lúc bạn bắt đầu đọc nhiệm vụ tới khi xong (hoặc bỏ cuộc).
 3. Ghi nhớ / chụp màn hình những chỗ bạn thấy lạ hoặc bực mình.
-4. Điền form ~1 phút: [LINK FORM] — mã phiên P_
-   (kể cả khi không hoàn thành — chọn đúng câu mô tả thử của bạn)
+4. Điền form ~1 phút: [LINK FORM]
+   (kể cả khi không hoàn thành — chọn đúng câu mô tả lần thử của bạn)
 ```
 
 ## 3. Những câu KHÔNG được nói trong phiên (làm lệch kết quả)

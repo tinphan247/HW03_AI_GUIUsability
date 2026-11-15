@@ -12,7 +12,7 @@ P1 | 22 | Sinh viên CNTT | 0912345678 | 15/11 19:00 | Chrome / Windows 11 | Suc
 
 | # | Trường | Ghi chú |
 | :-: | :--- | :--- |
-| 1 | Mã phiên | `P1`…`P7`; `P0` = pilot (không tính vào 7) |
+| 1 | Mã phiên | **bạn tự đánh** `P1`…`P7` theo thứ tự phiên bạn chạy (người tham gia không thấy mã này); `P0` = pilot (không tính vào 7) |
 | 2 | Tuổi | số, ví dụ `22` |
 | 3 | Nghề nghiệp | tự do, ví dụ `Nhân viên văn phòng` |
 | 4 | SĐT hoặc email | **đầy đủ** (báo cáo sẽ tự che 4 số giữa) |
@@ -26,6 +26,11 @@ P1 | 22 | Sinh viên CNTT | 0912345678 | 15/11 19:00 | Chrome / Windows 11 | Suc
 | 12 | 1 câu quote | nguyên văn, đặt trong `"..."` |
 
 > Trường nào không đo được: ghi `khong-do` — script sẽ để trống, **không tự điền số**.
+>
+> **P1…P7 ở đây là nhãn của bạn**, không phải thứ người tham gia phải nhớ. Form chỉ hỏi
+> **họ tên + SĐT/Zalo**; khi có responses, ghép dòng ghi chú với response bằng cột SĐT
+> (script in ra bảng có `SĐT che` + tên che để đối chiếu).
+
 
 ## 2. 10 câu SUS — đọc nguyên văn cho người tham gia
 

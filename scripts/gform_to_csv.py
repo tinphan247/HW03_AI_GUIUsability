@@ -82,6 +82,9 @@ def main():
 
     headers = list(rows[0].keys())
     c_pid = find_col(headers, "mã phiên") or find_col(headers, "ma phien") or find_col(headers, "p?")
+    c_name = (find_col(headers, "họ tên") or find_col(headers, "ho ten")
+              or find_col(headers, "biệt danh") or find_col(headers, "biet danh")
+              or find_col(headers, "tên của bạn") or find_col(headers, "ten cua ban"))
     c_age = find_col(headers, "tuổi") or find_col(headers, "tuoi")
     c_job = find_col(headers, "nghề nghiệp") or find_col(headers, "nghe nghiep")
     c_contact = find_col(headers, "liên hệ") or find_col(headers, "lien he") or find_col(headers, "sđt") or find_col(headers, "sdt")
@@ -95,22 +98,26 @@ def main():
     c_trust = find_col(headers, "tin đơn") or find_col(headers, "tin don")
     c_confuse = find_col(headers, "rối nhất") or find_col(headers, "roi nhat")
     c_slow = find_col(headers, "chậm nhất") or find_col(headers, "cham nhat")
-    c_fix = find_col(headers, "sửa 1 thứ") or find_col(headers, "sua 1 thu")
+    c_fix = find_col(headers, "sửa 1 thứ") or find_col(headers, "sua 1 thu") or find_col(headers, "thay đổi") or find_col(headers, "thay doi")
     c_quote = find_col(headers, "một câu bạn đã nói") or find_col(headers, "mot cau ban da noi")
     sus_cols = find_sus_cols(headers)
 
     missing = [name for name, c in {
-        "Mã phiên": c_pid, "Tuổi": c_age, "Kết quả task": c_success,
+        "Tuổi": c_age, "Kết quả task": c_success,
     }.items() if c is None]
     if len(sus_cols) != 10:
         missing.append(f"SUS Q1..Q10 (thấy {len(sus_cols)}/10)")
     if missing:
         print("  ! Không tìm thấy cột:", ", ".join(missing))
         print("    → kiểm tra tên câu hỏi theo usability/GOOGLE_FORM_GUIDE.md")
+    if c_pid is None:
+        print("  i Không có cột 'Mã phiên' → đánh P1…P7 theo thứ tự response (đối chiếu bằng tên/SĐT).")
 
     p_rows, s_rows = [], []
     for i, r in enumerate(rows, start=1):
         pid = pick(r, c_pid) or f"P{i}"
+        name_raw = pick(r, c_name)
+        name_masked = (name_raw[0] + "**") if name_raw else ""
         success_raw = deaccent(pick(r, c_success)).lower()
         success = norm_success("Success" if ("tu lam xong" in success_raw or "khong can goi y" in success_raw)
                                else "Help" if ("goi y" in success_raw or "can duoc goi y" in success_raw)
@@ -128,6 +135,7 @@ def main():
             answers.append(int(m.group(1)) if m else None)
         sus_ok = all(a is not None for a in answers)
         notes = " | ".join(x for x in [
+            f"Ten: {name_masked}" if name_masked else "",
             f"Coupon: {pick(r, c_coupon)}" if c_coupon else "",
             f"Trust: {pick(r, c_trust)}" if c_trust else "",
             f"Rối nhất: {pick(r, c_confuse)}" if c_confuse else "",
@@ -162,11 +170,13 @@ def main():
         s["note"] = pick(r, c_quote)
         s_rows.append(s)
 
-    print(f"\n{'Phiên':<6}{'Tuổi':<7}{'Kết quả':<10}{'Thời gian':<11}{'SUS':>6}  Thiết bị")
+    print(f"\n{'Phiên':<6}{'Tên':<6}{'Tuổi':<7}{'Kết quả':<10}{'Thời gian':<11}{'SUS':>6}  SĐT che / Thiết bị")
     for r, p in zip(rows, p_rows):
         t = p["time_seconds"]
         t_txt = f"{t // 60}:{t % 60:02d}" if isinstance(t, int) else "—"
-        print(f"{p['participant_id']:<6}{r.get(c_age, '') or '—':<7}{p['task_success'] or '—':<10}{t_txt:<11}{p['sus_score'] or '—':>6}  {p['device'][:30]}")
+        nm = p["notes"].split("Ten: ")[1].split(" | ")[0] if "Ten: " in p["notes"] else "—"
+        print(f"{p['participant_id']:<6}{nm:<6}{r.get(c_age, '') or '—':<7}{p['task_success'] or '—':<10}"
+              f"{t_txt:<11}{p['sus_score'] or '—':>6}  {p['contact_masked']} / {p['device'][:24]}")
 
     scores = [p["sus_score"] for p in p_rows if p["sus_score"] != ""]
     n_valid = sum(1 for p in p_rows if p["valid_session"] == "TRUE")

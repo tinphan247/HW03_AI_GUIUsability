@@ -6,14 +6,12 @@
 ## 1. Tin nhắn đầu tiên
 
 > Toàn bộ hướng dẫn (link trang, nhiệm vụ, cách làm) đã nằm **trong form**, nên tin nhắn
-> chỉ cần 1 link + mã phiên. Không phải giải thích thêm gì.
+> chỉ cần 1 link. Người tham gia **không phải nhớ mã gì** — form hỏi họ tên + SĐT/Zalo.
 
 ```text
 Chào [tên], mình đang làm bài tập môn Kiểm thử phần mềm ở HCMUS.
 Mình cần bạn dùng thử một trang mua hàng online trong ~20 phút rồi trả lời
 10 câu hỏi ngắn (~1 phút). Không cần biết kỹ thuật, không có đáp án đúng/sai.
-
-Mã phiên của bạn: P_   (điền vào form ở bước cuối)
 
 Link form (hướng dẫn + link trang web đều ở trong đây): [LINK FORM]
 
@@ -22,12 +20,12 @@ Bạn làm lúc nào cũng được, miễn trước [hạn]. Cảm ơn bạn nh
 
 ## 2. Khi họ đồng ý — chốt việc
 
-**Nếu người ở xa, tự làm trên máy họ (cách D — khuyên dùng):** chỉ cần gửi mã phiên + link form, không cần hẹn giờ.
+**Nếu người ở xa, tự làm trên máy họ (cách D — khuyên dùng):** chỉ cần gửi link form, không cần hẹn giờ.
 
 ```text
 Cảm ơn bạn! Bạn mở link này làm lúc nào cũng được: [LINK FORM]
-Mã phiên của bạn là P_ — nhớ điền vào câu "Mã phiên P?" nhé.
 Trong form có link trang web + nhiệm vụ cụ thể, đọc 30 giây là hiểu.
+Form hỏi họ tên + SĐT/Zalo của bạn (để mình biết ai đã làm; báo cáo sẽ che).
 ```
 
 **Nếu làm trực tiếp hoặc qua Zoom (cách A/B):**
