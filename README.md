@@ -56,11 +56,13 @@
 
 ## 4. Cách chạy lại SUT
 
-1. `cd HW2/eshop-sut/backend && node database.js && node server.js` (port 3000)
+1. `cd HW2/eshop-sut/backend && node database.js && $env:PORT=3001; node server.js` (API port **3001** trên máy này; mặc định repo là 3000)
 2. `cd ../frontend-web && npm run dev` (port 5173)
 3. `cd ../frontend-admin && npm run dev` (port 5174)
-4. Mobile: `cd ../frontend-mobile && npx expo start` + Expo Go cùng Wi-Fi
+4. Mobile: `cd ../frontend-mobile && npx expo start` + Expo Go cùng Wi-Fi (API URL trong `App.js` trỏ LAN IP:3001)
 5. Tài khoản seed: `admin@eshop.com / Admin123!`, `test@eshop.com / Test1234!`
+
+> Lý do đổi port: `localhost:3000` đã bị một app Next.js khác chiếm. Chi tiết + phạm vi thay đổi: `evidence/SUT_LOCAL_PATCH.md`.
 
 ---
 

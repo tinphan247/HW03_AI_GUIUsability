@@ -32,10 +32,12 @@
 
 | Thành phần | Công nghệ | URL |
 | :--- | :--- | :--- |
-| Backend API | Node.js + Express + SQLite | http://localhost:3000 |
+| Backend API | Node.js + Express + SQLite | http://localhost:3001 |
 | Web storefront | React + Vite + Tailwind | http://localhost:5173 |
 | Web admin | React + Vite + Tailwind | http://localhost:5174 |
 | Mobile app | React Native + Expo | Expo Go (LAN IP) |
+
+> **Ghi chú môi trường:** máy thực hiện có sẵn một ứng dụng Next.js khác chiếm `localhost:3000`, nên SUT được chạy ở API port **3001**. Thay đổi chỉ là port + URL trong frontend (không đổi UI/logic); chi tiết ở `evidence/SUT_LOCAL_PATCH.md`. Mọi screenshot trong bài đều dùng `localhost:3001` (API) và `localhost:5173/5174` (UI).
 
 Tài khoản seed: `test@eshop.com / Test1234!` (user), `admin@eshop.com / Admin123!` (admin).
 DB được reset bằng `node database.js` trước mỗi batch execution để kết quả tái lập được.
@@ -161,27 +163,50 @@ Mỗi bug có: steps to reproduce, expected/actual theo spec, impact, screenshot
 
 ### 3.1 Mục tiêu
 
-TODO
+| ID | Mục tiêu | Cách đo |
+| :--- | :--- | :--- |
+| O1 | Xác định bước gây lạc/do dự nhiều nhất trong flow | Đếm số lần back/đi sai route + thời gian từng bước, ghi quote |
+| O2 | Đánh giá khả năng phục hồi khi coupon báo lỗi hoặc giá bất thường | Hành động sau lỗi: tự sửa / hỏi moderator / bỏ qua |
+| O3 | Đo hiệu quả tổng thể: task success, thời gian, số lần trợ giúp | Bấm giờ từ lúc đọc scenario đến khi thấy đơn trong lịch sử |
+| O4 | Đo mức tin cậy vào đơn hàng và con số thanh toán | Probe trust + có kiểm tra lại tổng tiền không |
 
 ### 3.2 Task scenario
 
-TODO
+Scenario hướng mục tiêu, **không liệt kê bước**, không dùng tên nút (full: `usability/scenario.md`):
+
+> **Bối cảnh:** Bạn vừa chuyển sang dùng một trang bán hàng công nghệ mới. Bạn cần mua một chiếc điện thoại cho công việc và muốn dùng một mã giảm giá bạn được tặng.
+>
+> **Mục tiêu:** Hãy tạo một tài khoản mới trên trang, tìm một chiếc điện thoại phù hợp, thêm vào giỏ, áp mã giảm giá **SAVE10**, hoàn tất đặt hàng, rồi kiểm tra lại rằng đơn hàng đã được ghi nhận trong tài khoản của bạn.
+>
+> **Ràng buộc:** ngân sách dưới 50 triệu; mã SAVE10; giao tại nhà; nói to suy nghĩ.
+
+Success criteria: **Success** (không trợ giúp, thấy đơn) · **Success with help** (≥ 1 lần trợ giúp) · **Failure** (> 15 phút hoặc không xác nhận được đơn).
 
 ### 3.3 Instruments
 
-TODO
+| Instrument | Nội dung | File |
+| :--- | :--- | :--- |
+| Consent | Mục đích, dữ liệu thu, quyền rút, ẩn danh, che 4 số giữa | `usability/consent.md` |
+| SUS | 10 câu, thang 5, bản Việt, xen kẽ tích cực/phủ định; công thức chuẩn | `usability/instruments/sus_vi.md` |
+| Probe | 12 câu chia 4 nhóm: clarity, error recovery, speed, trust + mở | `usability/instruments/probe_questions.md` |
+| Observation sheet | Timeline, friction, quote, số lần trợ giúp, severity 1–4 | `usability/instruments/observation_sheet.md` |
+| Moderator script | Câu được phép / không được phép nói, quy tắc 60 giây | `usability/moderator_script.md` |
+| Severity | 1 Cosmetic · 2 Minor · 3 Major · 4 Blocker | trong observation sheet |
 
 ### 3.4 Tuyển người tham gia & phiên pilot
 
-TODO
+- **Tiêu chí:** ≥ 18 tuổi, **ngoài lớp HW03**, đã từng mua online trong 6 tháng, không cần biết kiểm thử.
+- **Số lượng:** 7 người chính + 1 pilot + 2 dự phòng.
+- **Liên hệ:** lưu trong `usability/participants.csv`; khi báo cáo che 4 số giữa (`0901***678`). Bản đầy đủ chỉ gửi TA khi được yêu cầu xác minh.
+- **Pilot:** chạy trước với 1 người ngoài 7, mục đích kiểm tra scenario/instruments/thời lượng; dữ liệu pilot **không** tính vào phân tích. Thay đổi sau pilot ghi ở `usability/pilot/pilot_notes.md`.
 
 ### 3.5 Bảy phiên
 
-TODO
+TODO (điền khi có dữ liệu 7 phiên)
 
 ### 3.6 Kết quả SUS
 
-TODO
+TODO (sinh từ `usability/sus_scores.csv` bằng `python scripts/sus_score.py`)
 
 ### 3.7 Phân tích theme & severity
 
@@ -201,13 +226,56 @@ TODO
 
 ## 5. Agent Skills
 
-TODO
+### 5.1 Hai skill
+
+| Skill ID | Mục đích | Thành phần |
+| :--- | :--- | :--- |
+| `gui-checklist-tester` | Ép quy trình thiết kế + thực thi GUI checklist > 40 item phủ IA-01…IA-04, có traceability về FR, chỉ chụp evidence item Failed, xuất bug report | `SKILL.md`, `references/ia-taxonomy.md`, 3 template (checklist row, execution row, bug entry) |
+| `usability-evaluation` | Ép quy trình usability test nhỏ: objectives → scenario hướng mục tiêu → instruments → pilot → 7 phiên → phân tích SUS/theme/severity | `SKILL.md`, 6 template (plan, scenario, SUS VI, probe, session notes, participants) |
+
+Cài đặt và demo: `skills/README.md`. Vị trí OpenCode tìm skill: `.opencode/skills/<id>/SKILL.md` (project) hoặc `~/.config/opencode/skills/<id>/SKILL.md` (global).
+
+### 5.2 Vì sao đóng gói thành skill (không chỉ viết prompt)
+
+1. **Tái sử dụng**: lần sau chỉ cần `@skill-gui-checklist-tester` thay vì dán lại 3 đoạn prompt dài; template đi kèm được load đúng lúc.
+2. **Ép quy trình có thứ tự**: skill cấm sinh item trước khi có inventory; cấm chạy usability trước khi có objectives + pilot. Đây là các bước AI thường bỏ qua nếu chỉ prompt tự do.
+3. **Guardrail chống bịa**: skill ghi rõ "không bịa kết quả", "item chưa chạy ghi Not executed", "notes của item Failed phải nêu nguyên nhân quan sát được", "không tự tạo participant".
+4. **Có tiêu chuẩn đầu ra**: mỗi item bắt buộc có `ID | Aspect | Screen | Expected | Spec ref | Method | Priority`; mỗi phiên usability có `notes/SUS/probe/timeline`.
+
+### 5.3 Bằng chứng skill được dùng thật trong bài này
+
+- Bộ 65 item sinh theo đúng 4 bước của skill (inventory → generate → review → gap-fill), review log 10 quyết định và 24 item gap-fill nằm trong `checklist/checklist_design.md`.
+- 12 item thủ công + 53 item tự động đúng quy ước `Method` của skill; screenshot chỉ cho item Failed.
+- Bộ instrument usability (scenario không liệt kê bước, consent, SUS VI, probe 4 nhóm, phiên pilot) được tạo từ template của skill, không phải viết lại từ đầu.
+- Video demo: TODO (link YouTube unlisted) — kịch bản quay ở `skills/README.md`.
+
+### 5.4 Giới hạn của skill
+
+- Skill không thay thế người tham gia thật hay việc chạy test; nó chỉ chuẩn hoá quy trình và output.
+- Skill không tự quyết severity/theme — phần này vẫn do sinh viên đọc evidence và quyết định.
+- Nếu SUT khác hoàn toàn (mobile native, không có DOM), `references/ia-taxonomy.md` cần chỉnh trước khi dùng.
 
 ---
 
 ## 6. AI Audit & AI Critique
 
-TODO
+### 6.1 AI Audit
+
+Log đầy đủ theo từng artifact (prompt → output → verdict → reasoning → student fix) nằm trong `AI_Audit_Report.md`:
+
+| Artifact | Nội dung | Verdict |
+| :--- | :--- | :--- |
+| 0 | Đọc đề, inventory SUT, lập kế hoạch 9 giai đoạn | Partially valid — phải tách automated/manual, không tin giả thuyết lỗi từ code |
+| 1 | Sinh 46 item, phát hiện gap, viết runner Playwright | Partially valid — 5 item không đo được, runner có 2 false positive phải sửa |
+| 2 | Gom 44 item Failed thành 34 bug, viết bug report | Valid with correction — nâng coupon lên Blocker, giữ mapping item → bug |
+
+### 6.2 AI Critique (200–300 từ)
+
+AI giúp tôi đi nhanh ở phần **mở rộng phạm vi**: nó đọc 8 route, liệt kê component/state và sinh 46 item chỉ trong vài phút — việc tôi tự làm sẽ mất ít nhất một buổi và dễ bỏ sót màn hình. Tuy nhiên, giá trị thật của bài không nằm ở số lượng item AI sinh, mà ở chỗ tôi phát hiện **AI tự tin sai**. Ba biểu hiện rõ nhất: (1) AI mô tả lỗi như thể đã kiểm chứng khi mới đọc source (login `type=text`, Home 2 `<h1>`), trong khi đề yêu cầu bằng chứng thực thi; (2) AI sinh item "chuẩn chung" nhưng bỏ trống nhóm người dùng biên — persistence, dead-end, XSS-render, lộ lỗi kỹ thuật — tức là những lỗi chỉ lộ khi dùng thật; (3) runner do AI viết có false positive vì dùng `page.goto()` làm mất React state. Nếu tôi tin AI 100%, báo cáo sẽ vừa thừa item không đo được, vừa bỏ lỗi nghiêm trọng, vừa sai kết quả.
+
+Điều thú vị là AI có ích nhất khi bị **bắt tự phản biện**: prompt "chỉ ra 10 nhóm còn thiếu" giúp lộ 6 nhóm, tôi bổ sung 4 nhóm còn lại. Điều này cho thấy vai trò con người là đặt câu hỏi và kiểm chứng, không phải duyệt output. Với usability, AI chỉ tạo được khung; 7 người thật mới là nguồn dữ liệu không thể thay thế, vì AI không thể "bối rối" hay "mất niềm tin" như người dùng.
+
+Kết luận: AI là **leverage**, không phải **authority**. Quy tắc tôi giữ là: mọi kết quả phải có evidence chạy lại được; mọi item AI sinh phải qua review; mọi bug phải có screenshot và bước tái hiện.
 
 ---
 

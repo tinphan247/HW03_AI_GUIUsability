@@ -11,14 +11,23 @@
  */
 const fs = require('fs');
 const path = require('path');
-const { chromium } = require('playwright');
+const os = require('os');
+const { chromium, firefox, webkit, devices } = require('playwright');
 
 const WEB = process.env.SUT_WEB || 'http://localhost:5173';
 const ADMIN = process.env.SUT_ADMIN || 'http://localhost:5174';
 const API = process.env.SUT_API || 'http://localhost:3001/api';
 const ROOT = path.join(__dirname, '..');
-const OUT_JSON = path.join(ROOT, 'evidence', 'checklist_results.json');
-const SHOT_DIR = path.join(ROOT, 'screenshots', 'checklist');
+const BROWSER_KIND = (process.env.BROWSER_KIND || 'chromium').toLowerCase();
+const XPLAT = process.env.XPLAT === '1';
+const PLATFORM_LABEL = process.env.PLATFORM_LABEL || `${os.type()} ${os.release()} · ${BROWSER_KIND}`;
+const STUDENT_EMAIL = '23120372@student.hcmus.edu.vn';
+const OUT_JSON = process.env.OUT_JSON
+  ? path.resolve(ROOT, process.env.OUT_JSON)
+  : path.join(ROOT, 'evidence', 'checklist_results.json');
+const SHOT_DIR = process.env.SHOT_DIR
+  ? path.resolve(ROOT, process.env.SHOT_DIR)
+  : path.join(ROOT, 'screenshots', 'checklist');
 const AXE = require.resolve('axe-core/axe.min.js');
 
 const CREDS = { email: 'test@eshop.com', password: 'Test1234!' };
@@ -29,7 +38,10 @@ function record(id, status, note, evidence) {
   console.log(`${id}: ${status}${note ? ' — ' + note : ''}`);
 }
 
+const { addOverlay } = require('./lib/overlay');
+
 async function shot(page, id) {
+  if (XPLAT) await addOverlay(page, PLATFORM_LABEL).catch(() => {});
   fs.mkdirSync(SHOT_DIR, { recursive: true });
   const file = path.join(SHOT_DIR, `${id}.png`);
   await page.screenshot({ path: file, fullPage: true });
@@ -753,11 +765,23 @@ checks['IA-04-15'] = async (page) => {
 /* ---------------- Runner ---------------- */
 
 (async () => {
-  const browser = await chromium.launch();
-  const ids = Object.keys(checks);
+  const engines = { chromium, firefox, webkit };
+  const engine = engines[BROWSER_KIND];
+  if (!engine) throw new Error(`Unsupported BROWSER_KIND=${BROWSER_KIND}`);
+  const browser = await engine.launch();
+  const ids = Object.keys(checks).filter((id) => {
+    const f = process.env.CHECK_FILTER;
+    return !f ? true : f.split(',').map((s) => s.trim()).includes(id);
+  });
+  const VW = Number(process.env.VIEWPORT_WIDTH || 1280);
+  const VH = Number(process.env.VIEWPORT_HEIGHT || 800);
+  const DEVICE = process.env.PLATFORM_DEVICE || '';
 
   for (const id of ids) {
-    const ctx = await browser.newContext({ viewport: { width: 1280, height: 800 } });
+    const ctxOpts = DEVICE && devices[DEVICE]
+      ? { ...devices[DEVICE] }
+      : { viewport: { width: VW, height: VH } };
+    const ctx = await browser.newContext(ctxOpts);
     const page = await ctx.newPage();
     try {
       const r = await checks[id](page);

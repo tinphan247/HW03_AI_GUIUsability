@@ -138,4 +138,14 @@ Severity phải theo **tác động nghiệp vụ**, không theo "mức khó ch�
 
 ---
 
+## AI Critique (200–300 từ)
+
+AI giúp tôi đi nhanh ở phần **mở rộng phạm vi**: nó đọc 8 route, liệt kê component/state và sinh 46 item chỉ trong vài phút — việc tôi tự làm sẽ mất ít nhất một buổi và dễ bỏ sót màn hình. Tuy nhiên, giá trị thật của bài không nằm ở số lượng item AI sinh, mà ở chỗ tôi phát hiện **AI tự tin sai**. Ba biểu hiện rõ nhất: (1) AI mô tả lỗi như thể đã kiểm chứng khi mới đọc source (login `type=text`, Home 2 `<h1>`), trong khi đề yêu cầu bằng chứng thực thi; (2) AI sinh item "chuẩn chung" nhưng bỏ trống nhóm người dùng biên — persistence, dead-end, XSS-render, lộ lỗi kỹ thuật — tức là những lỗi chỉ lộ khi dùng thật; (3) runner do AI viết có false positive vì dùng `page.goto()` làm mất React state. Nếu tôi tin AI 100%, báo cáo sẽ vừa thừa item không đo được, vừa bỏ lỗi nghiêm trọng, vừa sai kết quả.
+
+Điều thú vị là AI có ích nhất khi bị **bắt tự phản biện**: prompt "chỉ ra 10 nhóm còn thiếu" giúp lộ 6 nhóm, tôi bổ sung 4 nhóm còn lại. Điều này cho thấy vai trò con người là đặt câu hỏi và kiểm chứng, không phải duyệt output. Với usability, AI chỉ tạo được khung; 7 người thật mới là nguồn dữ liệu không thể thay thế, vì AI không thể "bối rối" hay "mất niềm tin" như người dùng.
+
+Kết luận: AI là **leverage**, không phải **authority**. Quy tắc tôi giữ là: mọi kết quả phải có evidence chạy lại được; mọi item AI sinh phải qua review; mọi bug phải có screenshot và bước tái hiện.
+
+---
+
 <!-- Các artifact tiếp theo được thêm theo từng bước thực hiện (Task 2, Task 3). -->

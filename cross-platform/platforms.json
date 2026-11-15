@@ -1,0 +1,32 @@
+[
+  {
+    "id": "windows-chrome",
+    "kind": "chromium",
+    "label": "Windows 11 · Chrome 141 (Chromium) · Desktop 1280×800",
+    "viewport": [1280, 800]
+  },
+  {
+    "id": "windows-firefox",
+    "kind": "firefox",
+    "label": "Windows 11 · Firefox (Gecko) · Desktop 1280×800",
+    "viewport": [1280, 800]
+  },
+  {
+    "id": "windows-webkit",
+    "kind": "webkit",
+    "label": "Windows 11 · WebKit (Safari engine) · Desktop 1280×800",
+    "viewport": [1280, 800]
+  },
+  {
+    "id": "android-chrome",
+    "kind": "chromium",
+    "label": "Android 14 · Chrome Mobile · Pixel 7 (Playwright emulation)",
+    "device": "Pixel 7"
+  },
+  {
+    "id": "ios-safari",
+    "kind": "webkit",
+    "label": "iOS 17 · Safari Mobile · iPhone 14 (Playwright emulation)",
+    "device": "iPhone 14"
+  }
+]

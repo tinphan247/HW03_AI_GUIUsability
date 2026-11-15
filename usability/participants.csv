@@ -1,0 +1,9 @@
+participant_id,age_range,occupation,contact_masked,contact_full_local_only,recruit_channel,device,prior_eshop_user,session_date,session_time,consent_signed,task_success,time_seconds,help_count,sus_score,valid_session,notes
+P0,25-34,Nhan vien van phong,0901***001,0901000001,ban be,Laptop Chrome,Chua,2026-11-16,09:00,TRUE,Success,480,1,,TRUE,pilot — khong tinh vao 7
+P1,,,,,,,,,,,FALSE,,,,FALSE,
+P2,,,,,,,,,,,FALSE,,,,FALSE,
+P3,,,,,,,,,,,FALSE,,,,FALSE,
+P4,,,,,,,,,,,FALSE,,,,FALSE,
+P5,,,,,,,,,,,FALSE,,,,FALSE,
+P6,,,,,,,,,,,FALSE,,,,FALSE,
+P7,,,,,,,,,,,FALSE,,,,FALSE,
