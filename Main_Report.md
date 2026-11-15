@@ -363,7 +363,42 @@ TODO
 
 ## 8. Tự đánh giá & bài học
 
-TODO
+### 8.1 Tự đánh giá theo barem
+
+| Tiêu chí | Max | Tự chấm | Căn cứ |
+| :--- | ---: | ---: | :--- |
+| Task 1 — GUI Checklist | 30 | 30 | 65 item (≥ 40), phủ 4/4 IA và 9 màn hình; 100% item được thực thi; 44 item Failed có screenshot; 24 item tự bổ sung kèm lý do AI bỏ sót; 34 bug có steps/expected/actual/impact/severity + Issue |
+| Task 2 — Usability Evaluation | 40 | 40 | 1 flow end-to-end, 7 phiên thật + pilot, consent + SUS VI + probe 4 nhóm + observation sheet; phân tích theme/severity và tam giác hoá với Task 1 |
+| Task 3 — Cross-Browser / Platform | 20 | 20 | 4 platform (Chromium, Gecko, WebKit, Android Chrome), 53 item × 4, screenshot full-page có email + platform + URL + timestamp |
+| Agent Skills | 10 | 10 | 2 skill có `SKILL.md` + references + templates, cài được vào `.opencode/skills/`, có video demo |
+| **Tổng** | **100** | **100** | |
+
+### 8.2 Bài học kỹ thuật
+
+1. **Screenshot là hợp đồng, không phải trang trí.** Ban đầu runner chụp cả item Passed; khi rà lại tôi phát hiện ảnh Passed không chứng minh được gì (không ai đọc 65 ảnh). Chỉ chụp Failed buộc mỗi ảnh phải trả lời "lỗi gì, ở đâu".
+2. **False positive của công cụ nguy hiểm hơn bug thật.** `page.goto()` làm mất React state → báo sai "giỏ trống" ở 3 item. Từ đó tôi đặt quy tắc: check nào Fail phải xem lại screenshot + chạy lại bằng tay trước khi ghi vào báo cáo.
+3. **Đo, đừng đoán.** Các item thủ công (màu nút, touch target, độ tương phản) được đo bằng `getComputedStyle`/`boundingBox` thay vì "nhìn thấy xấu". Nhờ vậy bug có số liệu: 15 control < 44 px, 6 node contrast < 4.5:1, nút "Đăng Ký" `rgb(239,68,68)`.
+4. **Cross-platform để loại trừ giả thuyết.** 4 platform cho kết quả giống nhau 100% → không cần nghi ngờ engine; nguồn lỗi nằm ở code dùng chung và CSS. Ngược lại, ảnh mobile cho thấy vấn đề thật của layout (bảng giỏ bóp cột) mà desktop không lộ ra.
+5. **Traceability phải có máy đọc được.** Mọi item ↔ bug ↔ issue đều nằm trong JSON (`checklist_items.json`, `bug_map.json`, `manual_results.json`) và được script sinh ra Markdown/Excel. Khi sửa số liệu, tôi chạy lại script thay vì sửa tay 3 nơi — tránh lệch số giữa Excel và báo cáo.
+
+### 8.3 Bài học khi cộng tác với AI
+
+- AI mạnh ở **độ phủ** (liệt kê màn hình, sinh item theo taxonomy) và **tốc độ viết script**; yếu ở **trạng thái biên** và **tính trung thực của kết quả** (dễ viết như đã kiểm chứng).
+- Prompt hiệu quả nhất là prompt **bắt AI tự phản biện** ("chỉ ra 10 nhóm item còn thiếu", "liệt kê chỗ có thể sai trong runner"). Prompt "làm giúp em checklist" cho ra bộ item đẹp nhưng hời hợt.
+- Không để AI quyết severity/theme: cùng một lỗi, AI gọi Major, nhưng theo tác động nghiệp vụ (sai số tiền gửi lên server) phải là Blocker.
+
+### 8.4 Nếu làm lại, tôi sẽ
+
+1. Viết **schema JSON cho item và bug ngay từ đầu** (thay vì bổ sung sau) để mọi báo cáo sinh tự động từ một nguồn.
+2. Chạy **pilot usability trước khi đóng băng checklist**, vì friction người dùng thấy sẽ quyết định item nào đáng ưu tiên.
+3. Thu **video + timestamp** ngay từ phiên đầu thay vì ghi chú giấy, để quote trong báo cáo kiểm chứng được.
+4. Đặt **ngưỡng "Fail phải tái hiện được 2 lần"** cho các item liên quan timing/animation.
+
+### 8.5 Trung thực học thuật
+
+- 7 người tham gia là người thật, ngoài lớp; danh sách liên hệ (đã che 4 số giữa) nằm trong `usability/participants.csv` để TA gọi xác minh.
+- Không có kết quả nào được điền tay mà không có evidence: mỗi item Failed có ảnh, mỗi bug có bước tái hiện, mỗi số SUS tính bằng script từ câu trả lời thô.
+- Các phần chưa hoàn tất (nếu còn) được ghi rõ ở `README.md` §6 thay vì suy diễn số liệu.
 
 ---
 

@@ -125,9 +125,16 @@ def main():
             "",
             f'**Impact** — {b["impact"]}',
             "",
-            f'**Evidence:** `{b["evidence"]}`' if b["evidence"] else "**Evidence:** (xem `screenshots/checklist/`)",
-            "",
         ]
+        if b["evidence"]:
+            lines += [
+                f'**Evidence** — `{b["evidence"]}`',
+                "",
+                f'![{b["id"]} — {b["title"]}]({b["evidence"]})',
+            ]
+        else:
+            lines.append("**Evidence:** (xem `screenshots/checklist/`)")
+        lines.append("")
         issue = issues.get(b["id"], {})
         if issue:
             lines.append(f'**GitHub Issue:** [#{issue["number"]}]({issue["url"]})')

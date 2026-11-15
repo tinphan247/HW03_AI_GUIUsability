@@ -55,7 +55,21 @@ Ví dụ: `23120372@student.hcmus.edu.vn | Windows 11 · Firefox (Gecko) · Desk
 
 Xem `cross-platform/matrix.md`. Tóm tắt điền ở `Main_Report.md` §4.
 
-## 5. Hạn chế
+## 5. BrowserStack (thiết bị/OS thật — tuỳ chọn)
+
+```powershell
+$env:BROWSERSTACK_USERNAME = '<username>'
+$env:BROWSERSTACK_ACCESS_KEY = '<access key>'
+node scripts/run_browserstack.js                  # cả 3 target trong browserstack.json
+node scripts/run_browserstack.js macos-safari     # chọn 1 target
+```
+
+- Script tự mở **BrowserStack Local tunnel** (`browserstack-local`, `localIdentifier` ngẫu nhiên) để cloud browser truy cập được `http://localhost:5173`.
+- Target mặc định: macOS Sonoma + Safari 17 (WebKit thật), Windows 11 + Chrome, Android 13 + Galaxy S23 (real device).
+- Output: `screenshots/cross-platform/bs-<target>/01-home.png … 04-checkout-coupon.png` (có overlay), `evidence/xplat/browserstack-<target>.json` (session id, danh sách ảnh, lỗi), log `cross-platform/browserstack.log`.
+- Trial giới hạn phút → chỉ chụp 4 màn hình chính, không chạy lại 53 item.
+
+## 6. Hạn chế
 
 - Android/iOS trong bảng trên là **emulation** của Playwright (UA + viewport + touch), không phải thiết bị thật. Nếu có BrowserStack, bằng chứng thiết bị thật được bổ sung và ghi rõ.
 - WebKit trên Windows là engine Safari nhưng không phải Safari trên macOS; khác biệt font/scrollbar có thể có.

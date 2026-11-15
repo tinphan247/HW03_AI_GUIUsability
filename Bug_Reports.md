@@ -83,7 +83,9 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 **Impact** — Screen reader điều hướng theo heading bị mất mốc; SEO và cấu trúc tài liệu sai.
 
-**Evidence:** `screenshots/bugs/GUI-BUG-01.png`
+**Evidence** — `screenshots/bugs/GUI-BUG-01.png`
+
+![GUI-BUG-01 — Cấu trúc heading sai: Home có 2 <h1>, 5/7 trang không có <h1>](screenshots/bugs/GUI-BUG-01.png)
 
 **GitHub Issue:** TODO
 
@@ -110,7 +112,9 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 **Impact** — Screen reader đọc tiếng Việt bằng giọng tiếng Anh, sai dấu và khó hiểu.
 
-**Evidence:** `screenshots/bugs/GUI-BUG-02.png`
+**Evidence** — `screenshots/bugs/GUI-BUG-02.png`
+
+![GUI-BUG-02 — <html lang="en"> trong khi toàn bộ nội dung là tiếng Việt](screenshots/bugs/GUI-BUG-02.png)
 
 **GitHub Issue:** TODO
 
@@ -138,7 +142,9 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 **Impact** — Người dùng Việt đọc 11/15/2026 thành 15/11 hoặc 11/15 tùy thói quen; giá thiếu nhất quán gây khó so sánh.
 
-**Evidence:** `screenshots/bugs/GUI-BUG-03.png`
+**Evidence** — `screenshots/bugs/GUI-BUG-03.png`
+
+![GUI-BUG-03 — Định dạng dữ liệu locale không nhất quán: tiền dùng cả "VND" và "₫", ngày theo M/D/YYYY](screenshots/bugs/GUI-BUG-03.png)
 
 **GitHub Issue:** TODO
 
@@ -166,7 +172,9 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 **Impact** — Người dùng tiếng Việt không chắc "Sign In" là đăng nhập hay đăng ký; tăng do dự ở bước đầu của flow.
 
-**Evidence:** `screenshots/bugs/GUI-BUG-04.png`
+**Evidence** — `screenshots/bugs/GUI-BUG-04.png`
+
+![GUI-BUG-04 — Nhãn chức năng trộn tiếng Anh và tiếng Việt trên cùng một màn hình](screenshots/bugs/GUI-BUG-04.png)
 
 **GitHub Issue:** TODO
 
@@ -193,7 +201,9 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 **Impact** — Màu đỏ vốn là tín hiệu nguy hiểm lại dùng cho hành động chính; nút xóa dễ bấm nhầm vì không nổi bật.
 
-**Evidence:** `screenshots/bugs/GUI-BUG-05.png`
+**Evidence** — `screenshots/bugs/GUI-BUG-05.png`
+
+![GUI-BUG-05 — Màu nút không theo quy ước: primary lúc đỏ lúc xanh lá, nút xóa không có màu nguy hiểm](screenshots/bugs/GUI-BUG-05.png)
 
 **GitHub Issue:** TODO
 
@@ -220,7 +230,9 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 **Impact** — Người dùng screen reader không biết sản phẩm nào; ảnh cũng không có text thay thế khi tải lỗi.
 
-**Evidence:** `screenshots/bugs/GUI-BUG-06.png`
+**Evidence** — `screenshots/bugs/GUI-BUG-06.png`
+
+![GUI-BUG-06 — 5/5 ảnh sản phẩm có alt rỗng](screenshots/bugs/GUI-BUG-06.png)
 
 **GitHub Issue:** TODO
 
@@ -248,7 +260,9 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 **Impact** — Người lớn tuổi/thị lực kém khó đọc giá và nhãn phụ — đúng nhóm người dùng chính của trang mua sắm.
 
-**Evidence:** `screenshots/bugs/GUI-BUG-07.png`
+**Evidence** — `screenshots/bugs/GUI-BUG-07.png`
+
+![GUI-BUG-07 — 6 node chữ không đạt WCAG AA (contrast < 4.5:1)](screenshots/bugs/GUI-BUG-07.png)
 
 **GitHub Issue:** TODO
 
@@ -276,7 +290,9 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 **Impact** — Người dùng điện thoại dễ bấm sai, đặc biệt khi một tay/đang di chuyển.
 
-**Evidence:** `screenshots/bugs/GUI-BUG-08.png`
+**Evidence** — `screenshots/bugs/GUI-BUG-08.png`
+
+![GUI-BUG-08 — 15 control nhỏ hơn 44×44 px trên mobile](screenshots/bugs/GUI-BUG-08.png)
 
 **GitHub Issue:** TODO
 
@@ -304,7 +320,9 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 **Impact** — Click vào nhãn không focus được field; screen reader chỉ đọc "edit text"; người dùng không biết trường nào bắt buộc.
 
-**Evidence:** `screenshots/bugs/GUI-BUG-09.png`
+**Evidence** — `screenshots/bugs/GUI-BUG-09.png`
+
+![GUI-BUG-09 — Input không có label liên kết và không có dấu * cho trường bắt buộc](screenshots/bugs/GUI-BUG-09.png)
 
 **GitHub Issue:** TODO
 
@@ -333,7 +351,9 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 **Impact** — Lộ mật khẩu khi nhập trước mặt người khác/quay màn hình; mất autofill và bàn phím email.
 
-**Evidence:** `screenshots/bugs/GUI-BUG-10.png`
+**Evidence** — `screenshots/bugs/GUI-BUG-10.png`
+
+![GUI-BUG-10 — Email dùng type="text", mật khẩu ở Login dùng type="text" (lộ ký tự)](screenshots/bugs/GUI-BUG-10.png)
 
 **GitHub Issue:** TODO
 
@@ -362,7 +382,9 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 **Impact** — Người dùng bấm lại nút trước khi thấy lỗi; không biết cần sửa gì nên thử mò nhiều lần.
 
-**Evidence:** `screenshots/bugs/GUI-BUG-11.png`
+**Evidence** — `screenshots/bugs/GUI-BUG-11.png`
+
+![GUI-BUG-11 — Thông báo lỗi đăng nhập nằm dưới nút submit và không chỉ ra trường sai](screenshots/bugs/GUI-BUG-11.png)
 
 **GitHub Issue:** TODO
 
@@ -389,7 +411,9 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 **Impact** — Không biết còn bao nhiêu bước, dễ bỏ dở giữa flow.
 
-**Evidence:** `screenshots/bugs/GUI-BUG-12.png`
+**Evidence** — `screenshots/bugs/GUI-BUG-12.png`
+
+![GUI-BUG-12 — Luồng quên mật khẩu không có step indicator](screenshots/bugs/GUI-BUG-12.png)
 
 **GitHub Issue:** TODO
 
@@ -417,7 +441,9 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 **Impact** — Người dùng bấm 2–3 lần gây request trùng; với checkout có thể tạo đơn trùng nếu mạng chậm.
 
-**Evidence:** `screenshots/bugs/GUI-BUG-13.png`
+**Evidence** — `screenshots/bugs/GUI-BUG-13.png`
+
+![GUI-BUG-13 — Không có trạng thái đang xử lý khi submit — có thể submit 2 lần](screenshots/bugs/GUI-BUG-13.png)
 
 **GitHub Issue:** TODO
 
@@ -445,7 +471,9 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 **Impact** — Có thể thêm 0 hoặc số lượng âm vào giỏ, làm tổng tiền sai/làm hỏng đơn.
 
-**Evidence:** `screenshots/bugs/GUI-BUG-14.png`
+**Evidence** — `screenshots/bugs/GUI-BUG-14.png`
+
+![GUI-BUG-14 — Ô số lượng sản phẩm không có min/step](screenshots/bugs/GUI-BUG-14.png)
 
 **GitHub Issue:** TODO
 
@@ -473,7 +501,9 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 **Impact** — Người dùng (hoặc kẻ xấu) trả 1 ₫ cho đơn 30 triệu; phá vỡ tính toàn vẹn của đơn hàng.
 
-**Evidence:** `screenshots/bugs/GUI-BUG-15.png`
+**Evidence** — `screenshots/bugs/GUI-BUG-15.png`
+
+![GUI-BUG-15 — Tổng tiền thanh toán là input editable — người dùng sửa được số tiền phải trả](screenshots/bugs/GUI-BUG-15.png)
 
 **GitHub Issue:** TODO
 
@@ -500,7 +530,9 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 **Impact** — Đơn hàng mồ côi không thuộc tài khoản nào; người dùng tưởng đã đặt hàng nhưng không xem được lịch sử.
 
-**Evidence:** `screenshots/bugs/GUI-BUG-16.png`
+**Evidence** — `screenshots/bugs/GUI-BUG-16.png`
+
+![GUI-BUG-16 — Người chưa đăng nhập vẫn vào được trang thanh toán](screenshots/bugs/GUI-BUG-16.png)
 
 **GitHub Issue:** TODO
 
@@ -527,7 +559,9 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 **Impact** — Trình duyệt/password manager không tự điền; người dùng phải gõ lại, tăng lỗi nhập.
 
-**Evidence:** `screenshots/bugs/GUI-BUG-17.png`
+**Evidence** — `screenshots/bugs/GUI-BUG-17.png`
+
+![GUI-BUG-17 — Form đăng nhập/đăng ký thiếu autocomplete](screenshots/bugs/GUI-BUG-17.png)
 
 **GitHub Issue:** TODO
 
@@ -554,7 +588,9 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 **Impact** — Placeholder biến mất khi gõ nên người dùng quên ô đang nhập gì; screen reader không gọi tên được.
 
-**Evidence:** `screenshots/bugs/GUI-BUG-18.png`
+**Evidence** — `screenshots/bugs/GUI-BUG-18.png`
+
+![GUI-BUG-18 — Ô tìm kiếm chỉ có placeholder, không có label/aria-label](screenshots/bugs/GUI-BUG-18.png)
 
 **GitHub Issue:** TODO
 
@@ -582,7 +618,9 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 **Impact** — Người dùng copy email từ clipboard (rất hay kèm space) bị chặn mà không hiểu lý do.
 
-**Evidence:** `screenshots/bugs/GUI-BUG-19.png`
+**Evidence** — `screenshots/bugs/GUI-BUG-19.png`
+
+![GUI-BUG-19 — Email có khoảng trắng đầu/cuối bị từ chối đăng nhập](screenshots/bugs/GUI-BUG-19.png)
 
 **GitHub Issue:** TODO
 
@@ -609,7 +647,9 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 **Impact** — Người dùng gõ sai mật khẩu (không thấy ký tự) sẽ tạo tài khoản với mật khẩu họ không biết.
 
-**Evidence:** `screenshots/bugs/GUI-BUG-20.png`
+**Evidence** — `screenshots/bugs/GUI-BUG-20.png`
+
+![GUI-BUG-20 — Form đăng ký không có trường xác nhận mật khẩu](screenshots/bugs/GUI-BUG-20.png)
 
 **GitHub Issue:** TODO
 
@@ -637,7 +677,9 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 **Impact** — Người dùng bấm lại nhiều lần vì tưởng chưa thêm; giỏ bị nhân bản ngoài ý muốn.
 
-**Evidence:** `screenshots/bugs/GUI-BUG-21.png`
+**Evidence** — `screenshots/bugs/GUI-BUG-21.png`
+
+![GUI-BUG-21 — Thêm vào giỏ không có phản hồi: không toast, không badge số lượng](screenshots/bugs/GUI-BUG-21.png)
 
 **GitHub Issue:** TODO
 
@@ -664,7 +706,9 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 **Impact** — "Thoát" mơ hồ (thoát trang? thoát app?), người dùng không chắc có mất phiên đăng nhập.
 
-**Evidence:** `screenshots/bugs/GUI-BUG-22.png`
+**Evidence** — `screenshots/bugs/GUI-BUG-22.png`
+
+![GUI-BUG-22 — Nút đăng xuất có nhãn "Thoát" thay vì "Đăng xuất"](screenshots/bugs/GUI-BUG-22.png)
 
 **GitHub Issue:** TODO
 
@@ -691,7 +735,9 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 **Impact** — Người dùng vào sâu từ link ngoài không biết mình đang ở đâu trong cấu trúc site.
 
-**Evidence:** `screenshots/bugs/GUI-BUG-23.png`
+**Evidence** — `screenshots/bugs/GUI-BUG-23.png`
+
+![GUI-BUG-23 — Không có breadcrumb ở các trang con](screenshots/bugs/GUI-BUG-23.png)
 
 **GitHub Issue:** TODO
 
@@ -719,7 +765,9 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 **Impact** — Mất giỏ khi vô tình reload/chuyển tab; đặc biệt đau với người mua nhiều sản phẩm.
 
-**Evidence:** `screenshots/bugs/GUI-BUG-24.png`
+**Evidence** — `screenshots/bugs/GUI-BUG-24.png`
+
+![GUI-BUG-24 — Giỏ hàng mất toàn bộ khi reload (F5)](screenshots/bugs/GUI-BUG-24.png)
 
 **GitHub Issue:** TODO
 
@@ -747,7 +795,9 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 **Impact** — Người dùng tưởng nút hỏng; luồng mua hàng bị chặn ngay bước đầu.
 
-**Evidence:** `screenshots/bugs/GUI-BUG-25.png`
+**Evidence** — `screenshots/bugs/GUI-BUG-25.png`
+
+![GUI-BUG-25 — Click đầu tiên vào "Thêm vào giỏ hàng" ở Product Detail không có tác dụng](screenshots/bugs/GUI-BUG-25.png)
 
 **GitHub Issue:** TODO
 
@@ -775,7 +825,9 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 **Impact** — Một cú click nhầm là mất sản phẩm/đơn; không có cách hoàn tác.
 
-**Evidence:** `screenshots/bugs/GUI-BUG-26.png`
+**Evidence** — `screenshots/bugs/GUI-BUG-26.png`
+
+![GUI-BUG-26 — Xóa sản phẩm khỏi giỏ và hủy đơn hàng không có bước xác nhận](screenshots/bugs/GUI-BUG-26.png)
 
 **GitHub Issue:** TODO
 
@@ -801,7 +853,9 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 **Impact** — Trang trống trông như lỗi tải; giảm niềm tin và không hướng người dùng quay lại mua.
 
-**Evidence:** `screenshots/bugs/GUI-BUG-27.png`
+**Evidence** — `screenshots/bugs/GUI-BUG-27.png`
+
+![GUI-BUG-27 — Empty state giỏ hàng chỉ có chữ, không có icon/hình minh họa](screenshots/bugs/GUI-BUG-27.png)
 
 **GitHub Issue:** TODO
 
@@ -829,7 +883,9 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 **Impact** — Người dùng không phân biệt được "hết hàng", "lỗi tải" hay "không có kết quả".
 
-**Evidence:** `screenshots/bugs/GUI-BUG-28.png`
+**Evidence** — `screenshots/bugs/GUI-BUG-28.png`
+
+![GUI-BUG-28 — Tìm kiếm 0 kết quả không có empty state](screenshots/bugs/GUI-BUG-28.png)
 
 **GitHub Issue:** TODO
 
@@ -856,7 +912,9 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 **Impact** — Mạng chậm bị hiểu là app treo; lỗi API bị hiểu là "hết sản phẩm".
 
-**Evidence:** `screenshots/bugs/GUI-BUG-29.png`
+**Evidence** — `screenshots/bugs/GUI-BUG-29.png`
+
+![GUI-BUG-29 — Thiếu loading state và error state khi gọi API sản phẩm](screenshots/bugs/GUI-BUG-29.png)
 
 **GitHub Issue:** TODO
 
@@ -884,7 +942,9 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 **Impact** — Người dùng bị báo giá sai gấp 10 lần; nếu bấm thanh toán sẽ gửi total_amount = 300.000.000 ₫.
 
-**Evidence:** `screenshots/bugs/GUI-BUG-30.png`
+**Evidence** — `screenshots/bugs/GUI-BUG-30.png`
+
+![GUI-BUG-30 — Coupon SAVE10 hiển thị số tiền giảm âm và thành tiền cao hơn giá gốc](screenshots/bugs/GUI-BUG-30.png)
 
 **GitHub Issue:** TODO
 
@@ -912,7 +972,9 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 **Impact** — Người dùng dễ đặt trùng đơn thứ hai; trạng thái giỏ không phản ánh sự thật.
 
-**Evidence:** `screenshots/bugs/GUI-BUG-31.png`
+**Evidence** — `screenshots/bugs/GUI-BUG-31.png`
+
+![GUI-BUG-31 — Sau thanh toán thành công, giỏ hàng không được xóa](screenshots/bugs/GUI-BUG-31.png)
 
 **GitHub Issue:** TODO
 
@@ -941,7 +1003,9 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 **Impact** — Lỗ hổng XSS phản xạ qua URL (?search=...): kẻ tấn công gửi link độc, chiếm phiên người dùng.
 
-**Evidence:** `screenshots/bugs/GUI-BUG-32.png`
+**Evidence** — `screenshots/bugs/GUI-BUG-32.png`
+
+![GUI-BUG-32 — Chuỗi tìm kiếm được render thành HTML (XSS qua dangerouslySetInnerHTML)](screenshots/bugs/GUI-BUG-32.png)
 
 **GitHub Issue:** TODO
 
@@ -969,7 +1033,9 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 **Impact** — Người dùng không hiểu lỗi; lộ thông tin nội bộ, tạo cảm giác hệ thống kém tin cậy.
 
-**Evidence:** `screenshots/bugs/GUI-BUG-33.png`
+**Evidence** — `screenshots/bugs/GUI-BUG-33.png`
+
+![GUI-BUG-33 — Thông báo lỗi thanh toán lộ chi tiết kỹ thuật "Network Error"](screenshots/bugs/GUI-BUG-33.png)
 
 **GitHub Issue:** TODO
 
@@ -996,7 +1062,9 @@ Bug phủ **44/44** checklist item Failed. Screenshot của mọi item Failed n�
 
 **Impact** — Thông báo cũ còn trên màn hình gây nhiễu; người dùng không chủ động dọn được.
 
-**Evidence:** `screenshots/bugs/GUI-BUG-34.png`
+**Evidence** — `screenshots/bugs/GUI-BUG-34.png`
+
+![GUI-BUG-34 — Không có cơ chế đóng/tự đóng cho thông báo thành công](screenshots/bugs/GUI-BUG-34.png)
 
 **GitHub Issue:** TODO
 

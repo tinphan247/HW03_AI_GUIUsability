@@ -1,0 +1,29 @@
+[
+  {
+    "id": "macos-safari",
+    "label": "macOS Sonoma · Safari 17 (BrowserStack, real)",
+    "browserName": "playwright-webkit",
+    "os": "OS X",
+    "os_version": "Sonoma",
+    "browser_version": "17.0",
+    "viewport": [1440, 900]
+  },
+  {
+    "id": "windows-chrome-bs",
+    "label": "Windows 11 · Chrome (BrowserStack, real)",
+    "browserName": "playwright-chromium",
+    "os": "Windows",
+    "os_version": "11",
+    "browser_version": "latest",
+    "viewport": [1440, 900]
+  },
+  {
+    "id": "android-samsung",
+    "label": "Android 13 · Samsung Galaxy S23 · Chrome Mobile (BrowserStack, real device)",
+    "browserName": "playwright-chromium",
+    "os": "android",
+    "os_version": "13.0",
+    "device": "Samsung Galaxy S23",
+    "realMobile": true
+  }
+]
