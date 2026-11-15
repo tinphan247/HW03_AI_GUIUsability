@@ -88,7 +88,7 @@ def main():
     c_when = find_col(headers, "thời điểm") or find_col(headers, "thoi diem")
     c_device = find_col(headers, "thiết bị") or find_col(headers, "thiet bi")
     c_freq = find_col(headers, "mua hàng online") or find_col(headers, "mua hang online")
-    c_success = find_col(headers, "hoàn thành thế nào") or find_col(headers, "hoan thanh the nao")
+    c_success = find_col(headers, "hoàn thành", "thế nào") or find_col(headers, "hoan thanh", "the nao")
     c_time = find_col(headers, "tổng thời gian") or find_col(headers, "tong thoi gian")
     c_help = find_col(headers, "gợi ý mấy lần") or find_col(headers, "goi y may lan")
     c_coupon = find_col(headers, "save10")
