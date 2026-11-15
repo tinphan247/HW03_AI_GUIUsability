@@ -220,7 +220,83 @@ TODO
 
 ## 4. Task 3 — Cross-Browser / Cross-Platform
 
-TODO
+### 4.1 Platform đã chạy
+
+Chạy lại **toàn bộ 53 item tự động** của Task 1 trên 4 platform, mỗi platform một browser engine thật (không đổi code SUT, không đổi dữ liệu seed):
+
+| # | ID | Browser / engine | OS / device | Viewport | Loại |
+| :-: | :--- | :--- | :--- | :--- | :--- |
+| 1 | `windows-chrome` | Chrome 141 — Chromium 141 | Windows 11 | 1280×800 | Desktop (baseline) |
+| 2 | `windows-firefox` | Firefox 157 — Gecko | Windows 11 | 1280×800 | Desktop |
+| 3 | `windows-webkit` | WebKit 27.2 — engine của Safari | Windows 11 | 1280×800 | Desktop (Safari engine) |
+| 4 | `android-chrome` | Chrome Mobile — Chromium 141 | Android 14 · Pixel 7 (Playwright emulation) | 412×915 @2.625x | Mobile |
+
+Công cụ: Playwright 1.64.1 (`scripts/checklist_runner.js` với `BROWSER_KIND`, `PLATFORM_DEVICE`), axe-core 4.10.2, driver `scripts/run_cross_platform.js`. Kết quả thô: `evidence/xplat/results-<platform>.json`; log: `cross-platform/run.log`.
+
+### 4.2 Cách chạy lại
+
+```powershell
+$env:PLAYWRIGHT_BROWSERS_PATH = "C:\HCMUS\hk7\Testing\gui-testing-playwright-exercise\.cache\ms-playwright"
+node scripts/run_cross_platform.js          # 4 platform: checklist + 4 ảnh màn hình chính
+node scripts/build_xplat_matrix.js          # sinh cross-platform/matrix.md + matrix.csv
+```
+
+Mỗi platform chạy trong **context riêng** (cookie/localStorage sạch) để tránh lẫn trạng thái; item nào Fail mới chụp screenshot. Ảnh màn hình chính (Home, Login, Cart, Checkout + coupon) chụp trên mọi platform.
+
+### 4.3 Dấu vết trong screenshot
+
+Mọi ảnh Task 3 có overlay cố định ở đầu trang, sinh bằng `scripts/lib/overlay.js`:
+
+```text
+23120372@student.hcmus.edu.vn | <Platform label> | <URL localhost> | <dd/mm/yyyy hh:mm:ss>
+```
+
+Ví dụ: `23120372@student.hcmus.edu.vn | Android 14 · Chrome Mobile · Pixel 7 (Playwright emulation) | http://localhost:5173/checkout | 15/11/2026 13:23:36`.
+
+Tổng evidence: **38 ảnh item Failed + 4 ảnh màn hình chính cho mỗi platform** (`screenshots/cross-platform/<platform>/`), tất cả full-page và có overlay.
+
+### 4.4 Kết quả
+
+| Platform | Passed | Failed | Pass rate | Khác biệt so với baseline |
+| :--- | ---: | ---: | ---: | :--- |
+| Windows 11 · Chrome 141 | 15 | 38 | 28,3% | — (baseline) |
+| Windows 11 · Firefox 157 | 15 | 38 | 28,3% | 0 |
+| Windows 11 · WebKit 27 | 15 | 38 | 28,3% | 0 |
+| Android 14 · Pixel 7 | 15 | 38 | 28,3% | 0 |
+
+**0 khác biệt Pass/Fail trên 53 item × 4 platform.** Ma trận đầy đủ: `cross-platform/matrix.md` / `matrix.csv`.
+
+Ảnh dưới là cùng một bước (Checkout + coupon SAVE10) trên 4 platform — cùng một lỗi tính tiền, cùng một bố cục:
+
+![Chrome — Checkout + coupon](screenshots/cross-platform/windows-chrome/04-checkout-coupon.png)
+
+![Firefox — Checkout + coupon](screenshots/cross-platform/windows-firefox/04-checkout-coupon.png)
+
+![WebKit — Checkout + coupon](screenshots/cross-platform/windows-webkit/04-checkout-coupon.png)
+
+![Android — Checkout + coupon](screenshots/cross-platform/android-chrome/04-checkout-coupon.png)
+
+Nhận xét theo platform:
+
+| Platform | Quan sát |
+| :--- | :--- |
+| Chrome 141 | Baseline; layout đúng như mô tả trong Task 1. |
+| Firefox 157 | Cùng kích thước full-page (1280×1051 home, 1280×833 các trang còn lại), cùng lỗi; khác biệt duy nhất là font render và scrollbar. |
+| WebKit 27 | Cùng kết quả; `alert()`/`confirm()` native hiển thị khác Chromium nhưng luồng không đổi. |
+| Android 14 (Pixel 7) | Không có scroll ngang (`scrollWidth = innerWidth`), nhưng bảng giỏ hàng bị bó cột: "Sản phẩm"/"Thành tiền" xuống 3 dòng, nút "Tiến hành thanh toán" bẻ 3 dòng → đọc chậm hơn hẳn desktop (xem `screenshots/cross-platform/android-chrome/03-cart.png`). |
+
+### 4.5 Kết luận Task 3
+
+1. Các lỗi phát hiện ở Task 1 là **lỗi logic/UX của SUT**, không phải lỗi đặc thù một browser — vì tái hiện giống nhau trên 3 engine desktop và 1 mobile.
+2. Rủi ro thật của đa nền tảng nằm ở **layout mobile**, không phải JS: control nhỏ hơn 44 px (IA-01-16) và bảng giỏ bị bóp cột. Đây là hai điểm cần ưu tiên nếu SUT mở cho người dùng điện thoại.
+3. Giá trị của cross-platform ở bài này là **loại trừ giả thuyết**: không cần điều tra riêng cho Safari/Firefox, nguồn lỗi nằm ở code dùng chung + CSS.
+
+### 4.6 Hạn chế
+
+- `android-chrome` là **emulation** (UA + viewport + touch + DPR), không phải thiết bị thật; iOS/Safari thật và macOS Safari dự kiến bổ sung bằng BrowserStack khi có credentials (script sẽ ghi rõ `browserstack-*`).
+- WebKit trên Windows dùng engine Safari nhưng không phải Safari trên macOS — khác biệt font, scrollbar và một số API native có thể chưa lộ ra.
+- Chỉ chạy lại 53 item tự động; 12 item thủ công (màu, cảm nhận, back) được kiểm tra trên desktop và ghi ở `checklist/execution_log.md`.
+- DB không reset giữa các platform (chỉ đọc/không tạo dữ liệu mới ngoài 1 đơn bị hủy) nên kết quả so sánh được, nhưng không phải môi trường "sạch tuyệt đối".
 
 ---
 

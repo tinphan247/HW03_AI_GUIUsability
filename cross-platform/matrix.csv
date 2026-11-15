@@ -1,0 +1,54 @@
+item,aspect,screen,windows-chrome,windows-firefox,windows-webkit,android-chrome
+IA-01-01,IA-01,"Home",Failed,Failed,Failed,Failed
+IA-01-02,IA-01,"Tất cả trang",Failed,Failed,Failed,Failed
+IA-01-03,IA-01,"Global",Failed,Failed,Failed,Failed
+IA-01-05,IA-01,"Home, Cart, Checkout",Failed,Failed,Failed,Failed
+IA-01-08,IA-01,"Profile",Failed,Failed,Failed,Failed
+IA-01-09,IA-01,"Home",Failed,Failed,Failed,Failed
+IA-01-10,IA-01,"Global",Failed,Failed,Failed,Failed
+IA-01-11,IA-01,"Global",Passed,Passed,Passed,Passed
+IA-01-12,IA-01,"Home, Cart, Checkout",Passed,Passed,Passed,Passed
+IA-01-13,IA-01,"Checkout, Cart",Passed,Passed,Passed,Passed
+IA-01-14,IA-01,"Global",Passed,Passed,Passed,Passed
+IA-01-15,IA-01,"Cart, Checkout",Passed,Passed,Passed,Passed
+IA-01-16,IA-01,"Home, Cart (mobile)",Failed,Failed,Failed,Failed
+IA-02-01,IA-02,"Login, Register, Checkout",Failed,Failed,Failed,Failed
+IA-02-02,IA-02,"Login, Register",Failed,Failed,Failed,Failed
+IA-02-03,IA-02,"Login",Failed,Failed,Failed,Failed
+IA-02-04,IA-02,"Tất cả form",Failed,Failed,Failed,Failed
+IA-02-05,IA-02,"Login, Register",Failed,Failed,Failed,Failed
+IA-02-07,IA-02,"ForgotPassword",Failed,Failed,Failed,Failed
+IA-02-08,IA-02,"Login",Passed,Passed,Passed,Passed
+IA-02-09,IA-02,"Login, Register, Checkout",Failed,Failed,Failed,Failed
+IA-02-10,IA-02,"ProductDetail",Failed,Failed,Failed,Failed
+IA-02-11,IA-02,"Checkout",Failed,Failed,Failed,Failed
+IA-02-12,IA-02,"Checkout",Failed,Failed,Failed,Failed
+IA-02-13,IA-02,"Login, Register, Checkout",Failed,Failed,Failed,Failed
+IA-02-14,IA-02,"Home",Failed,Failed,Failed,Failed
+IA-02-15,IA-02,"Login, Register",Failed,Failed,Failed,Failed
+IA-02-16,IA-02,"Register",Failed,Failed,Failed,Failed
+IA-03-01,IA-03,"Global header",Passed,Passed,Passed,Passed
+IA-03-02,IA-03,"Global header",Failed,Failed,Failed,Failed
+IA-03-03,IA-03,"Global header",Failed,Failed,Failed,Failed
+IA-03-04,IA-03,"Cart, Checkout, ProductDetail",Failed,Failed,Failed,Failed
+IA-03-05,IA-03,"Global header",Passed,Passed,Passed,Passed
+IA-03-06,IA-03,"Global header",Passed,Passed,Passed,Passed
+IA-03-07,IA-03,"Cart",Passed,Passed,Passed,Passed
+IA-03-08,IA-03,"Profile",Passed,Passed,Passed,Passed
+IA-03-09,IA-03,"Cart, Profile",Failed,Failed,Failed,Failed
+IA-03-10,IA-03,"Global",Passed,Passed,Passed,Passed
+IA-03-11,IA-03,"Checkout success",Passed,Passed,Passed,Passed
+IA-03-16,IA-03,"ForgotPassword",Passed,Passed,Passed,Passed
+IA-04-01,IA-04,"Home",Failed,Failed,Failed,Failed
+IA-04-02,IA-04,"ProductDetail",Failed,Failed,Failed,Failed
+IA-04-03,IA-04,"Cart",Failed,Failed,Failed,Failed
+IA-04-04,IA-04,"Cart",Failed,Failed,Failed,Failed
+IA-04-05,IA-04,"Home",Failed,Failed,Failed,Failed
+IA-04-06,IA-04,"Home, Profile",Failed,Failed,Failed,Failed
+IA-04-07,IA-04,"Home",Failed,Failed,Failed,Failed
+IA-04-08,IA-04,"Checkout",Failed,Failed,Failed,Failed
+IA-04-09,IA-04,"Checkout",Passed,Passed,Passed,Passed
+IA-04-11,IA-04,"Checkout success",Failed,Failed,Failed,Failed
+IA-04-12,IA-04,"Home",Failed,Failed,Failed,Failed
+IA-04-13,IA-04,"Checkout, Profile",Failed,Failed,Failed,Failed
+IA-04-15,IA-04,"Profile",Failed,Failed,Failed,Failed

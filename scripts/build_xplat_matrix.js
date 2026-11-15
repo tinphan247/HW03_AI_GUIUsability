@@ -76,11 +76,11 @@ for (const it of automated) {
   }
 }
 
-lines += [
+lines.push(
   '',
   '## Khác biệt so với platform baseline (`' + baseline.id + '`)',
-  '',
-];
+  ''
+);
 if (!diffs.length) {
   lines.push('Không có khác biệt Pass/Fail giữa các platform đã chạy — hành vi checklist nhất quán.');
 } else {
@@ -91,13 +91,13 @@ if (!diffs.length) {
   }
 }
 
-lines += [
+lines.push(
   '',
   '## Ma trận đầy đủ',
   '',
   '| Item | Aspect | ' + loaded.map((p) => p.id).join(' | ') + ' |',
-  '| :--- | :--- | ' + loaded.map(() => ':---:').join(' | ') + ' |',
-];
+  '| :--- | :--- | ' + loaded.map(() => ':---:').join(' | ') + ' |'
+);
 for (const it of automated) {
   lines.push(
     `| ${it.id} | ${it.ia} | ` +

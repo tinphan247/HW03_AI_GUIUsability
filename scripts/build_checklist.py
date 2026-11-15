@@ -73,9 +73,12 @@ def main():
     ws.row_dimensions[1].height = 30
 
     bug_map = {}
+    bug_list = []
     bug_file = os.path.join(ROOT, "evidence", "bug_map.json")
     if os.path.exists(bug_file):
-        bug_map = load(bug_file)
+        bm = load(bug_file)
+        bug_map = bm.get("items", {})
+        bug_list = bm.get("bugs", [])
 
     for idx, it in enumerate(items, start=1):
         r = merged.get(it["id"], {})
@@ -111,7 +114,7 @@ def main():
 
     total = len(items)
     count = Counter(merged.get(i["id"], {}).get("status", "Not executed") for i in items)
-    bugs = len(bug_map)
+    bugs = len(bug_list)
 
     sm["A1"] = "HW03 — GUI Checklist: Test summary"
     sm["A1"].font = Font(bold=True, size=14, color="1F4E79")

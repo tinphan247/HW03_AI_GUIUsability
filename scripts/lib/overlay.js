@@ -17,7 +17,7 @@ async function addOverlay(page, platformLabel) {
       padding: '6px 10px', textAlign: 'center', letterSpacing: '0.2px',
     });
     document.body.prepend(bar);
-    document.body.style.paddingTop = '30px';
+    document.body.style.paddingTop = bar.offsetHeight + 2 + 'px';
   }, { email: STUDENT_EMAIL, platform: platformLabel, stamp });
 }
 
