@@ -388,14 +388,15 @@ Log đầy đủ theo từng artifact (prompt → output → verdict → reasoni
 | 1 | Sinh 46 item, phát hiện gap, viết runner Playwright | Partially valid — 5 item không đo được, runner có 2 false positive phải sửa |
 | 2 | Gom 44 item Failed thành 34 bug, viết bug report | Valid with correction — nâng coupon lên Blocker, giữ mapping item → bug |
 | 3 | Dựng harness cross-platform, watermark, ma trận so sánh | Partially valid — evidence sai nội dung (checkout 0 ₫), overlay che header, matrix crash; đã sửa và chạy lại |
+| 4 | BrowserStack OS thật (tunnel + 3 target cloud) | Invalid lần đầu — ảnh Safari là trang lỗi BrowserStack, `wmic.exe` ENOENT, real mobile bị chặn; đã thay bằng macOS Chrome thật + session-id để truy vết |
 
 ### 6.2 AI Critique (200–300 từ)
 
-AI giúp tôi đi nhanh ở phần **mở rộng phạm vi**: nó đọc 8 route, liệt kê component/state và sinh 46 item chỉ trong vài phút — việc tôi tự làm sẽ mất ít nhất một buổi và dễ bỏ sót màn hình. Tuy nhiên, giá trị thật của bài không nằm ở số lượng item AI sinh, mà ở chỗ tôi phát hiện **AI tự tin sai**. Ba biểu hiện rõ nhất: (1) AI mô tả lỗi như thể đã kiểm chứng khi mới đọc source (login `type=text`, Home 2 `<h1>`), trong khi đề yêu cầu bằng chứng thực thi; (2) AI sinh item "chuẩn chung" nhưng bỏ trống nhóm người dùng biên — persistence, dead-end, XSS-render, lộ lỗi kỹ thuật — tức là những lỗi chỉ lộ khi dùng thật; (3) runner do AI viết có false positive vì dùng `page.goto()` làm mất React state. Nếu tôi tin AI 100%, báo cáo sẽ vừa thừa item không đo được, vừa bỏ lỗi nghiêm trọng, vừa sai kết quả.
+AI giúp tôi đi nhanh ở phần **mở rộng phạm vi**: nó đọc 8 route, liệt kê component/state và sinh 46 item chỉ trong vài phút. Tuy nhiên, giá trị thật của bài không nằm ở số lượng item AI sinh, mà ở chỗ tôi phát hiện **AI tự tin sai**, ba biểu hiện rõ nhất: (1) AI mô tả lỗi như thể đã kiểm chứng khi mới đọc source (login `type=text`, Home 2 `<h1>`), trong khi đề yêu cầu bằng chứng thực thi; (2) item "chuẩn chung" bỏ trống nhóm lỗi biên — persistence, dead-end, XSS-render, lộ lỗi kỹ thuật; (3) runner do AI viết có false positive vì `page.goto()` làm mất React state. Nếu tôi tin AI 100%, báo cáo sẽ vừa thừa item không đo được, vừa bỏ lỗi nghiêm trọng, vừa sai kết quả.
 
-Điều thú vị là AI có ích nhất khi bị **bắt tự phản biện**: prompt "chỉ ra 10 nhóm còn thiếu" giúp lộ 6 nhóm, tôi bổ sung 4 nhóm còn lại. Điều này cho thấy vai trò con người là đặt câu hỏi và kiểm chứng, không phải duyệt output. Với usability, AI chỉ tạo được khung; 7 người thật mới là nguồn dữ liệu không thể thay thế, vì AI không thể "bối rối" hay "mất niềm tin" như người dùng.
+AI có ích nhất khi bị **bắt tự phản biện**: prompt "chỉ ra 10 nhóm còn thiếu" giúp lộ 6 nhóm, tôi bổ sung 4 nhóm còn lại. Artifact 4 (BrowserStack) lặp lại bài học này: ảnh Safari trông "đủ overlay" nhưng bên trong là trang lỗi của BrowserStack. Với usability, AI chỉ tạo được khung; 7 người thật mới là nguồn dữ liệu không thể thay thế, vì AI không thể "bối rối" hay "mất niềm tin" như người dùng — và tôi từ chối bịa 7 phiên thay người tham gia.
 
-Kết luận: AI là **leverage**, không phải **authority**. Quy tắc tôi giữ là: mọi kết quả phải có evidence chạy lại được; mọi item AI sinh phải qua review; mọi bug phải có screenshot và bước tái hiện.
+Kết luận: AI là **leverage**, không phải **authority**. Quy tắc tôi giữ: mọi kết quả phải có evidence chạy lại được; mọi item AI sinh phải qua review; mọi bug phải có screenshot và bước tái hiện; với bằng chứng cloud, phải mở ảnh kiểm tra nội dung, không chỉ đếm số file.
 
 ---
 
@@ -413,6 +414,13 @@ Repo cục bộ `hw3/23120372_HW03_AI_GUIUsability`, commit theo từng bước 
 | 6 | `343a6e4` | 15/11/2026 13:32 | `docs(report): add Task 3 results, self-assessment, and BrowserStack runner` | README self-assessment, §8, `run_browserstack.js`, Bug_Reports nhúng ảnh, PDF bản đầu |
 | 7 | `035c472` | 15/11/2026 13:32 | `docs(audit): log cross-platform harness fixes and add usability data request form` | AI Audit Artifact 3, `usability/DATA_REQUEST.md`, `git_commit_log.txt` |
 | 8 | `9beea11` | 15/11/2026 13:44 | `docs(bugs): link 34 GitHub issues and embed screenshots in bug report` | `evidence/created_issues.json`, Bug_Reports có link issue, README/Main_Report thêm URL repo |
+| 9 | `2527fa1` | 15/11/2026 13:45 | `docs(report): record git log and refresh PDF exports` | `git_commit_log.txt`, 3 PDF |
+| 10 | `a4f77a3` | 15/11/2026 13:45 | `docs(usability): add one-evening runbook for 7 real sessions` | `usability/ONE_NIGHT_RUNBOOK.md` (lịch 18:30–21:40, quy tắc ghi "không đo") |
+| 11 | `ea5bf15` | 15/11/2026 14:22 | `test(xplat): capture real Windows/macOS BrowserStack evidence and document harness fixes` | `screenshots/cross-platform/bs-*` (2 target × 4 ảnh), `bs_sessions.js`, `bs_probe.js`, `cross-platform/README.md` §5, Main_Report §4.6 |
+| 12 | `6cf8b9f` | 15/11/2026 14:22 | `chore(env): ignore BrowserStack CLI local.log` | `.gitignore`, xoá artefact khỏi repo |
+| 13 | `98f4032` | 15/11/2026 14:23 | `docs(report): state Task 2 status honestly, add Task 1-based recommendations and BrowserStack artifact` | Main_Report §3.5–3.8 (trạng thái 0/7 + 10 khuyến nghị), §8.1, AI Audit Artifact 4, `usability/analysis.md` |
+| 14 | `6ae38c4` | 15/11/2026 14:24 | `docs(readme): correct usability participant count to 0/7` | README §2 metric |
+| 15 | `d02ead9` | 15/11/2026 14:37 | `feat(usability): add one-line session intake tool, recruit message, and blank participant data` | `sus_from_lines.py`, `raw_sessions.txt`, `FILL_7_SESSIONS.md`, `RECRUIT_MESSAGE.md`, `participants.csv` về trạng thái trống thật |
 
 Nguyên tắc commit: mỗi commit là một bước hoàn chỉnh (design → execute → report), message theo Conventional Commits (`chore`, `test`, `feat`, `docs`), không có commit "wip".
 

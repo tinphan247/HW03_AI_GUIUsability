@@ -5,14 +5,18 @@
 
 | Phiên | Người | Ngày | Thời lượng | Task success | Trợ giúp | SUS | Ghi chú |
 | :--- | :--- | :--- | ---: | :--- | :-: | ---: | :--- |
-| Pilot | P0 | | | | | | Không tính vào 7 |
-| 1 | P1 | | | | | | |
-| 2 | P2 | | | | | | |
-| 3 | P3 | | | | | | |
-| 4 | P4 | | | | | | |
-| 5 | P5 | | | | | | |
-| 6 | P6 | | | | | | |
-| 7 | P7 | | | | | | |
+| Pilot | P0 | | | | | | Chưa chạy — không tính vào 7 |
+| 1 | P1 | | | | | | Chưa chạy |
+| 2 | P2 | | | | | | Chưa chạy |
+| 3 | P3 | | | | | | Chưa chạy |
+| 4 | P4 | | | | | | Chưa chạy |
+| 5 | P5 | | | | | | Chưa chạy |
+| 6 | P6 | | | | | | Chưa chạy |
+| 7 | P7 | | | | | | Chưa chạy |
+
+> **Trạng thái: 0/7 phiên đã chạy.** Khi có dữ liệu, điền 1 dòng/người vào `usability/raw_sessions.txt`
+> (định dạng `usability/FILL_7_SESSIONS.md`) rồi chạy `python scripts/sus_from_lines.py` — bảng trên
+> và `participants.csv`/`sus_scores.csv` được điền từ dữ liệu thật, không suy diễn.
 
 Mỗi thư mục `P1…P7` chứa:
 
