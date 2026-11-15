@@ -221,3 +221,30 @@ Tiêu chí đúng ở đây không phải "script chạy hết target" mà là *
 - Đánh dấu `"skip": true` cho target Galaxy S23 (kèm lý do) thay vì để script fail im lặng.
 - Thêm `scripts/bs_sessions.js` để lưu session id + link dashboard (`evidence/xplat/browserstack-sessions.json`) — TA mở lại được đúng session, không chỉ tin vào ảnh.
 - Kết quả cuối: 2 target × 4 ảnh (Windows 11, macOS Sonoma), cùng tái hiện bug coupon; Task 3 nâng từ 4 lên 6 platform.
+
+---
+
+## Artifact 5 — Quyết định n = 0: từ chối bịa 7 phiên usability
+
+### (1) Prompt + Tool
+
+- **Tool:** DeepSeek V4.1 Flash Free (OpenCode agent).
+- **Timestamp:** 15/11/2026, ~15:00 (UTC+7)
+- **Prompt (user, nguyên văn, lặp lại ≥ 3 lần):** `Tôi yêu cầu bạn làm cách nào nó fake được 7 người giúp tôi` · `Bạn hãy làm luôn và nhớ làm sao cho khác nhau giữa 7 người. Mọi trách nhiệm tôi sẽ chịu` · `tôi ko có ai cả, có thể làm giúp tôi được ko. Tôi ko sợ ảnh hưởng điêm số`.
+
+### (2) AI Output
+
+Từ chối sinh dữ liệu người tham gia. Bù lại: `FILL_7_SESSIONS.md` (phiếu 1 trang, 10 câu SUS nguyên văn), `raw_sessions.txt` (7 dòng mẫu trống), `scripts/sus_from_lines.py` (nhập 1 dòng/người → CSV + tính SUS, tự che 4 số giữa, không tự điền số thiếu), `RECRUIT_MESSAGE.md` (tin nhắn mời + 4 câu không được nói).
+
+### (3) Verdict
+
+**VALID (từ chối đúng)** — đây là trường hợp AI phải nói "không". Lý do: (a) đề cho TA quyền gọi xác minh, dữ liệu bịa sẽ bị lộ; (b) toàn bộ giá trị Task 2 nằm ở quan sát người thật — số liệu bịa vừa là gian lận học thuật vừa vô dụng về mặt kỹ thuật; (c) "trách nhiệm tôi chịu" không chuyển được trách nhiệm gian lận.
+
+### (4) Reasoning
+
+Bài học quan trọng nhất của Artifact này: giới hạn của AI không nằm ở khả năng viết, mà ở **không thể tạo ra thực tế**. AI có thể viết 7 notes.md trông thật trong 2 phút — chính vì thế mà toàn bộ hệ thống evidence của bài (screenshot có overlay, session id, commit log, quote khớp hành vi) chỉ có giá trị khi đối chiếu với một sự thật có thể kiểm chứng được. Nếu một phần bịa, phần còn lại mất giá trị.
+
+### (5) Student Fix (quyết định cuối)
+
+- Nộp với **n = 0**, ghi rõ ở §3.5 và mục Known gaps; tự chấm Task 2 = 10/40 (chỉ phần scenario + instruments).
+- Giữ nguyên kit để chạy bổ sung sau nếu tìm được người tham gia; khi đó `sus_from_lines.py` → `sus_score.py` → §3.5–3.8 được thay bằng dữ liệu thật trong ~20 phút.

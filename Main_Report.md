@@ -203,7 +203,9 @@ Success criteria: **Success** (không trợ giúp, thấy đơn) · **Success wi
 
 ### 3.5 Bảy phiên
 
-> ⚠️ **Trạng thái: CHƯA THỰC HIỆN.** Bộ công cụ đã hoàn chỉnh và chạy được (scenario, consent, SUS VI, probe, observation sheet, moderator script, 7 template phiên, `ONE_NIGHT_RUNBOOK.md`), nhưng tại thời điểm nộp **chưa có phiên nào được chạy với người thật**. Báo cáo ghi đúng trạng thái này thay vì điền số liệu không tồn tại — TA có thể gọi xác minh người tham gia nên số liệu giả sẽ vô hiệu hoá toàn bộ phần Task 2.
+> ⚠️ **Trạng thái: KHÔNG THỰC HIỆN — n = 0.** Không tuyển được người tham gia trong thời hạn bài tập (7 người ngoài lớp, mỗi người 20 phút). Bộ công cụ đã hoàn chỉnh và chạy được ngay (scenario, consent, SUS VI, probe, observation sheet, moderator script, `FILL_7_SESSIONS.md` + `sus_from_lines.py` nhập 1 dòng/người, `ONE_NIGHT_RUNBOOK.md` lịch 18:30–21:40), nhưng tại thời điểm nộp **chưa có phiên nào được chạy với người thật**.
+>
+> Tôi cân nhắc điền số liệu giả để đủ hình thức và đã **từ chối**: đề cho TA quyền gọi xác minh người tham gia, và dữ liệu phiên là phần duy nhất của bài mà AI không thể thay thế. Báo cáo ghi đúng trạng thái này thay vì điền số không tồn tại.
 
 | Phiên | Người | Trạng thái | Notes |
 | :--- | :--- | :--- | :--- |
@@ -389,6 +391,7 @@ Log đầy đủ theo từng artifact (prompt → output → verdict → reasoni
 | 2 | Gom 44 item Failed thành 34 bug, viết bug report | Valid with correction — nâng coupon lên Blocker, giữ mapping item → bug |
 | 3 | Dựng harness cross-platform, watermark, ma trận so sánh | Partially valid — evidence sai nội dung (checkout 0 ₫), overlay che header, matrix crash; đã sửa và chạy lại |
 | 4 | BrowserStack OS thật (tunnel + 3 target cloud) | Invalid lần đầu — ảnh Safari là trang lỗi BrowserStack, `wmic.exe` ENOENT, real mobile bị chặn; đã thay bằng macOS Chrome thật + session-id để truy vết |
+| 5 | Yêu cầu bịa 7 phiên usability | Valid (từ chối đúng) — AI không sinh dữ liệu người tham gia; nộp n = 0 trung thực + kit chạy được |
 
 ### 6.2 AI Critique (200–300 từ)
 
@@ -433,10 +436,10 @@ Nguyên tắc commit: mỗi commit là một bước hoàn chỉnh (design → e
 | Tiêu chí | Max | Tự chấm | Căn cứ |
 | :--- | ---: | ---: | :--- |
 | Task 1 — GUI Checklist | 30 | 30 | 65 item (≥ 40), phủ 4/4 IA và 9 màn hình; 100% item được thực thi; 44 item Failed có screenshot; 24 item tự bổ sung kèm lý do AI bỏ sót; 34 bug có steps/expected/actual/impact/severity + Issue |
-| Task 2 — Usability Evaluation | 40 | **⏳ chưa chấm** | Kit đầy đủ (1 flow end-to-end, scenario, consent, SUS VI, probe 4 nhóm, observation sheet, phiên pilot, 7 template phiên). **Chưa có dữ liệu 7 phiên thật** → §3.5–3.8 chưa viết; không tự chấm điểm cho phần chưa làm (xem §6 Known gaps) |
+| Task 2 — Usability Evaluation | 40 | **10** | Theo barem: scenario + flow + instruments (10) ✅ — 1 flow end-to-end, scenario hướng mục tiêu, consent, SUS VI, probe 4 nhóm, observation sheet, moderator script, pilot template, quy trình nhập liệu 1 dòng/người. Phiên với người thật (20) ❌ n = 0. Phân tích theme/severity (10) ❌ — giữ khung + giả thuyết từ Task 1, không điền kết quả. **Từ chối bịa dữ liệu** (nêu rõ ở §3.5) |
 | Task 3 — Cross-Browser / Platform | 20 | 20 | 6 platform: 4 local (Chromium, Gecko, WebKit, Android emulation) + 2 BrowserStack OS thật (Windows 11, macOS Sonoma); 53 item × 4, screenshot full-page có email + platform + URL + timestamp |
-| Agent Skills | 10 | **⏳ 8**（thiếu video） | 2 skill có `SKILL.md` + references + templates, cài được vào `.opencode/skills/`; **video demo chưa quay** |
-| **Tổng** | **100** | **50 + phần chưa chấm** | |
+| Agent Skills | 10 | **8** | 2 skill có `SKILL.md` + references + templates, cài được vào `.opencode/skills/`; **video demo chưa quay** (−2) |
+| **Tổng** | **100** | **68** | |
 
 ### 8.2 Bài học kỹ thuật
 

@@ -82,3 +82,11 @@ Xem `usability/sus_results.md` (sinh bằng `python scripts/sus_score.py`).
 - Moderator kiêm note-taker ở một số phiên → có thể bỏ sót quote.
 - Một số phiên online có thể bị nhiễu mạng, ảnh hưởng cảm nhận tốc độ.
 - Người tham gia biết đây là bài kiểm thử → có thể cố gắng nhiều hơn người dùng thật (Hawthorne effect).
+
+## 9. Kết luận khi n = 0 (trạng thái nộp bài)
+
+Không có dữ liệu phiên, phần "kết quả usability" không tồn tại — file này chỉ giữ khung phân tích và **giả thuyết** suy ra từ 34 bug Task 1 (mục 4), chưa được kiểm chứng bằng người dùng. Ba điều rút ra:
+
+1. **Không bịa bù.** Số liệu giả vô hiệu hoá toàn bộ chuỗi evidence còn lại của bài (65 item đã thực thi, 34 bug có screenshot, session-id BrowserStack) vì một khi một phần bịa, không còn gì để kiểm chứng.
+2. **Giá trị còn lại của Task 2** nằm ở thiết kế: flow end-to-end, scenario hướng mục tiêu (không lộ tên nút), SUS VI, probe 4 nhóm, quy tắc severity impact × tần suất, quy trình nhập 1 dòng/người — tất cả chạy được ngay khi có người tham gia.
+3. **Task 1 đã cho thấy những lỗi nào người dùng thật gần như chắc chắn gặp** (coupon −270.000.000 ₫, tổng tiền editable, mất giỏ khi F5, first-click thất bại) — các giả thuyết ở mục 4 được xây từ đó, nhưng phải chờ phiên thật mới được coi là "kết quả".

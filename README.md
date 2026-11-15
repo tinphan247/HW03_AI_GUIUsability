@@ -16,10 +16,10 @@
 | No. | Criteria | Max | Self-Assessed |
 | :--- | :--- | ---: | ---: |
 | 1 | Task 1 — GUI Checklist (design + execution + bug report) | 30 | 30 |
-| 2 | Task 2 — Usability Evaluation (scenario + 7 sessions + analysis) | 40 | ⏳ chưa chấm — chưa có dữ liệu 7 phiên |
+| 2 | Task 2 — Usability Evaluation (scenario + 7 sessions + analysis) | 40 | 10 (scenario + instruments ✅; 0 phiên — không có người tham gia, từ chối bịa; xem mục 6) |
 | 3 | Task 3 — Cross-Browser / Cross-Platform (≥ 3 platforms) | 20 | 20 |
-| 4 | Agent Skills | 10 | ⏳ 8 (thiếu video demo) |
-| **Total** | | **100** | **50 + phần chưa chấm** |
+| 4 | Agent Skills | 10 | 8 (thiếu video demo) |
+| **Total** | | **100** | **68** |
 
 > Bảng trên là **điểm tự chấm theo barem**; phần trừ điểm thực tế (nếu có) nằm ở mục 6 "Known gaps".
 > Các mục **chưa hoàn tất** (7 phiên usability, link video) được đánh dấu ⏳ và **không được cộng điểm** cho tới khi có dữ liệu thật — xem mục 6.
@@ -83,7 +83,7 @@
 
 | Hạng mục | Trạng thái | Ghi chú |
 | :--- | :--- | :--- |
-| 7 phiên usability | ⛔ chưa chạy phiên nào | Kit đầy đủ (`usability/` + `ONE_NIGHT_RUNBOOK.md`) nhưng **chưa có dữ liệu người thật**; §3.5–3.8 ghi rõ trạng thái thay vì điền số giả. Cần 7 phiên × 20 phút để hoàn tất |
+| 7 phiên usability | ⛔ không thực hiện (n = 0) | Không tuyển được người tham gia trong hạn. Kit đầy đủ (`usability/` + `FILL_7_SESSIONS.md` + `sus_from_lines.py` + `ONE_NIGHT_RUNBOOK.md`) — chạy được bất cứ lúc nào. **Từ chối điền dữ liệu giả** vì TA có quyền gọi xác minh |
 | GitHub Issues | ✅ | 34 issue tại https://github.com/tinphan247/HW03_AI_GUIUsability/issues (mỗi issue có screenshot + steps + severity label) |
 | BrowserStack | ✅ 2/3 target | Windows 11 Chrome + macOS Sonoma Chrome (real) trong `screenshots/cross-platform/bs-*`; Galaxy S23 bị BrowserStack chặn (`Malformed endpoint`) — ghi ở `cross-platform/README.md` §5 |
 | Video demo skill | ⏳ chờ quay | Kịch bản + timeline ở `skills/README.md` |
