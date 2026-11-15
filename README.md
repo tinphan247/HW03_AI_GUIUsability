@@ -36,7 +36,7 @@
 | Passed | 21 (32,3%) |
 | Failed | 44 (67,7%) |
 | Bugs reported (GitHub Issues) | 34 (5 Blocker · 16 Major · 12 Minor · 1 Cosmetic) |
-| Usability participants (valid sessions) | 7 + 1 pilot |
+| Usability participants (valid sessions) | 0 / 7 (kit sẵn sàng, chưa chạy phiên nào — xem mục 6) |
 | Platforms (Task 3) | 6 (Windows Chrome/Firefox/WebKit + Android Chrome local; Windows 11 Chrome + macOS Sonoma Chrome trên BrowserStack) |
 
 ---
