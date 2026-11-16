@@ -23,3 +23,7 @@ usability/contacts_local.csv
 
 # BrowserStack CLI log (sinh tự động khi chạy tunnel)
 local.log
+
+# Python bytecode
+__pycache__/
+*.pyc
