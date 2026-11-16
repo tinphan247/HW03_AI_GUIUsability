@@ -1,5 +1,9 @@
 # Mẫu điền dữ liệu 7 phiên (gửi lại cho sinh viên)
 
+> ⚠️ **ĐÃ HOÀN TẤT — không dùng mẫu này nữa (16/11/2026).** Dữ liệu 7 người thật đã thu qua Google Form và
+> xử lý bằng script: `usability/participants.csv`, `sus_scores.csv`, `sus_results.md`, `sessions/P1..P7/notes.md`.
+> File này giữ lại làm mẫu cho trường hợp chạy bổ sung phiên có moderator.
+
 > Điền trực tiếp vào file này (hoặc copy vào chat). Không cần đúng chính tả.
 > Liên hệ: ghi **đầy đủ** ở đây để lưu nội bộ; khi báo cáo sẽ tự che 4 số giữa (`0901***678`).
 

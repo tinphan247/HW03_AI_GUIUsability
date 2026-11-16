@@ -19,7 +19,7 @@ New-Item -ItemType Directory -Force -Path $Stage | Out-Null
 
 # Copy toàn bộ trừ artefact nặng / riêng tư
 $exclude = @("node_modules", ".git", "evidence\raw", "*.mp4", "*.zip")
-robocopy $Root $Stage /E /XD node_modules .git evidence\raw /XF *.mp4 *.zip local.log | Out-Null
+robocopy $Root $Stage /E /XD node_modules .git evidence\raw __pycache__ /XF *.mp4 *.zip local.log *.pyc | Out-Null
 
 # Không đưa recording/consent gốc vào zip công khai
 Get-ChildItem -Path $Stage -Recurse -Include "recording*.mp4" -ErrorAction SilentlyContinue | Remove-Item -Force
