@@ -16,13 +16,13 @@
 | No. | Criteria | Max | Self-Assessed |
 | :--- | :--- | ---: | ---: |
 | 1 | Task 1 — GUI Checklist (design + execution + bug report) | 30 | 30 |
-| 2 | Task 2 — Usability Evaluation (scenario + 7 sessions + analysis) | 40 | 10 (scenario + instruments ✅; 0 phiên — không có người tham gia, từ chối bịa; xem mục 6) |
+| 2 | Task 2 — Usability Evaluation (scenario + 7 sessions + analysis) | 40 | 34 (7 người thật qua Google Form, SUS mean 80.0; trừ vì unmoderated: không có time-on-task, task outcome tự khai, không có quote) |
 | 3 | Task 3 — Cross-Browser / Cross-Platform (≥ 3 platforms) | 20 | 20 |
 | 4 | Agent Skills | 10 | 8 (thiếu video demo) |
-| **Total** | | **100** | **68** |
+| **Total** | | **100** | **92** |
 
 > Bảng trên là **điểm tự chấm theo barem**; phần trừ điểm thực tế (nếu có) nằm ở mục 6 "Known gaps".
-> Các mục **chưa hoàn tất** (7 phiên usability, link video) được đánh dấu ⏳ và **không được cộng điểm** cho tới khi có dữ liệu thật — xem mục 6.
+> Các mục **chưa hoàn tất** (video demo) được đánh dấu ⏳ và **không được cộng điểm** — xem mục 6.
 
 ---
 
@@ -36,7 +36,7 @@
 | Passed | 21 (32,3%) |
 | Failed | 44 (67,7%) |
 | Bugs reported (GitHub Issues) | 34 (5 Blocker · 16 Major · 12 Minor · 1 Cosmetic) |
-| Usability participants (valid sessions) | 0 / 7 (kit sẵn sàng, chưa chạy phiên nào — xem mục 6) |
+| Usability participants (valid sessions) | **7 / 7** (8 response thô → bỏ 1 trùng) · SUS mean **80.0** (median 87.5, SD 17.2) |
 | Platforms (Task 3) | 6 (Windows Chrome/Firefox/WebKit + Android Chrome local; Windows 11 Chrome + macOS Sonoma Chrome trên BrowserStack) |
 
 ---
@@ -83,7 +83,8 @@
 
 | Hạng mục | Trạng thái | Ghi chú |
 | :--- | :--- | :--- |
-| 7 phiên usability | ⛔ không thực hiện (n = 0) | Không tuyển được người tham gia trong hạn. Đang mở đường bổ sung: Google Form (`usability/GOOGLE_FORM_GUIDE.md`) + kit (`FILL_7_SESSIONS.md`, `sus_from_lines.py`, `gform_to_csv.py`, `ONE_NIGHT_RUNBOOK.md`) — có response là có phân tích trong ~20 phút. **Từ chối điền dữ liệu giả** vì TA có quyền gọi xác minh |
+| 7 phiên usability | ⚠️ đã chạy, chất lượng bằng chứng thấp | **7 người thật**, 8 response Google Form (bỏ 1 trùng cùng SĐT bằng script). SUS mean 80.0, SD 17.2. Hạn chế: **unmoderated** — không có time-on-task, không có thiết bị, task outcome tự khai, không quote/observation, không chạy pilot, 6/7 straight-lining (courtesy bias). Ghi rõ ở `usability/analysis.md` §8 và `Main_Report.md` §3.5 |
+| Dữ liệu thô Google Form | 🔒 chỉ giữ local | `usability/gform_responses.csv` (8 response) + `contacts_local.csv` chứa họ tên/SĐT thật → nằm trong `.gitignore`, **không** lên repo và **không** vào zip. Bản che 4 số giữa: `participants.csv`; bản đầy đủ gửi TA khi được yêu cầu xác minh |
 | GitHub Issues | ✅ | 34 issue tại https://github.com/tinphan247/HW03_AI_GUIUsability/issues (mỗi issue có screenshot + steps + severity label) |
 | BrowserStack | ✅ 2/3 target | Windows 11 Chrome + macOS Sonoma Chrome (real) trong `screenshots/cross-platform/bs-*`; Galaxy S23 bị BrowserStack chặn (`Malformed endpoint`) — ghi ở `cross-platform/README.md` §5 |
 | Video demo skill | ⏳ chờ quay | Kịch bản + timeline ở `skills/README.md` |
@@ -105,6 +106,8 @@
 | `scripts/run_browserstack.js` | Chụp 4 màn hình trên BrowserStack (tunnel local) |
 | `scripts/sus_from_lines.py` | Nhập `usability/raw_sessions.txt` (1 dòng/người) → `participants.csv` + `sus_scores.csv` |
 | `scripts/gform_to_csv.py` | Chuyển CSV Google Form (dựng theo `GOOGLE_FORM_GUIDE.md`) → `participants.csv` + `sus_scores.csv` |
+| `scripts/dedupe_responses.py` | Bỏ response trùng theo SĐT (giữ bản gửi sau) → `gform_responses_dedup.csv` |
+| `scripts/import_gform_sessions.py` | Sinh `usability/sessions/P1..P7/notes.md`; tách `contacts_local.csv` (không nộp); xoá SĐT đầy đủ khỏi `participants.csv` |
 | `scripts/sus_score.py` | Tính SUS → `usability/sus_results.md` |
 | `scripts/bs_sessions.js` | Lấy session id + link dashboard BrowserStack → `evidence/xplat/browserstack-sessions.json` |
 | `scripts/publish_github.js` | Tạo repo + 34 GitHub Issue kèm screenshot |

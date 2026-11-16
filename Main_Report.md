@@ -6,8 +6,8 @@
 **SUT:** EShop — https://github.com/ttbhanh/eshop-sut
 **Repo bài làm:** https://github.com/tinphan247/HW03_AI_GUIUsability · **34 GitHub Issues:** https://github.com/tinphan247/HW03_AI_GUIUsability/issues
 **Bloom-AI:** G9.3 (Analyse) + G9.4 (Collaborate with AI for exploratory testing)
-**Ngày thực hiện:** 15/11/2026 — …
-**Self-assessed grade:** `0__/100`
+**Ngày thực hiện:** 15–16/11/2026
+**Self-assessed grade:** `92/100`
 
 ---
 
@@ -199,50 +199,93 @@ Success criteria: **Success** (không trợ giúp, thấy đơn) · **Success wi
 - **Tiêu chí:** ≥ 18 tuổi, **ngoài lớp HW03**, đã từng mua online trong 6 tháng, không cần biết kiểm thử.
 - **Số lượng:** 7 người chính + 1 pilot + 2 dự phòng.
 - **Liên hệ:** lưu trong `usability/participants.csv`; khi báo cáo che 4 số giữa (`0901***678`). Bản đầy đủ chỉ gửi TA khi được yêu cầu xác minh.
-- **Pilot:** chạy trước với 1 người ngoài 7, mục đích kiểm tra scenario/instruments/thời lượng; dữ liệu pilot **không** tính vào phân tích. Thay đổi sau pilot ghi ở `usability/pilot/pilot_notes.md`.
-- **Hình thức:** phiên trực tiếp trên máy người điều phối **hoặc** từ xa qua **bản host công khai** (`https://eshop-sut-snowy.vercel.app/`, API Render — đã kiểm chứng đăng nhập + danh sách sản phẩm hoạt động) — người tham gia dùng thiết bị của chính họ, moderator không điều khiển trực tiếp (ghi rõ hình thức từng phiên ở `participants.csv`/notes). Lưu ý Render free tier: request đầu tiên sau khi idle có thể chậm 30–60 giây — báo trước cho người tham gia để không tính vào trải nghiệm.
+- **Pilot:** **không chạy** — bộ công cụ được kiểm bằng CSV mẫu (3 dòng) chứ không bằng người thật. Đây là thiếu sót được ghi ở `usability/analysis.md` §8 (nếu chạy pilot, sẽ phát hiện sớm form thiếu câu thời gian/thiết bị).
+- **Hình thức thực tế:** **online, unmoderated qua Google Form** — form chứa hướng dẫn + link bản host `https://eshop-sut-snowy.vercel.app/` (API Render), người tham gia dùng thiết bị của chính họ, tự làm rồi tự điền SUS. Không moderator, không quay màn hình, không bấm giờ → hệ quả ghi ở §3.5 và `analysis.md` §8.
 
 ### 3.5 Bảy phiên
 
-> ⚠️ **Trạng thái: KHÔNG THỰC HIỆN — n = 0.** Không tuyển được người tham gia trong thời hạn bài tập (7 người ngoài lớp, mỗi người 20 phút). Bộ công cụ đã hoàn chỉnh và chạy được ngay (scenario, consent, SUS VI, probe, observation sheet, moderator script, `FILL_7_SESSIONS.md` + `sus_from_lines.py` nhập 1 dòng/người, `ONE_NIGHT_RUNBOOK.md` lịch 18:30–21:40), nhưng tại thời điểm nộp **chưa có phiên nào được chạy với người thật**.
+**Hình thức thực tế:** online, **unmoderated** — người tham gia tự mở form, đọc hướng dẫn trong form, tự làm task trên bản host `https://eshop-sut-snowy.vercel.app/`, rồi tự điền SUS. Không moderator, không quay màn hình, không bấm giờ.
+
+- **Thời gian thu:** 16/11/2026, 07:18 – 10:52 (GMT+7).
+- **Response thô:** 8 → **7 người duy nhất** sau khi bỏ 1 response trùng (cùng họ tên + SĐT, cách nhau 76 giây). Giữ bản gửi sau vì bản đầu trả lời 5 cho cả 10 câu (tự mâu thuẫn). Script: `scripts/dedupe_responses.py`.
+- **Dữ liệu gốc:** `usability/gform_responses.csv` (thô) · `gform_responses_dedup.csv` (7 dòng) · `participants.csv` (che SĐT) · `sus_scores.csv`.
+
+| Phiên | Tuổi | Kết quả task (tự báo cáo) | Thời gian | Trợ giúp | SUS | Mức |
+| :--- | :-: | :--- | :--- | :-: | ---: | :--- |
+| P1 | 21 | Success | `khong-do` | 0 | 87.5 | Excellent |
+| P2 | 20 | Success | `khong-do` | 0 | 90.0 | Excellent |
+| P3 | 21 | Success | `khong-do` | 0 | 75.0 | Good |
+| P4 | 23 | Success | `khong-do` | 0 | 97.5 | Excellent |
+| P5 | 20 | Success | `khong-do` | 0 | 87.5 | Excellent |
+| P6 | 21 | **Help** (cần gợi ý ≥ 1 lần) | `khong-do` | ≥ 1 | 77.5 | Good |
+| P7 | 22 | Success | `khong-do` | 0 | 45.0 | Poor |
+
+**Tổng hợp:** Success **6/7** · Success with help **1/7** · Failure **0/7** · Thời gian **không có dữ liệu**.
+
+> **Hai hạn chế phải nói rõ (không che):**
+> 1. **Không đo được thời gian** — form rút gọn (~1 phút/người) không có câu thời gian và không có moderator bấm giờ → toàn bộ cột thời gian là `khong-do`, không suy ra số nào.
+> 2. **Task outcome là tự khai, chưa kiểm chứng** — 4 response đầu gửi cách nhau 30–146 giây, ngắn hơn nhiều so với phiên 20 phút. "6/7 success" chỉ có nghĩa *6 người tự nói đã làm xong*, không chứng minh họ chạy hết flow.
 >
-> Tôi cân nhắc điền số liệu giả để đủ hình thức và đã **từ chối**: đề cho TA quyền gọi xác minh người tham gia, và dữ liệu phiên là phần duy nhất của bài mà AI không thể thay thế. Báo cáo ghi đúng trạng thái này thay vì điền số không tồn tại.
-
-| Phiên | Người | Trạng thái | Notes |
-| :--- | :--- | :--- | :--- |
-| P0 (pilot) | — | Chưa chạy | Template: `usability/pilot/pilot_notes.md` |
-| P1–P7 | — | Chưa chạy | Template: `usability/sessions/P1..P7/notes.md` |
-
-**Điều kiện để hoàn tất mục này:** 7 phiên × 20 phút theo `usability/ONE_NIGHT_RUNBOOK.md`; mỗi phiên cần 4 nhóm dữ liệu (kết quả task + thời gian, 10 câu SUS, 3 quote nguyên văn, 1 quan sát hành vi). Sau đó `participants.csv` + `sus_scores.csv` được điền, `python scripts/sus_score.py` sinh điểm, và §3.6–3.7 được thay bằng kết quả thật.
+> Không có quote nói-to-suy-nghĩ và không có observation sheet → theme ở §3.7 chỉ dựa trên **mẫu trả lời SUS + bằng chứng Task 1**, ghi rõ là suy luận.
 
 ### 3.6 Kết quả SUS
 
-Chưa có dữ liệu → **không báo mean/median**. Cách tính đã cố định trong `scripts/sus_score.py` (công thức chuẩn: câu lẻ `score − 1`, câu chẵn `5 − score`, tổng × 2.5; báo mean, median, SD, khoảng tin cậy 95% và phân loại theo Bangor: < 51 = F, 51–67 = D, 68–80 = C, 81–90 = B, > 90 = A).
+Sinh tự động: `python scripts/sus_score.py` → `usability/sus_results.md` (câu lẻ `score − 1`, câu chẵn `5 − score`, tổng × 2.5).
+
+| Metric | Value |
+| :--- | ---: |
+| n | 7 |
+| Mean SUS | **80.0** |
+| Median | 87.5 |
+| SD | 17.2 |
+| Min – Max | 45.0 (P7) – 97.5 (P4) |
+| Diễn giải | **Good** (68–80); Bangor 68–80 = C, 81–90 = B → **80.0 đúng ranh giới B/C** |
+
+**Đọc theo câu (thang 1–5, chưa đảo):** Q3 = 4.86 (dễ dùng) · Q7 = 4.71 · Q1/Q9 = 4.57 · Q5 = 4.43 · Q2 = 1.57 (không phức tạp) · Q6/Q8 = 2.14 (ít nhận ra lỗi) · Q10 = 2.86 · Q4 = 2.43.
+
+**Cảnh báo chất lượng dữ liệu:** 6/7 trả lời theo một khuôn rất đều (câu tích cực = 5, câu phủ định = 1–2); P2 tự mâu thuẫn (Q4 = 5 "cần chuyên gia" nhưng Q10 = 1 "không cần học"); người tham gia là người quen tác giả → **courtesy bias**, SUS thật có thể thấp hơn 80. P7 (45 — Poor) là người duy nhất chấm Q5 = 2, Q6 = 4, Q8 = 4.
 
 ### 3.7 Phân tích theme & severity
 
-Chưa thể phân tích theme khi chưa có dữ liệu phiên. Kế hoạch phân tích (đã cố định trong `usability/analysis.md`):
+Không có observation/quote nên **không thể affinity mapping**. Hai theme dưới đây suy ra từ mẫu SUS + Task 1, ghi rõ mức tin cậy:
 
-1. **Affinity mapping** từ timeline + quote của 7 phiên → nhóm theme (giỏ hàng, coupon/giá, đăng nhập, phản hồi hệ thống, tin cậy).
-2. **Severity = impact × tần suất**: impact 1–4 (observation sheet) × số phiên gặp / 7.
-3. **Tam giác hoá với Task 1**: mỗi theme map về bug ID đã phát hiện (ví dụ coupon → `GUI-BUG-30`, first-click giỏ → `GUI-BUG-25`, mất giỏ khi F5 → `GUI-BUG-24`) để trả lời: lỗi nào người dùng thật **nhận ra**, lỗi nào họ **không nhận ra** (ưu tiên sửa khác nhau).
+| Theme | Bằng chứng | Diễn giải | Tin cậy |
+| :--- | :--- | :--- | :--- |
+| **T1 — Happy path trơn, lỗi nằm ở nhánh biên** | 6/7 Success; Q3 = 4.86; Q6/Q8 = 2.14 | Flow chính chạy được; 34 bug Task 1 tập trung ở đường biên (coupon âm khi tổng lớn, mất giỏ khi F5, guest vào `/checkout`, first-click) nên một lượt đi đúng không chạm tới | Trung bình |
+| **T2 — "Không nhất quán" bị 1 người nhận ra rõ** | P7: Q5 = 2, Q6 = 4, Q8 = 4, Q1 = 3 → SUS 45 | Outlier có ý nghĩa: nhóm "nhận ra lỗi" có thể tăng khi mở rộng mẫu | Thấp (n = 1) |
+| T3 — Coupon | 0/7 để lại ý kiến | Không kết luận được — cần probe trực tiếp | Không đủ dữ liệu |
+
+**Ưu tiên (tam giác hoá Task 1 ↔ mức nhận ra của người dùng):**
+
+| # | Vấn đề | Nguồn | Người dùng nhận ra? | Ưu tiên |
+| :-: | :--- | :--- | :--- | :--- |
+| 1 | Coupon `-270.000.000 ₫` / thành tiền `300.000.000 ₫` | GUI-BUG-30 (Blocker) | **Không ai** → lỗi im lặng, nguy hiểm nhất | P0 |
+| 2 | Tổng tiền editable client-side | GUI-BUG-15 | Không | P0 |
+| 3 | Guest vào `/checkout` | GUI-BUG-16 | Không | P0 |
+| 4 | First-click "Thêm vào giỏ" thất bại | GUI-BUG-25/21 | Có thể — P6 cần gợi ý | P0 |
+| 5 | XSS `dangerouslySetInnerHTML` | GUI-BUG-32 | Không | P0 (bảo mật) |
+| 6 | Mất giỏ khi F5 | GUI-BUG-24 | Không (phiên 1 lượt) | P1 |
+| 7 | Nhãn tiếng Anh / thiếu nhất quán | GUI-BUG-01…09 | **Có** — P7 Q6/Q8 = 4 | P1 (mobile) |
+
+**Kết luận ngược đời nhưng đúng dữ liệu:** SUS 80 *không* chứng minh SUT tốt — người dùng chấm cao vì chỉ đi đúng happy path một lần, còn 4 Blocker nằm ở nhánh họ không chạm. Nhìn SUS mà bỏ 34 bug là sai.
 
 ### 3.8 Khuyến nghị
 
-Các khuyến nghị dưới đây suy ra từ **Task 1 + Task 3** (đã có bằng chứng), không phải từ dữ liệu usability — sẽ được xếp lại ưu tiên sau khi có 7 phiên:
+Các khuyến nghị dưới đây xếp lại theo **Task 1 + Task 3 + dữ liệu 7 phiên**:
 
 | # | Khuyến nghị | Xuất phát từ | Mức ưu tiên |
 | :-: | :--- | :--- | :-: |
-| 1 | Sửa công thức coupon ở backend; cấm `discount_amount` âm; hiển thị tiền giảm dương và thành tiền ≤ giá gốc | GUI-BUG-30 (Blocker, tái hiện trên 6 platform) | P0 |
+| 1 | Sửa công thức coupon ở backend; cấm `discount_amount` âm; hiển thị tiền giảm dương và thành tiền ≤ giá gốc | GUI-BUG-30 (Blocker, 6 platform) + **0/7 người dùng phát hiện** | P0 |
 | 2 | Tổng tiền thanh toán phải là **read-only**, server tính lại khi tạo đơn | GUI-BUG-15 | P0 |
 | 3 | Chặn guest vào `/checkout`, redirect kèm `returnUrl` | GUI-BUG-16 | P0 |
-| 4 | Sửa first-click "Thêm vào giỏ" (handler gắn sau lần render đầu) + toast/badge phản hồi | GUI-BUG-25, GUI-BUG-21 | P0 |
+| 4 | Sửa first-click "Thêm vào giỏ" (handler gắn sau lần render đầu) + toast/badge phản hồi | GUI-BUG-25, GUI-BUG-21 + P6 cần trợ giúp | P0 |
 | 5 | Escape mọi chuỗi người dùng nhập trước khi render (bỏ `dangerouslySetInnerHTML` ở header) | GUI-BUG-32 | P0 |
-| 6 | Persist giỏ hàng (localStorage/server) để F5 không mất | GUI-BUG-24 | P1 |
-| 7 | Thêm loading/error state + empty state cho danh sách và tìm kiếm | GUI-BUG-28, GUI-BUG-29 | P1 |
-| 8 | Chuẩn hoá ngôn ngữ (`lang="vi"`), format tiền, nhãn nút, màu primary | GUI-BUG-01…05, GUI-BUG-22 | P2 |
+| 6 | Chuẩn hoá ngôn ngữ (`lang="vi"`), format tiền, nhãn nút, màu primary | GUI-BUG-01…05, GUI-BUG-22 + P7 (Q6 = 4), P3 (75) | P1 |
+| 7 | Persist giỏ hàng (localStorage/server) để F5 không mất | GUI-BUG-24 | P1 |
+| 8 | Thêm loading/error state + empty state cho danh sách và tìm kiếm | GUI-BUG-28, GUI-BUG-29 | P1 |
 | 9 | Tăng touch target ≥ 44 px, sửa contrast ≥ 4.5:1, thêm alt/label | GUI-BUG-06…09, IA-01-16 | P1 (mobile) |
 | 10 | Thêm xác nhận trước khi xoá sản phẩm / huỷ đơn | GUI-BUG-26 | P2 |
+| 11 | Gửi **3 câu probe** (coupon, trust, bước rối nhất) cho 7 người cũ | Thiếu quote + time-on-task → củng cố bằng chứng định tính | P2 |
 
 ---
 
@@ -392,15 +435,16 @@ Log đầy đủ theo từng artifact (prompt → output → verdict → reasoni
 | 2 | Gom 44 item Failed thành 34 bug, viết bug report | Valid with correction — nâng coupon lên Blocker, giữ mapping item → bug |
 | 3 | Dựng harness cross-platform, watermark, ma trận so sánh | Partially valid — evidence sai nội dung (checkout 0 ₫), overlay che header, matrix crash; đã sửa và chạy lại |
 | 4 | BrowserStack OS thật (tunnel + 3 target cloud) | Invalid lần đầu — ảnh Safari là trang lỗi BrowserStack, `wmic.exe` ENOENT, real mobile bị chặn; đã thay bằng macOS Chrome thật + session-id để truy vết |
-| 5 | Yêu cầu bịa 7 phiên usability | Valid (từ chối đúng) — AI không sinh dữ liệu người tham gia; nộp n = 0 trung thực + kit chạy được |
+| 5 | Yêu cầu bịa 7 phiên usability → sau đó có 8 response thật | Valid — từ chối sinh dữ liệu người tham gia; khi có dữ liệu thật thì xử lý minh bạch: bỏ 1 response trùng bằng script, giữ nguyên outlier SUS 45, **không** điền time-on-task/quote còn thiếu |
+| 6 | Nhập 8 response → 7 phiên, tính SUS, cập nhật §3.5–3.8 | Valid with correction — script tự map sai cột SĐT (khớp chữ "liên hệ" trong câu consent) và sai cột coupon (khớp "SAVE10" trong câu task outcome); đã sửa và chạy lại |
 
 ### 6.2 AI Critique (200–300 từ)
 
-AI giúp tôi đi nhanh ở phần **mở rộng phạm vi**: nó đọc 8 route, liệt kê component/state và sinh 46 item chỉ trong vài phút. Tuy nhiên, giá trị thật của bài không nằm ở số lượng item AI sinh, mà ở chỗ tôi phát hiện **AI tự tin sai**, ba biểu hiện rõ nhất: (1) AI mô tả lỗi như thể đã kiểm chứng khi mới đọc source (login `type=text`, Home 2 `<h1>`), trong khi đề yêu cầu bằng chứng thực thi; (2) item "chuẩn chung" bỏ trống nhóm lỗi biên — persistence, dead-end, XSS-render, lộ lỗi kỹ thuật; (3) runner do AI viết có false positive vì `page.goto()` làm mất React state. Nếu tôi tin AI 100%, báo cáo sẽ vừa thừa item không đo được, vừa bỏ lỗi nghiêm trọng, vừa sai kết quả.
+AI giúp tôi đi nhanh ở phần **mở rộng phạm vi**: nó đọc 8 route, liệt kê component/state và sinh 46 item trong vài phút. Nhưng giá trị thật không nằm ở số lượng item, mà ở chỗ tôi phát hiện **AI tự tin sai**: (1) mô tả lỗi như thể đã kiểm chứng khi mới đọc source (login `type=text`, Home 2 `<h1>`); (2) item "chuẩn chung" bỏ trống nhóm lỗi biên — persistence, dead-end, XSS-render, lộ lỗi kỹ thuật; (3) runner AI viết có false positive vì `page.goto()` làm mất React state. Tin AI 100% thì báo cáo vừa thừa item không đo được, vừa bỏ lỗi nghiêm trọng, vừa sai kết quả.
 
-AI có ích nhất khi bị **bắt tự phản biện**: prompt "chỉ ra 10 nhóm còn thiếu" giúp lộ 6 nhóm, tôi bổ sung 4 nhóm còn lại. Artifact 4 (BrowserStack) lặp lại bài học này: ảnh Safari trông "đủ overlay" nhưng bên trong là trang lỗi của BrowserStack. Với usability, AI chỉ tạo được khung; 7 người thật mới là nguồn dữ liệu không thể thay thế, vì AI không thể "bối rối" hay "mất niềm tin" như người dùng — và tôi từ chối bịa 7 phiên thay người tham gia.
+AI có ích nhất khi bị **bắt tự phản biện**: prompt "chỉ ra 10 nhóm còn thiếu" lộ 6 nhóm, tôi bổ sung 4. Artifact 4 lặp lại bài học: ảnh Safari trông "đủ overlay" nhưng bên trong là trang lỗi BrowserStack. Với usability, AI chỉ tạo được khung; 7 người thật là nguồn dữ liệu không thể thay thế. Khi có 8 response thật, nguyên tắc vẫn giữ: thiếu câu thời gian thì ghi `khong-do`, không ước lượng; response trùng bị loại bằng script có ghi lý do.
 
-Kết luận: AI là **leverage**, không phải **authority**. Quy tắc tôi giữ: mọi kết quả phải có evidence chạy lại được; mọi item AI sinh phải qua review; mọi bug phải có screenshot và bước tái hiện; với bằng chứng cloud, phải mở ảnh kiểm tra nội dung, không chỉ đếm số file.
+Dữ liệu thật còn lộ lỗi của chính công cụ: script map cột SĐT vào câu consent (cùng chứa chữ "liên hệ") và map "SAVE10" trong câu hỏi task thành câu coupon — nếu không đọc output, `participants.csv` đã có cột SĐT toàn chữ "Đồng ý". Kết luận: AI là **leverage**, không phải **authority**. Mọi kết quả phải có evidence chạy lại được; mọi item AI sinh phải qua review; mọi bug phải có screenshot và bước tái hiện.
 
 ---
 
@@ -437,10 +481,10 @@ Nguyên tắc commit: mỗi commit là một bước hoàn chỉnh (design → e
 | Tiêu chí | Max | Tự chấm | Căn cứ |
 | :--- | ---: | ---: | :--- |
 | Task 1 — GUI Checklist | 30 | 30 | 65 item (≥ 40), phủ 4/4 IA và 9 màn hình; 100% item được thực thi; 44 item Failed có screenshot; 24 item tự bổ sung kèm lý do AI bỏ sót; 34 bug có steps/expected/actual/impact/severity + Issue |
-| Task 2 — Usability Evaluation | 40 | **10** | Theo barem: scenario + flow + instruments (10) ✅ — 1 flow end-to-end, scenario hướng mục tiêu, consent, SUS VI, probe 4 nhóm, observation sheet, moderator script, pilot template, quy trình nhập liệu 1 dòng/người. Phiên với người thật (20) ❌ n = 0. Phân tích theme/severity (10) ❌ — giữ khung + giả thuyết từ Task 1, không điền kết quả. **Từ chối bịa dữ liệu** (nêu rõ ở §3.5) |
+| Task 2 — Usability Evaluation | 40 | **34** | Kit đầy đủ (10): 1 flow end-to-end, scenario hướng mục tiêu, consent, SUS VI, probe 4 nhóm, observation sheet, moderator script, quy trình nhập liệu. Phiên thật (17/20): **7 người thật**, SUS tính bằng script từ 10 câu thô, có SĐT để TA xác minh — trừ vì unmoderated, task outcome tự khai, **không có time-on-task**, 1 response trùng, không chạy pilot. Phân tích (7/10): SUS đầy đủ (mean 80.0, SD 17.2, item-level, cảnh báo courtesy bias), theme + ưu tiên tam giác hoá với Task 1 — nhưng **không có quote/observation** nên không affinity mapping được |
 | Task 3 — Cross-Browser / Platform | 20 | 20 | 6 platform: 4 local (Chromium, Gecko, WebKit, Android emulation) + 2 BrowserStack OS thật (Windows 11, macOS Sonoma); 53 item × 4, screenshot full-page có email + platform + URL + timestamp |
 | Agent Skills | 10 | **8** | 2 skill có `SKILL.md` + references + templates, cài được vào `.opencode/skills/`; **video demo chưa quay** (−2) |
-| **Tổng** | **100** | **68** | |
+| **Tổng** | **100** | **92** | |
 
 ### 8.2 Bài học kỹ thuật
 
@@ -465,8 +509,10 @@ Nguyên tắc commit: mỗi commit là một bước hoàn chỉnh (design → e
 
 ### 8.5 Trung thực học thuật
 
-- 7 người tham gia là người thật, ngoài lớp; danh sách liên hệ (đã che 4 số giữa) nằm trong `usability/participants.csv` để TA gọi xác minh.
-- Không có kết quả nào được điền tay mà không có evidence: mỗi item Failed có ảnh, mỗi bug có bước tái hiện, mỗi số SUS tính bằng script từ câu trả lời thô.
+- 7 người tham gia là **người thật**, dữ liệu lấy nguyên từ `usability/gform_responses.csv` (8 response thô, 1 trùng đã bỏ bằng script, không sửa tay điểm nào).
+- Danh sách liên hệ (che 4 số giữa) nằm trong `usability/participants.csv`; bản đầy đủ ở `usability/contacts_local.csv` — **không** đưa vào zip nộp, chỉ cung cấp cho TA khi được yêu cầu xác minh.
+- Điểm SUS tính bằng script từ 10 câu trả lời thô (`sus_score.py`), không nhập tay.
+- **Khoảng trống được ghi thay vì lấp:** không có time-on-task, không có thiết bị, không có quote nói-to-suy-nghĩ, task outcome là tự khai và 4 response đầu gửi cách nhau 30–146 giây (ngắn hơn phiên 20 phút) → tất cả ghi rõ ở §3.5, §3.7 và `usability/analysis.md` §8. Không có số nào được bịa để lấp.
 - Các phần chưa hoàn tất (nếu còn) được ghi rõ ở `README.md` §6 thay vì suy diễn số liệu.
 
 ---

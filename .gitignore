@@ -15,5 +15,11 @@ evidence/raw/
 # Build artefacts
 *.zip
 
+# Dữ liệu thô Google Form — chứa họ tên + SĐT thật của người tham gia.
+# Giữ local, chỉ gửi TA khi được yêu cầu xác minh; KHÔNG đưa lên repo công khai và KHÔNG vào zip nộp.
+usability/gform_responses.csv
+usability/gform_responses_dedup.csv
+usability/contacts_local.csv
+
 # BrowserStack CLI log (sinh tự động khi chạy tunnel)
 local.log

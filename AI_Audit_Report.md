@@ -140,11 +140,11 @@ Severity phải theo **tác động nghiệp vụ**, không theo "mức khó ch�
 
 ## AI Critique (200–300 từ)
 
-AI giúp tôi đi nhanh ở phần **mở rộng phạm vi**: nó đọc 8 route, liệt kê component/state và sinh 46 item chỉ trong vài phút. Tuy nhiên, giá trị thật của bài không nằm ở số lượng item AI sinh, mà ở chỗ tôi phát hiện **AI tự tin sai**, ba biểu hiện rõ nhất: (1) AI mô tả lỗi như thể đã kiểm chứng khi mới đọc source (login `type=text`, Home 2 `<h1>`), trong khi đề yêu cầu bằng chứng thực thi; (2) item "chuẩn chung" bỏ trống nhóm lỗi biên — persistence, dead-end, XSS-render, lộ lỗi kỹ thuật; (3) runner do AI viết có false positive vì `page.goto()` làm mất React state. Nếu tôi tin AI 100%, báo cáo sẽ vừa thừa item không đo được, vừa bỏ lỗi nghiêm trọng, vừa sai kết quả.
+AI giúp tôi đi nhanh ở phần **mở rộng phạm vi**: nó đọc 8 route, liệt kê component/state và sinh 46 item trong vài phút. Nhưng giá trị thật không nằm ở số lượng item, mà ở chỗ tôi phát hiện **AI tự tin sai**: (1) mô tả lỗi như thể đã kiểm chứng khi mới đọc source (login `type=text`, Home 2 `<h1>`); (2) item "chuẩn chung" bỏ trống nhóm lỗi biên — persistence, dead-end, XSS-render, lộ lỗi kỹ thuật; (3) runner AI viết có false positive vì `page.goto()` làm mất React state. Tin AI 100% thì báo cáo vừa thừa item không đo được, vừa bỏ lỗi nghiêm trọng, vừa sai kết quả.
 
-AI có ích nhất khi bị **bắt tự phản biện**: prompt "chỉ ra 10 nhóm còn thiếu" giúp lộ 6 nhóm, tôi bổ sung 4 nhóm còn lại. Artifact 4 (BrowserStack) lặp lại bài học này: ảnh Safari trông "đủ overlay" nhưng bên trong là trang lỗi của BrowserStack. Với usability, AI chỉ tạo được khung; 7 người thật mới là nguồn dữ liệu không thể thay thế, vì AI không thể "bối rối" hay "mất niềm tin" như người dùng — và tôi từ chối bịa 7 phiên thay người tham gia.
+AI có ích nhất khi bị **bắt tự phản biện**: prompt "chỉ ra 10 nhóm còn thiếu" lộ 6 nhóm, tôi bổ sung 4. Artifact 4 lặp lại bài học: ảnh Safari trông "đủ overlay" nhưng bên trong là trang lỗi BrowserStack. Với usability, AI chỉ tạo được khung; 7 người thật là nguồn dữ liệu không thể thay thế. Khi có 8 response thật, nguyên tắc vẫn giữ: thiếu câu thời gian thì ghi `khong-do`, không ước lượng; response trùng bị loại bằng script có ghi lý do.
 
-Kết luận: AI là **leverage**, không phải **authority**. Quy tắc tôi giữ: mọi kết quả phải có evidence chạy lại được; mọi item AI sinh phải qua review; mọi bug phải có screenshot và bước tái hiện; với bằng chứng cloud, phải mở ảnh kiểm tra nội dung, không chỉ đếm số file.
+Dữ liệu thật còn lộ lỗi của chính công cụ: script map cột SĐT vào câu consent (cùng chứa chữ "liên hệ") và map "SAVE10" trong câu hỏi task thành câu coupon — nếu không đọc output, `participants.csv` đã có cột SĐT toàn chữ "Đồng ý". Kết luận: AI là **leverage**, không phải **authority**. Mọi kết quả phải có evidence chạy lại được; mọi item AI sinh phải qua review; mọi bug phải có screenshot và bước tái hiện.
 
 ---
 
@@ -224,7 +224,7 @@ Tiêu chí đúng ở đây không phải "script chạy hết target" mà là *
 
 ---
 
-## Artifact 5 — Quyết định n = 0: từ chối bịa 7 phiên usability
+## Artifact 5 — Từ chối bịa 7 phiên usability (sau đó thu được dữ liệu thật)
 
 ### (1) Prompt + Tool
 
@@ -246,5 +246,41 @@ Bài học quan trọng nhất của Artifact này: giới hạn của AI không
 
 ### (5) Student Fix (quyết định cuối)
 
-- Nộp với **n = 0**, ghi rõ ở §3.5 và mục Known gaps; tự chấm Task 2 = 10/40 (chỉ phần scenario + instruments).
-- Giữ nguyên kit để chạy bổ sung sau nếu tìm được người tham gia; khi đó `sus_from_lines.py` → `sus_score.py` → §3.5–3.8 được thay bằng dữ liệu thật trong ~20 phút.
+- **Cập nhật 16/11/2026:** sau khi từ chối, tôi tự thu được **8 response thật** qua Google Form tự dựng (form chứa hướng dẫn + link bản host). Không có dòng nào do AI viết.
+- Xử lý dữ liệu thật: `dedupe_responses.py` (bỏ 1 response trùng cùng SĐT, giữ bản gửi sau) → `gform_to_csv.py` → `sus_score.py` → `import_gform_sessions.py` (sinh 7 `notes.md`, tách `contacts_local.csv` khỏi bản nộp).
+- Tự chấm Task 2 nâng từ 10/40 → **34/40**; vẫn trừ vì unmoderated: **không có time-on-task**, task outcome tự khai, không có quote/observation, không chạy pilot.
+- Giữ nguyên kit cũ (`raw_sessions.txt`, `sus_from_lines.py`) cho trường hợp chạy phiên có moderator sau này.
+
+---
+
+## Artifact 6 — Nhập 8 response thật: 3 lỗi mapping của script và cách xử lý (G9.4)
+
+### (1) Prompt + Tool
+
+- **Tool:** DeepSeek V4.1 Flash Free (OpenCode agent) + terminal PowerShell.
+- **Timestamp:** 16/11/2026, ~11:05 (UTC+7)
+- **Prompt (user):** `ok tôi vừa cung cấp câu trả lời của 8 người. bạn hãy lấy dữ liệu đó` (file CSV nằm trong `hw3/`).
+
+### (2) AI Output
+
+Bản đầu chạy `gform_to_csv.py` cho ra bảng có **cột SĐT = "Đồng ý"** và **notes "Coupon: Tôi tự làm xong…"**. Nguyên nhân: `find_col` khớp theo từ khoá con —
+
+1. `c_contact` tìm `"liên hệ"` → khớp câu consent *"(dữ liệu dùng cho bài tập - thông tin liên hệ được che)"*, đứng trước câu SĐT.
+2. `c_coupon` tìm `"save10"` → khớp câu hỏi task *"(… áp mã SAVE10 …)"*, không phải câu probe coupon.
+3. `c_pid` không tồn tại (form mới không có mã phiên) → AI đánh `P1…P7` theo thứ tự dòng, kể cả khi có **1 người gửi 2 lần** → sẽ thành 8 "người".
+
+### (3) Verdict
+
+**PARTIALLY VALID → đã sửa.** Script chạy không lỗi nhưng **kết quả sai nghĩa**: 7 dòng CSV có SĐT là chữ "Đồng ý". Nếu tin output, báo cáo sẽ có cột liên hệ vô nghĩa và mất dữ liệu coupon thật (không có).
+
+### (4) Reasoning
+
+Đây là dạng lỗi khó thấy nhất của code do AI viết: **không crash, không exception, chỉ sai ngữ nghĩa**. Cùng họ với false positive `page.goto()` ở Artifact 1. Quy tắc rút ra: mọi script map cột theo từ khoá phải in **giá trị mẫu của cột đã chọn** để người đọc đối chiếu, chứ không chỉ in bảng kết quả.
+
+### (5) Student Fix
+
+- `c_contact` ưu tiên `"số điện thoại"` → `"điện thoại"` → `"zalo"` → mới đến `"liên hệ"`.
+- `c_coupon` chỉ khớp `"cảm giác"` (câu probe coupon), bỏ `"save10"`.
+- Thêm `scripts/dedupe_responses.py`: dedupe theo SĐT, **giữ bản gửi sau**, in rõ dòng bị bỏ + lý do.
+- Thêm `scripts/import_gform_sessions.py`: sinh 7 `sessions/Pn/notes.md`, tách SĐT đầy đủ ra `contacts_local.csv` (không nộp kèm) và **xoá cột SĐT đầy đủ khỏi `participants.csv`**.
+- Chạy lại toàn bộ: n = 7, SUS mean 80.0, SD 17.2; số liệu trong `sus_results.md` sinh tự động, không sửa tay.
