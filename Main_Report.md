@@ -483,6 +483,9 @@ Repo cục bộ `hw3/23120372_HW03_AI_GUIUsability`, commit theo từng bước 
 | 27 | `bab6db0` | 16/11/2026 11:13 | `data(usability): import 7 real participants from Google Form (8 responses, 1 duplicate removed) and score SUS` | `participants.csv`, `sus_scores.csv`, `sus_results.md`, `sessions/P1..P7/notes.md`, `analysis.md`, `plan.md` |
 | 28 | `7253898` | 16/11/2026 11:13 | `docs(report): rewrite Task 2 with real data, raise self-assessment to 92/100, keep raw responses local` | Main_Report §3.4–3.8/§6.1/§6.2/§8, AI Audit Artifact 5–6, README, `.gitignore` |
 | 29 | `a698423` | 16/11/2026 11:13 | `chore(repo): drop committed Python bytecode and ignore __pycache__` | `.gitignore`, xoá 2 file `.pyc` khỏi repo |
+| 30 | `07e4ce1` | 16/11/2026 11:14 | `docs(report): record commits 16-29, refresh PDFs, exclude PII files from submission zip` | Main_Report §7, `git_commit_log.txt`, 3 PDF, `package_submission.ps1` (loại `gform_responses*.csv`, `contacts_local.csv` khỏi zip) |
+
+> Commit chỉ để ghi log/PDF (như #18, #30, và commit đóng gói cuối) không thay đổi nội dung bài — danh sách đầy đủ, kể cả các commit đó, nằm trong `git_commit_log.txt`.
 
 Nguyên tắc commit: mỗi commit là một bước hoàn chỉnh (design → execute → report), message theo Conventional Commits (`chore`, `test`, `feat`, `docs`), không có commit "wip".
 
