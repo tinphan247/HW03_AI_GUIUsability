@@ -1,9 +1,8 @@
 participant_id,age_range,occupation,contact_masked,contact_full_local_only,recruit_channel,device,prior_eshop_user,session_date,session_time,consent_signed,task_success,time_seconds,help_count,sus_score,valid_session,notes
-P0,,,,,,,,,,,FALSE,,,,FALSE,
-P1,,,,,,,,,,,FALSE,,,,FALSE,
-P2,,,,,,,,,,,FALSE,,,,FALSE,
-P3,,,,,,,,,,,FALSE,,,,FALSE,
-P4,,,,,,,,,,,FALSE,,,,FALSE,
-P5,,,,,,,,,,,FALSE,,,,FALSE,
-P6,,,,,,,,,,,FALSE,,,,FALSE,
-P7,,,,,,,,,,,FALSE,,,,FALSE,
+P1,18-24,,098***573,,gform,,,,,TRUE,Success,,,87.5,TRUE,Ten: N** | Muốn sửa: Không
+P2,18-24,,094***119,,gform,,,,,TRUE,Success,,,90.0,TRUE,Ten: N** | Muốn sửa: 
+P3,18-24,,096***102,,gform,,,,,TRUE,Success,,,75.0,TRUE,Ten: P** | Muốn sửa: 
+P4,18-24,,086***440,,gform,,,,,TRUE,Success,,,97.5,TRUE,Ten: H** | Muốn sửa: 
+P5,18-24,,037***665,,gform,,,,,TRUE,Success,,,87.5,TRUE,Ten: L** | Muốn sửa: KHÔNG
+P6,18-24,,096***587,,gform,,,,,TRUE,Help,,,77.5,TRUE,Ten: T** | Muốn sửa: không
+P7,18-24,,077***247,,gform,,,,,TRUE,Success,,,45.0,TRUE,Ten: N** | Muốn sửa: 

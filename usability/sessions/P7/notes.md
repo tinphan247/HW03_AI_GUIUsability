@@ -1,63 +1,23 @@
-# Session P___ — notes
+# Phiên P7 — notes (từ Google Form)
 
-**Người tham gia:** P___  **Ngày:** ____/____/2026  **Giờ:** ____ – ____
-**Hình thức:** ☐ Trực tiếp · ☐ Online  **Người quan sát:** ______________
-**Recording:** `recording.mp4` / link: ______________
-**Consent:** ☑ đã ký (ảnh: `consent.png`)
+**Người tham gia:** P7 (tên đầy đủ trong `usability/contacts_local.csv` — không nộp kèm)
+**Tuổi:** 22  **Hình thức:** online, không moderator trực tiếp
+**Thời điểm gửi form:** 2026/11/16 10:52:53 SA GMT+7
+**Thiết bị:** không thu thập (form 1 phút không có câu thiết bị)
 
-## 1. Kết quả task
+## Kết quả tự báo cáo
 
-| Field | Value |
-| :--- | :--- |
-| Task success | Success / Success with help / Failure |
-| Thời gian | ___ phút ___ giây |
-| Số lần trợ giúp | ___ |
-| Số lần back / đi sai route | ___ |
-| Coupon SAVE10 | Đã áp / Không / Thử rồi bỏ |
-| Kiểm tra lại tổng tiền | Có / Không |
-| Tìm thấy đơn trong lịch sử | Có / Không |
+- **Task outcome:** Tôi tự làm xong - không cần gợi ý
+- **Thời gian:** không đo (form không có câu thời gian) → `khong-do`
+- **Số lần trợ giúp:** tự báo cáo trong câu task outcome
+- **Điều muốn thay đổi nhất:** (bỏ trống)
 
-## 2. Timeline
+## SUS
 
-| Thời điểm | Hành động | Friction / quan sát | Quote nguyên văn |
-| :--- | :--- | :--- | :--- |
-| 00:00 | | | |
-| | | | |
-| | | | |
-| | | | |
+- **Điểm:** —
+- **Câu trả lời:** Q1=3 · Q2=3 · Q3=4 · Q4=2 · Q5=2 · Q6=4 · Q7=3 · Q8=4 · Q9=4 · Q10=5
 
-## 3. Friction points
+## Hạn chế của phiên này
 
-| # | Mô tả | Bước | Severity (1–4) | Checklist item liên quan (nếu có) |
-| :--- | :--- | :--- | :-: | :--- |
-| 1 | | | | |
-| 2 | | | | |
-
-## 4. Câu hỏi người tham gia đặt ra
-
-- "..."
-
-## 5. Các lần moderator can thiệp
-
-| Thời điểm | Lý do | Nội dung |
-| :--- | :--- | :--- |
-| | | |
-
-## 6. SUS
-
-Điểm SUS: **__** / 100 (xem `sus.md`)
-
-## 7. Probe — tóm tắt câu trả lời
-
-| Chủ đề | Câu trả lời / quote |
-| :--- | :--- |
-| Bước rõ nhất | |
-| Bước rối nhất | |
-| Phản ứng khi coupon lỗi/sai số | |
-| Bước chậm nhất | |
-| Tin đơn đã ghi nhận? | |
-| Muốn sửa gì trước | |
-
-## 8. Ghi chú của moderator sau phiên
-
--
+Không có observe trực tiếp, không có quote nói-to-suy-nghĩ, không có timeline từng bước.
+Dữ liệu chỉ gồm những gì người tham gia tự khai trong form.

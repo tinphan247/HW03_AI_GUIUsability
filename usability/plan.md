@@ -6,6 +6,11 @@
 **Phương pháp:** Moderated usability test, think-aloud, 1 phiên/người, 25–30 phút
 **Số người:** 7 người chính + 1 pilot (pilot không tính vào 7)
 
+> ⚠️ **Kế hoạch này KHÔNG được thực hiện đúng như viết.** Thực tế: **online, unmoderated qua Google Form**,
+> không think-aloud, không bấm giờ, không pilot — 7 người tự làm task trên bản host rồi tự điền SUS
+> (16/11/2026). Các mục dưới đây giữ nguyên làm **kế hoạch gốc** để đối chiếu; kết quả thật và hạn chế
+> phương pháp ở `usability/analysis.md` và `Main_Report.md` §3.5. Không dùng bảng lịch §3 làm dữ liệu.
+
 ---
 
 ## 1. Mục tiêu (đo được)

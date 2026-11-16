@@ -1,92 +1,152 @@
 # Phân tích usability — EShop (7 phiên)
 
 **Flow:** Đăng ký → tìm sản phẩm → thêm giỏ → áp coupon SAVE10 → thanh toán → xem lịch sử đơn.
-**Dữ liệu nguồn:** `usability/participants.csv`, `usability/sus_scores.csv`, `usability/sessions/P1…P7/notes.md`, `usability/pilot/pilot_notes.md`.
+**Dữ liệu nguồn:** `usability/gform_responses.csv` (8 response thô) → `gform_responses_dedup.csv` (7 người) →
+`participants.csv`, `sus_scores.csv`, `sus_results.md`, `sessions/P1…P7/notes.md`.
 
-> **Trạng thái: CHƯA CÓ DỮ LIỆU.** Chưa chạy phiên nào với người thật. File này giữ (a) khung phân tích đã định nghĩa trước, (b) **danh sách theme dự kiến** suy ra từ 34 bug của Task 1 — chưa phải kết quả. Khi có notes + SUS của 7 phiên, các bảng được điền từ dữ liệu thật; không suy diễn số liệu.
+> **Trạng thái: ĐÃ CÓ DỮ LIỆU — n = 7 người thật**, thu qua Google Form tự điền (unmoderated, online),
+> ngày 16/11/2026, 07:18–10:52. Hạn chế phương pháp ghi rõ ở §8; không có số liệu nào được suy diễn thêm.
 
 ## 1. Tổng quan mẫu
 
 | Field | Value |
 | :--- | :--- |
-| Số phiên hợp lệ | 0 / 7 (chưa chạy) |
-| Độ tuổi | TODO |
-| Nghề nghiệp | TODO |
-| Tần suất mua online | TODO |
-| Thiết bị | TODO |
-| Đã từng dùng EShop | TODO |
+| Response thô | 8 |
+| Người tham gia duy nhất | **7** (1 response trùng: cùng họ tên + SĐT, gửi cách 76 giây — xem §1.1) |
+| Độ tuổi | 20–23 (cả 7 đều thuộc nhóm 18–24) |
+| Nghề nghiệp | Không thu thập |
+| Tần suất mua online | Không thu thập |
+| Thiết bị | Không thu thập (form 1 phút không có câu thiết bị) |
+| Đồng ý tham gia | 7/7 (`Đồng ý`) |
+
+### 1.1 Xử lý response trùng
+
+`Nguyễn Thị Út Lan` gửi 2 lần: **07:18:56** và **07:20:12** (cùng SĐT). Giữ **bản gửi sau**:
+
+| Bản | SUS | Lý do |
+| :--- | ---: | :--- |
+| 07:18:56 | 50.0 | Toàn bộ 10 câu = 5, kể cả 5 câu phủ định (Q2/Q4/Q6/Q8/Q10) → tự mâu thuẫn (straight-lining) |
+| 07:20:12 | 87.5 | Trả lời phân biệt câu tích cực/phủ định, nhất quán |
+
+Quyết định ghi ở `scripts/dedupe_responses.py` (giữ bản cuối theo SĐT) — chạy lại được, không sửa tay.
 
 ## 2. Task success & thời gian
 
-| Participant | Success | Thời gian (giây) | Số lần trợ giúp | Back/đi sai route | Coupon | Tìm thấy đơn |
-| :--- | :--- | ---: | :-: | :-: | :--- | :--- |
-| P1 | | | | | | |
-| … | | | | | | |
+| Participant | Tuổi | Task outcome (tự báo cáo) | Thời gian | Số lần trợ giúp | SUS |
+| :--- | :-: | :--- | :--- | :--- | ---: |
+| P1 | 21 | Success | `khong-do` | 0 (tự báo cáo) | 87.5 |
+| P2 | 20 | Success | `khong-do` | 0 | 90.0 |
+| P3 | 21 | Success | `khong-do` | 0 | 75.0 |
+| P4 | 23 | Success | `khong-do` | 0 | 97.5 |
+| P5 | 20 | Success | `khong-do` | 0 | 87.5 |
+| P6 | 21 | **Help** — "cần được gợi ý ít nhất 1 lần" | `khong-do` | ≥ 1 | 77.5 |
+| P7 | 22 | Success | `khong-do` | 0 | 45.0 |
 
-**Tổng hợp:** Success = __/7 · Success with help = __/7 · Failure = __/7 · Thời gian trung bình = __ giây · Trung vị = __ giây.
+**Tổng hợp:** Success = **6/7** · Success with help = **1/7** · Failure = **0/7** · Thời gian trung bình = **không có dữ liệu**.
+
+> ⚠️ **Không có time-on-task.** Form rút gọn (~1 phút/người) không có câu thời gian, và không có moderator bấm giờ.
+> Mọi con số thời gian trong báo cáo Task 2 đều là `khong-do` — không được tự điền.
+>
+> ⚠️ **Task outcome là tự báo cáo, chưa kiểm chứng.** Khoảng cách giữa các lần gửi form (R1→R2: 46 giây,
+> R2→R3: 30 giây, R3→R4: 146 giây) **ngắn hơn nhiều so với một phiên 20 phút**. Vì vậy "Success 6/7"
+> nghĩa là *6 người tự nói họ làm xong*, không chứng minh được họ đã thực sự chạy hết flow.
 
 ## 3. SUS
 
-Xem `usability/sus_results.md` (sinh bằng `python scripts/sus_score.py`).
+Sinh tự động bởi `python scripts/sus_score.py` → `usability/sus_results.md`.
 
 | Metric | Value |
 | :--- | ---: |
-| Mean SUS | TODO |
-| Median | TODO |
-| SD | TODO |
-| Min – Max | TODO |
-| Diễn giải | TODO |
+| Mean SUS | **80.0** |
+| Median | 87.5 |
+| SD | 17.2 |
+| Min – Max | 45.0 (P7) – 97.5 (P4) |
+| Phân loại | **Good** (68–80 good, > 80 excellent); Bangor: 81–90 = hạng B, 68–80 = hạng C → **80.0 nằm đúng ranh giới B/C** |
 
-## 4. Theme dự kiến (giả thuyết từ Task 1 — chờ xác nhận bằng dữ liệu)
+### 3.1 Điểm từng câu (thang 1–5, đã đảo câu phủ định khi tính điểm)
 
-| Theme | Mô tả | Số người gặp | Bước | Evidence |
-| :--- | :--- | :-: | :--- | :--- |
-| T1 | Không biết thao tác thêm giỏ đã thành công (không toast/badge) | | Thêm giỏ | IA-03-02, IA-04-01 |
-| T2 | Coupon hiển thị số tiền vô lý, làm mất niềm tin vào tổng tiền | | Coupon | IA-04-08 |
-| T3 | Bối rối vì nhãn tiếng Anh (Sign In/Username) và mật khẩu hiện ký tự | | Đăng ký/Đăng nhập | IA-01-04, IA-02-03 |
-| T4 | Mất giỏ hàng khi reload; phải thêm lại | | Thêm giỏ | IA-03-09 |
-| T5 | Không chắc đơn đã đặt vì trang success sơ sài, giỏ vẫn còn hàng | | Thanh toán | IA-04-11 |
-| T6 | Sợ bấm nhầm Xóa/Hủy vì không có xác nhận | | Giỏ/Đơn | IA-04-03, IA-04-15 |
-| T7 | Không tìm thấy đơn hoặc không hiểu trạng thái | | Lịch sử | IA-04-10 |
+| Câu | Nội dung rút gọn | Trung bình thô | Đọc |
+| :-: | :--- | ---: | :--- |
+| Q1 | Muốn dùng thường xuyên | 4.57 | Tích cực |
+| Q2 | Phức tạp không cần thiết | 1.57 | Không phức tạp |
+| Q3 | Dễ sử dụng | 4.86 | Rất tích cực |
+| Q4 | Cần người hỗ trợ mới dùng được | 2.43 | Không cần |
+| Q5 | Chức năng tích hợp tốt | 4.43 | Tích cực (P7 cho 2) |
+| Q6 | Quá nhiều điểm không nhất quán | 2.14 | Ít nhận ra |
+| Q7 | Học dùng nhanh | 4.71 | Tích cực |
+| Q8 | Rất khó sử dụng | 2.14 | Không khó |
+| Q9 | Tự tin khi dùng | 4.57 | Tích cực |
+| Q10 | Cần học nhiều thứ trước | 2.86 | Trung tính |
 
-## 5. Severity ranking (impact × tần suất)
+**Hai quan sát quan trọng:**
 
-| # | Vấn đề | Impact | Tần suất | Severity | Nguồn |
-| :-: | :--- | :-: | :-: | :--- | :--- |
-| 1 | | | | | |
-| 2 | | | | | |
+1. **6/7 người trả lời theo một "khuôn" rất đều**: câu tích cực = 5, câu phủ định = 1–2. Chỉ P7 và một phần P3 trả lời phân biệt. Đây là dấu hiệu **courtesy bias** (người quen của tác giả) + straight-lining → SUS thật có thể **thấp hơn 80**.
+2. **P2 tự mâu thuẫn**: Q4 = 5 ("cần người có chuyên môn hỗ trợ") nhưng Q10 = 1 ("không cần học gì"). Không loại (vẫn nhất quán với pattern chung) nhưng ghi nhận.
 
-## 6. Tam giác hoá với Task 1
+## 4. Theme
 
-| Theme | Checklist item cùng hiện tượng | Kết luận |
-| :--- | :--- | :--- |
-| T1 | IA-03-02, IA-04-01 | Bug thật, cả automated và người dùng đều gặp |
-| T2 | IA-04-08 | Bug thật, mức Blocker |
-| … | | |
+> **Không thể affinity mapping từ quote**: form 1 phút không có câu probe, người tham gia không nói to suy nghĩ,
+> câu "Điều bạn muốn thay đổi nhất" chỉ nhận được `Không` ×3 và 4 ô trống. Vì vậy 2 theme dưới đây suy ra từ
+> **mẫu trả lời SUS + bằng chứng Task 1**, và được ghi rõ là *suy luận*, không phải quote của người dùng.
 
-## 7. Khuyến nghị (ưu tiên)
+| Theme | Bằng chứng | Diễn giải | Độ tin cậy |
+| :--- | :--- | :--- | :--- |
+| **T1 — Happy path trơn tru, người dùng không chạm lỗi biên** | 6/7 Success, Q3 = 4.86, Q6/Q8 = 2.14 (thấp) | Flow chính (đăng ký → giỏ → coupon → checkout → xem đơn) chạy được; 34 lỗi của Task 1 nằm ở **đường biên**: coupon âm khi tổng tiền lớn, mất giỏ khi F5, guest vào `/checkout`, first-click. Người dùng đi đúng một lần duy nhất không gặp → SUS cao nhưng **không phủ định** 34 bug | Trung bình |
+| **T2 — "Không nhất quán" bị một người nhận ra rõ** | P7: Q5 = 2, Q6 = 4, Q8 = 4, Q1 = 3 → SUS 45 (Poor) | P7 là người duy nhất chấm thấp ở cả 4 câu phản ánh cấu trúc/hệ thống. Đây là **outlier có ý nghĩa**: nếu mở rộng mẫu, nhóm "nhận ra lỗi" có thể tăng | Thấp (n = 1) |
+| **T3 — Coupon không được nhắc tới** | 0/7 để lại ý kiến, không ai chọn Help vì coupon | Không kết luận được coupon có gây bối rối hay không — cần probe trực tiếp | Không đủ dữ liệu |
 
-| # | Khuyến nghị | Giải quyết theme | Cách kiểm chứng sau khi sửa |
-| :-: | :--- | :--- | :--- |
-| 1 | Thêm toast + badge giỏ sau add-to-cart | T1 | Chạy lại IA-03-02, IA-04-01; hỏi 3 người mới |
-| 2 | Sửa công thức coupon percent + hiển thị discount dương | T2 | Unit test backend + chạy lại IA-04-08 |
-| 3 | Chuẩn hoá nhãn tiếng Việt, password type=password | T3 | Chạy lại IA-01-04, IA-02-03 |
-| 4 | Persist giỏ hàng (localStorage/server) | T4 | F5 sau khi thêm, chạy IA-03-09 |
-| 5 | Clear giỏ + trang success có mã đơn + link xem đơn | T5 | Chạy IA-04-11, hỏi lại trust |
-| 6 | Confirm dialog cho xóa giỏ/hủy đơn | T6 | Chạy IA-04-03, IA-04-15 |
-| 7 | Empty state + loading/error state cho Home/Cart | T7 | Chạy IA-04-04/05/06/07 |
+## 5. Severity & ưu tiên
 
-## 8. Hạn chế
+Không có observation sheet → không tính được `impact × tần suất` theo từng phiên. Thay bằng bảng ưu tiên
+**tam giác hoá Task 1 ↔ SUS ↔ mức độ người dùng nhận ra**:
 
-- n = 7, không đại diện thống kê; kết quả là định tính + mô tả.
-- Moderator kiêm note-taker ở một số phiên → có thể bỏ sót quote.
-- Một số phiên online có thể bị nhiễu mạng, ảnh hưởng cảm nhận tốc độ.
-- Người tham gia biết đây là bài kiểm thử → có thể cố gắng nhiều hơn người dùng thật (Hawthorne effect).
+| # | Vấn đề | Nguồn Task 1 | Người dùng có nhận ra? | Ưu tiên |
+| :-: | :--- | :--- | :--- | :--- |
+| 1 | Coupon hiển thị `-270.000.000 ₫` / thành tiền `300.000.000 ₫` | GUI-BUG-30 (Blocker) | **Không** (0/7 nhắc) → nguy hiểm hơn: sai mà không ai biết | **P0** |
+| 2 | Tổng tiền editable ở client | GUI-BUG-15 (Blocker) | Không | **P0** |
+| 3 | Guest vào `/checkout` được | GUI-BUG-16 (Blocker) | Không | **P0** |
+| 4 | First-click "Thêm vào giỏ" thất bại, không có phản hồi | GUI-BUG-25/21 (Major) | Có thể (P6 cần gợi ý) | **P0** |
+| 5 | XSS qua `dangerouslySetInnerHTML` | GUI-BUG-32 (Blocker) | Không | **P0** (bảo mật) |
+| 6 | Mất giỏ khi F5 | GUI-BUG-24 (Major) | Không (phiên 1 lượt) | P1 |
+| 7 | Thiếu loading/empty state | GUI-BUG-28/29 (Minor) | Có thể (P3 SUS 75) | P1 |
+| 8 | Nhãn tiếng Anh, `lang` sai, contrast | GUI-BUG-01…09 (Minor) | **Có** — P7 Q6/Q8 = 4 | P1 (mobile) |
 
-## 9. Kết luận khi n = 0 (trạng thái nộp bài)
+**Kết luận ngược đời nhưng đúng dữ liệu:** SUS 80 *không* chứng minh SUT tốt. Người dùng chấm cao vì họ chỉ đi
+đúng happy path một lần; 4 lỗi Blocker nằm ở nhánh mà họ không chạm. Nếu chỉ nhìn SUS mà bỏ 34 bug thì sai.
 
-Không có dữ liệu phiên, phần "kết quả usability" không tồn tại — file này chỉ giữ khung phân tích và **giả thuyết** suy ra từ 34 bug Task 1 (mục 4), chưa được kiểm chứng bằng người dùng. Ba điều rút ra:
+## 6. Tam giác hoá với Task 1 & Task 3
 
-1. **Không bịa bù.** Số liệu giả vô hiệu hoá toàn bộ chuỗi evidence còn lại của bài (65 item đã thực thi, 34 bug có screenshot, session-id BrowserStack) vì một khi một phần bịa, không còn gì để kiểm chứng.
-2. **Giá trị còn lại của Task 2** nằm ở thiết kế: flow end-to-end, scenario hướng mục tiêu (không lộ tên nút), SUS VI, probe 4 nhóm, quy tắc severity impact × tần suất, quy trình nhập 1 dòng/người — tất cả chạy được ngay khi có người tham gia.
-3. **Task 1 đã cho thấy những lỗi nào người dùng thật gần như chắc chắn gặp** (coupon −270.000.000 ₫, tổng tiền editable, mất giỏ khi F5, first-click thất bại) — các giả thuyết ở mục 4 được xây từ đó, nhưng phải chờ phiên thật mới được coi là "kết quả".
+| Theme / vấn đề | Task 1 (checklist) | Task 3 (cross-platform) | Kết luận |
+| :--- | :--- | :--- | :--- |
+| Coupon âm | IA-04-08 / GUI-BUG-30 | Tái hiện trên 6 platform, cả BrowserStack Windows + macOS thật | Lỗi thật, mức Blocker, **người dùng không nhận ra** → phải sửa trước khi release |
+| Mất giỏ khi F5 | IA-03-09 / GUI-BUG-24 | Như nhau trên mọi browser | Lỗi thật, Major, không lộ trong phiên 1 lượt |
+| First-click thêm giỏ | IA-03-02 / GUI-BUG-25 | Giống nhau | Khớp với P6 cần gợi ý (1/7) |
+| Không nhất quán nhãn/ngôn ngữ | IA-01-04, IA-02-03 | — | Khớp với P7 (Q6 = 4) |
+
+## 7. Khuyến nghị (thứ tự sau khi có dữ liệu)
+
+| # | Khuyến nghị | Vì sao (dữ liệu) |
+| :-: | :--- | :--- |
+| 1 | Sửa coupon + tổng tiền server-side, cấm số âm | Blocker, và **không ai trong 7 người phát hiện** → lỗi im lặng, nguy hiểm nhất |
+| 2 | Sửa first-click + toast/badge giỏ | P6 (1/7) cần trợ giúp — ứng viên giải thích cho Help |
+| 3 | Chuẩn hoá ngôn ngữ/nhất quán UI | P7 Q6 = 4, Q5 = 2; P3 SUS 75 |
+| 4 | Persist giỏ, thêm loading/empty state | Không lộ trong phiên nhưng chặn ở sản phẩm thật |
+| 5 | **Bổ sung probe 5 phút cho 7 người cũ** | Không có quote/severity per-session → nếu còn thời gian, gửi thêm 3 câu (coupon, trust, bước rối nhất) |
+
+## 8. Hạn chế (bắt buộc đọc kèm mọi kết luận ở trên)
+
+1. **Unmoderated, không có moderator**: không bấm giờ, không đếm số lần trợ giúp thật, không có quote nói-to-suy-nghĩ → không có dữ liệu định tính.
+2. **Không có time-on-task**: form rút gọn bỏ câu thời gian; mọi `time_seconds` = trống.
+3. **Không có thiết bị**: không biết phiên nào chạy trên mobile hay desktop → không đối chiếu được với Task 3.
+4. **Task outcome tự báo cáo**, không kiểm chứng; khoảng cách gửi form (30–146 giây giữa 4 response đầu) nhỏ hơn thời lượng task 20 phút → nghi vấn một phần người tham gia điền nhanh.
+5. **Response style**: 6/7 straight-line tích cực; người quen tác giả → courtesy bias, SUS có khả năng bị **thổi lên**.
+6. **n = 7**: mô tả, không suy rộng; SD 17.2 rất lớn so với mean.
+7. **Không chạy pilot** trước khi gửi form (pilot dự kiến `usability/pilot/`) — form được kiểm bằng 3 dòng CSV giả lập, không bằng người thật.
+
+## 9. Kết luận
+
+Với 7 người thật: **SUS 80.0 (Good/B), 6/7 tự báo success, 1/7 cần trợ giúp, 0/7 thất bại** — nhưng chất lượng
+bằng chứng định tính thấp (không quote, không thời gian, không thiết bị). Giá trị của phần này nằm ở việc nó
+**mâu thuẫn có kiểm soát** với Task 1: người dùng chấm điểm cao trong khi checklist tìm ra 4 Blocker — chứng tỏ
+lỗi tập trung ở nhánh biên mà happy-path test không chạm. Không có số liệu nào bị bịa thêm để lấp khoảng trống
+time-on-task hay quote.
