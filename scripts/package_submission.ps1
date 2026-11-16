@@ -25,6 +25,15 @@ robocopy $Root $Stage /E /XD node_modules .git evidence\raw /XF *.mp4 *.zip loca
 Get-ChildItem -Path $Stage -Recurse -Include "recording*.mp4" -ErrorAction SilentlyContinue | Remove-Item -Force
 Get-ChildItem -Path $Stage -Recurse -Include "consent-raw*" -ErrorAction SilentlyContinue | Remove-Item -Force
 
+# Dữ liệu chứa thông tin cá nhân thật (họ tên + SĐT) — chỉ giữ local, gửi TA khi được yêu cầu
+$pii = @("gform_responses.csv", "gform_responses_dedup.csv", "contacts_local.csv")
+foreach ($f in $pii) {
+  Get-ChildItem -Path $Stage -Recurse -Include $f -ErrorAction SilentlyContinue | ForEach-Object {
+    Remove-Item $_.FullName -Force
+    Write-Output "Excluded PII file: $($_.Name)"
+  }
+}
+
 if (Test-Path $Zip) { Remove-Item $Zip -Force }
 Compress-Archive -Path (Join-Path $Stage "*") -DestinationPath $Zip -CompressionLevel Optimal
 Remove-Item -Recurse -Force $Stage

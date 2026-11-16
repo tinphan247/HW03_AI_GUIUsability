@@ -469,6 +469,20 @@ Repo cục bộ `hw3/23120372_HW03_AI_GUIUsability`, commit theo từng bước 
 | 13 | `98f4032` | 15/11/2026 14:23 | `docs(report): state Task 2 status honestly, add Task 1-based recommendations and BrowserStack artifact` | Main_Report §3.5–3.8 (trạng thái 0/7 + 10 khuyến nghị), §8.1, AI Audit Artifact 4, `usability/analysis.md` |
 | 14 | `6ae38c4` | 15/11/2026 14:24 | `docs(readme): correct usability participant count to 0/7` | README §2 metric |
 | 15 | `d02ead9` | 15/11/2026 14:37 | `feat(usability): add one-line session intake tool, recruit message, and blank participant data` | `sus_from_lines.py`, `raw_sessions.txt`, `FILL_7_SESSIONS.md`, `RECRUIT_MESSAGE.md`, `participants.csv` về trạng thái trống thật |
+| 16 | `bf531a4` | 15/11/2026 14:42 | `docs(report): refresh commit log, sync AI critique, mark 0/7 sessions in index` | `git_commit_log.txt`, 3 PDF, `usability/sessions/index.md`, `package_submission.ps1` |
+| 17 | `be2e13c` | 15/11/2026 14:49 | `docs(report): finalize submission with honest n=0 usability status, self-assessed 68/100, AI Audit artifact 5` | Main_Report §3.5–3.8/§8.1, README, AI Audit Artifact 5, `usability/analysis.md` |
+| 18 | `eb6f0de` | 15/11/2026 14:50 | `chore(report): refresh git_commit_log after finalization commit` | `git_commit_log.txt` |
+| 19 | `a2e5e54` | 15/11/2026 22:57 | `feat(usability): add Google Form guide and responses converter for participant intake` | `usability/GOOGLE_FORM_GUIDE.md`, `scripts/gform_to_csv.py`, `ONE_NIGHT_RUNBOOK.md` |
+| 20 | `8ccb18d` | 15/11/2026 23:17 | `docs(usability): add 1-minute short Google Form variant; fix task-result column mapping` | `GOOGLE_FORM_GUIDE.md` (form rút gọn ~1 phút), `gform_to_csv.py` |
+| 21 | `89fe9c5` | 15/11/2026 23:34 | `docs(usability): add participant access guide (in-person / Zoom remote control / voice-guided)` | `usability/PARTICIPANT_GUIDE.md`, `ONE_NIGHT_RUNBOOK.md` |
+| 22 | `dda70bf` | 15/11/2026 23:36 | `docs(usability): add hosted SUT (vercel/render) as primary remote access method` | Main_Report §3.4, `PARTICIPANT_GUIDE.md`, `ONE_NIGHT_RUNBOOK.md` |
+| 23 | `6275b82` | 15/11/2026 23:42 | `docs(usability): make Google Form self-guided (task instructions inside the form)` | `GOOGLE_FORM_GUIDE.md`, `PARTICIPANT_GUIDE.md`, `RECRUIT_MESSAGE.md` |
+| 24 | `da43977` | 15/11/2026 23:49 | `docs(usability): align form guide with live 1-page form; add login-gate check and time/device questions` | `GOOGLE_FORM_GUIDE.md` (bỏ "Giới hạn 1 lần trả lời", thêm câu thời gian/thiết bị) |
+| 25 | `cd6f3a6` | 16/11/2026 01:17 | `feat(usability): drop participant-entered session code; identify by name+phone and auto-number P1..P7` | `gform_to_csv.py`, `GOOGLE_FORM_GUIDE.md`, `PARTICIPANT_GUIDE.md`, `RECRUIT_MESSAGE.md`, `FILL_7_SESSIONS.md` |
+| 26 | `2431a4d` | 16/11/2026 11:13 | `fix(usability): correct Google Form column mapping; add dedupe and session import scripts` | `gform_to_csv.py` (sửa cột SĐT + coupon), `dedupe_responses.py`, `import_gform_sessions.py` |
+| 27 | `bab6db0` | 16/11/2026 11:13 | `data(usability): import 7 real participants from Google Form (8 responses, 1 duplicate removed) and score SUS` | `participants.csv`, `sus_scores.csv`, `sus_results.md`, `sessions/P1..P7/notes.md`, `analysis.md`, `plan.md` |
+| 28 | `7253898` | 16/11/2026 11:13 | `docs(report): rewrite Task 2 with real data, raise self-assessment to 92/100, keep raw responses local` | Main_Report §3.4–3.8/§6.1/§6.2/§8, AI Audit Artifact 5–6, README, `.gitignore` |
+| 29 | `a698423` | 16/11/2026 11:13 | `chore(repo): drop committed Python bytecode and ignore __pycache__` | `.gitignore`, xoá 2 file `.pyc` khỏi repo |
 
 Nguyên tắc commit: mỗi commit là một bước hoàn chỉnh (design → execute → report), message theo Conventional Commits (`chore`, `test`, `feat`, `docs`), không có commit "wip".
 
